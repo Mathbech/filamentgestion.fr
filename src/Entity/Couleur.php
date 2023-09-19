@@ -12,6 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource]
 class Couleur
 {
+    public function __toString(): String{
+        $nameParts = [];
+        if($this->nom){
+            $nameParts[] = $this->nom;
+        }
+        return implode(' ', $nameParts);
+    }
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

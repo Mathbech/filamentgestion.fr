@@ -11,6 +11,7 @@ use App\Entity\Imprimantes;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,6 +50,7 @@ class DashboardController extends AbstractDashboardController
             ->setTitle('App');
     }
 
+    
     public function configureMenuItems(): iterable
     {
         // MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
@@ -61,4 +63,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Impressions', 'fa-solid fa-print', Impressions::class);
         yield MenuItem::linkToCrud('Imprimantes', 'fa-solid fa-print', Imprimantes::class);
     }
+
 }

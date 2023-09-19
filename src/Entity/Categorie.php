@@ -12,6 +12,15 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource]
 class Categorie
 {
+    public function __toString(): String{
+        $nameParts = [];
+        if($this->nom_type){
+            $nameParts[] = $this->nom_type;
+        }
+        return implode(' ', $nameParts);
+    }
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
