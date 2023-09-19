@@ -64,6 +64,7 @@ final class Version20230912144937 extends AbstractMigration
         $this->addSql('ALTER TABLE impressions ADD CONSTRAINT FK_A74C17A05E16A326 FOREIGN KEY (imprimantes_id) REFERENCES imprimantes (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE impressions ADD CONSTRAINT FK_A74C17A0FB88E14F FOREIGN KEY (utilisateur_id) REFERENCES users (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE imprimantes ADD CONSTRAINT FK_2D40773EED766068 FOREIGN KEY (username_id) REFERENCES users (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('INSERT INTO Users (id, email, roles, password, username) VALUES ("1", "legeek.you@gmail.com", "[\"ROLE_ADMIN\"]","\$2y\$13\$k7ndsnK6w8npfqhtuiS.w.S3OWKHXE5BG6.f9KFH96TEx9cc.fbjy", "Bébech"');
     }
 
     public function down(Schema $schema): void

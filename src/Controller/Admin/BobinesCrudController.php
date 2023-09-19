@@ -31,7 +31,7 @@ class BobinesCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'by_reference' => false,
                 ]),
-            DateField::new('date_ajout'),
+            DateField::new('date_ajout')->setTimezone('Europe/Paris'),
         ];
     }
 }
