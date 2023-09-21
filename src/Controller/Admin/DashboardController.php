@@ -8,6 +8,7 @@ use App\Entity\Consommation;
 use App\Entity\Couleur;
 use App\Entity\Impressions;
 use App\Entity\Imprimantes;
+use App\Entity\Users;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -62,6 +63,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Consommation', 'fa-solid fa-dolly', Consommation::class);
         yield MenuItem::linkToCrud('Impressions', 'fa-solid fa-print', Impressions::class);
         yield MenuItem::linkToCrud('Imprimantes', 'fa-solid fa-print', Imprimantes::class);
+        yield MenuItem::linkToCrud('Utilisateurs', 'fa-solid fa-print', Users::class);
     }
 
 }

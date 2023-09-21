@@ -13,11 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Couleur
 {
     public function __toString(): String{
-        $nameParts = [];
-        if($this->nom){
-            $nameParts[] = $this->nom;
-        }
-        return implode(' ', $nameParts);
+        return $this->getNom();
     }
 
 
