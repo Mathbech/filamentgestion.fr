@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PublicController!{% endblock %}
+{% block title %}gestionfilament.fr{% endblock %}
 
 {% block body %}
 <style>
@@ -9,13 +9,14 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Bienvenue sur {{ controller_name2 }}! ✅</h1>
+    <h1>Bienvenue sur {{ site_name }}! ✅</h1>
 
-    This friendly message is coming from:
+    <MARQUEE>Le site est actuellement en construction</MARQUEE>
     <ul>
-        <li>Your controller at <code><a href="{{ '/srv/app/src/Controller/PublicController.php'|file_link(0) }}">src/Controller/PublicController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/srv/app/templates/public/index.html.twig'|file_link(0) }}">templates/public/index.html.twig</a></code></li>
-        <li><a href="{{path("admin")}}">Admin pannel</a>
+        <li><a href="{{path("app_register")}}">Inscription</a></li>
+        <li><a href="{{path("app_login")}}">Connexion</a></li>
+        <li><a href="{{path("app_logout")}}">Déconnexion</a></li>
+        <li><a href="{{path("admin")}}">Admin pannel</a></li>
     </ul>
 </div>
 {% endblock %}

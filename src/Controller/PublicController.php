@@ -13,7 +13,7 @@ class PublicController extends AbstractController
     {
         return $this->render('public/index.html.twig', [
             'controller_name' => 'PublicController',
-            'controller_name2' => 'Filament gestion.fr',
+            'site_name' => 'Filament gestion.fr',
         ]);
     }
 }
