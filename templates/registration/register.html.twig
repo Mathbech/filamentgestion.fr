@@ -3,18 +3,62 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    {# <h1>Register</h1> #}
 
-    {{ form_errors(registrationForm) }}
+    
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
+        {# {{ form_row(registrationForm.email) }} 
         {{ form_row(registrationForm.username) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
+        <button type="submit" class="btn">Register</button> #}
+    <div class="row flex-grow">
+        <div class="col-lg-4 mx-auto">
+            <div class="auth-form-light text-left p-5">
+                <div class="brand-logo">
+                    <img src="{{asset('images/logo-dark.svg')}}">
+                </div>
+                <h4>Nouveau ici?</h4>
+                <h6 class="font-weight-light">Inscrit toi, c'est super simple</h6>
+                <form class="pt-3">
+{{ form_start(registrationForm) }}
+{{ form_errors(registrationForm) }}
+                    <div class="form-group">
+                        {{ form_row(registrationForm.email) }}
+                        {# <input type="text" class="form-control form-control-lg" id="registration_form_email" name="registration_form[email]" required="required" maxlength="180"> #}
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(registrationForm.username) }}
+                        {# <label for="registration_form_username" class="required">Username</label> #}
+                        {# <input type="text" class="form-control form-control-lg" id="registration_form_username" name="registration_form[username]" required="required" maxlength="255"> #}
+                    </div>
+                    <div class="form-group">
+                    <label for="registration_form_plainPassword" class="required">Password</label>
+                    {# <input type="password" class="form-control form-control-lg" id="registration_form_plainPassword" name="registration_form[plainPassword]" required="required" autocomplete="new-password"> #}
+                        {{ form_row(registrationForm.plainPassword, { label: 'Password' }) }}
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-check">
+                        {# <label for="registration_form_agreeTerms" class="required">Agree terms<i class="input-helper"></i></label> #}
+                        {# <input type="checkbox" class="form-check-input" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" value="1"> #}
+                            {{ form_row(registrationForm.agreeTerms) }}
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit" class="btn">Register</button>
+                    </div>
+                    <div class="text-center mt-4 font-weight-light"> Déjà inscrit? <a href="{{ path('app_login') }}" class="text-primary">Connecte toi!</a></div>
+{{ form_end(registrationForm) }}
+                </form>
+            </div>
+        </div>
+    </div>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+
+
+
+
+
 {% endblock %}
