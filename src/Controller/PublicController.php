@@ -16,4 +16,12 @@ class PublicController extends AbstractController
             'site_name' => 'Filament gestion.fr',
         ]);
     }
+
+    #[Route('/dash', name: 'dash_public')]
+    public function dash(): Response
+    {
+        return $this->render('public/accueil.html.twig', [
+            
+        ]);
+    }
 }
