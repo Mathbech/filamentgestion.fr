@@ -3,7 +3,19 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <!-- plugins:css -->
+    <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendors/flag-icon-css/css/flag-icon.min.css')}}">
+    <link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.base.css')}}">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" />
         
         {% block stylesheets %}
         {% endblock %}
@@ -12,7 +24,24 @@
         {% endblock %}
     </head>
     <body>
-        {% include 'nav/nav.html.twig' %}
-        {% block body %}{% endblock %}
+        <div class="container-scroller">
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center auth">
+                    {% block body %}{% endblock %}
+                    <!-- content-wrapper ends -->
+                </div>
+            <!-- page-body-wrapper ends -->
+            </div>
+        </div>
+    <!-- plugins:js -->
+    <script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="{{asset('js/off-canvas.js')}}"></script>
+    <script src="{{asset('js/hoverable-collapse.js')}}"></script>
+    <script src="{{asset('js/misc.js')}}"></script>
+    <!-- endinject -->
     </body>
 </html>
