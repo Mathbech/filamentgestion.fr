@@ -17,7 +17,7 @@ class PublicController extends AbstractController
         ]);
     }
 
-    #[Route('/dash', name: 'dash_public')]
+    #[Route('/dashboard', name: 'dash_public')]
     public function dash(): Response
     {
         return $this->render('public/accueil.html.twig', [
