@@ -9,7 +9,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <span class="icon-bg"><i class="mdi mdi-crosshairs-gps menu-icon"></i></span>
+        <span class="icon-bg"><i class="mdi mdi-bank menu-icon"></i></span>
         <span class="menu-title">Comptabilité</span>
         <i class="menu-arrow"></i>
       </a>
@@ -21,14 +21,7 @@
         </ul>
       </div>
     </li>
-    {% if is_granted('ROLE_ADMIN') %}    
-    <li class="nav-item">
-      <a class="nav-link" href="{{ path('admin') }}">
-        <span class="icon-bg"><i class="mdi mdi-contacts menu-icon"></i></span>
-        <span class="menu-title">Administration</span>
-      </a>
-    </li>
-    {% endif %}
+    
     {# <li class="nav-item">
       <a class="nav-link" href="pages/forms/basic_elements.html">
         <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
@@ -49,7 +42,7 @@
     </li> #}
     <li class="nav-item">
       <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
-        <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+        <span class="icon-bg"><i class="mdi mdi-clipboard-data menu-icon"></i></span>
         <span class="menu-title">Gestion</span>
         <i class="menu-arrow"></i>
       </a>
@@ -63,6 +56,14 @@
         </ul>
       </div>
     </li>
+    {% if is_granted('ROLE_ADMIN') %}    
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('admin') }}">
+        <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+        <span class="menu-title">Administration</span>
+      </a>
+    </li>
+    {% endif %}
     <li class="nav-item documentation-link">
       <a class="nav-link" href="http://www.bootstrapdash.com/demo/connect-plus-free/jquery/documentation/documentation.html" target="_blank">
         <span class="icon-bg">
