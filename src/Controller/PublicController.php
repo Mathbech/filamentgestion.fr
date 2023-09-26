@@ -24,4 +24,12 @@ class PublicController extends AbstractController
             
         ]);
     }
+
+    #[Route('/courbes', name: 'courbes_public')]
+    public function courbes(): Response
+    {
+        return $this->render('public/courbes.html.twig', [
+            
+        ]);
+    }
 }
