@@ -5,10 +5,10 @@ $(function() {
    */
   'use strict';
   var data = {
-    labels: ["2013", "2014", "2014", "2015", "2016", "2017"],
+    labels: ["2019", "2020", "2021", "2022", "2023"],
     datasets: [{
-      label: '# of Votes',
-      data: [10, 19, 3, 5, 2, 3],
+      label: 'Entreprises',
+      data: [1, 5, 12, 25, 30],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -80,7 +80,7 @@ $(function() {
   };
   var doughnutPieData = {
     datasets: [{
-      data: [30, 40, 30],
+      data: [200, 5000],
       backgroundColor: [
         'rgba(255, 99, 132, 0.5)',
         'rgba(54, 162, 235, 0.5)',
@@ -101,9 +101,8 @@ $(function() {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      'Pink',
-      'Blue',
-      'Yellow',
+      'Filament',
+      'Imprimante',
     ]
   };
   var doughnutPieOptions = {
@@ -117,7 +116,7 @@ $(function() {
     labels: ["2019", "2020", "2021", "2022", "2023"],
     datasets: [{
       label: 'Inscriptions',
-      data: [0, 50, 160, 230, 410, 550, 800],
+      data: [5, 50, 160, 230, 410, 550, 800],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
