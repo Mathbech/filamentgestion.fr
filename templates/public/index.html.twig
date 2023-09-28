@@ -2,7 +2,55 @@
 
 
 {% block body %}
-    <div class="row">
-        <p class="text-info display-2">Bienvenue sur Filamentgestion.fr</p>
+    <div class="container text-center">
+        <div class="row align-items-start">
+            <div class="col"> 
+                <p class="text-info display-2">Bienvenue sur Filamentgestion.fr</p>
+                <p class="display-5">Filamentgestion c'est plus de : </p>
+            </div>
+        </div>   
     </div>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="mb-2 text-dark font-weight-normal">800</h2>
+                    <h5 class="mb-4 text-dark font-weight-bold">Utilisateurs sur </h5>
+                    <div class="dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-lightbulb icon-md absolute-center text-dark"></i></div>
+                    <h3 class="mt-4 mb-0">30</h3>
+                    <p class="mb-0 font-weight-bold mt-2 text-dark">Entreprises</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3  col-lg-6 col-sm-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="mb-2 text-dark font-weight-normal">300</h2>
+                    <h5 class="mb-4 text-dark font-weight-bold">Imprimantes enregistrés</h5>
+                <div class="dashboard-progress dashboard-progress-3 d-flex align-items-center justify-content-center item-parent"><i class="mdi mdi-eye icon-md absolute-center text-dark"></i></div>
+                <h3 class="mt-4 mb-0">2 Millions</h3>
+                <p class="mb-0 font-weight-bold mt-2 text-dark">D'impressions effectués</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <p class="mb-0 font-weight-bold mt-2 text-success text-center text-uppercase">C'est de bon et loyaux services depuis 2020</p>
+    <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Évolution des inscriptions</h4>
+                <canvas id="areaChart" style="height:150px"></canvas>
+            </div>
+        </div>
+        <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Évolution du nombre d'entreprises</h4>
+                <canvas id="lineChart" style="height:150px"></canvas>
+            </div>
+        </div>
+    </div>
+            
+            
 {% endblock %}
