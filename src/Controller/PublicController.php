@@ -17,15 +17,15 @@ class PublicController extends AbstractController
         ]);
     }
 
-    #[Route('/dashboard', name: 'dash_public')]
+    #[Route('/user/dashboard', name: 'dash_public')]
     public function dash(): Response
     {
-        return $this->render('public/accueil.html.twig', [
+        return $this->render('public/dashboard.html.twig', [
             
         ]);
     }
 
-    #[Route('/courbes', name: 'courbes_public')]
+    #[Route('/user/courbes', name: 'courbes_public')]
     public function courbes(): Response
     {
         return $this->render('public/courbes.html.twig', [
