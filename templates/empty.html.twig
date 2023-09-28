@@ -1,62 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}Filament gestion{% endblock %}</title>
-    <!-- plugins:css -->
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('vendors/mdi/css/materialdesignicons.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/flag-icon-css/css/flag-icon.min.css')}}">
     <link rel="stylesheet" href="{{asset('vendors/css/vendor.bundle.base.css')}}">
-
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" />
+        
         {% block stylesheets %}
         {% endblock %}
- 
+
         {% block javascripts %}
         {% endblock %}
-  </head>
-  <body>
-    <div class="container-scroller">
-      <!-- navbar -->
-      {% include 'nav/navbar.html.twig' %}
-      <div class="container-fluid page-body-wrapper">
-        <!-- /navbar -->
-        <!-- Sidebar -->
-        {% include 'nav/sidebar.html.twig' %}
-        <!-- /sidebar -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-          {% block body %}{% endblock %}
-          </div>
-          <!-- footer -->
-          {% include 'nav/footer.html.twig' %}
-          <!-- /footer -->
+    </head>
+    <body>
+        <div class="container-scroller">
+            <div class="container-fluid page-body-wrapper full-page-wrapper">
+                <div class="content-wrapper d-flex align-items-center auth">
+                    {% block body %}{% endblock %}
+                    <!-- content-wrapper ends -->
+                </div>
+            <!-- page-body-wrapper ends -->
+            </div>
         </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
-    </div>
-    <!-- container-scroller -->
     <!-- plugins:js -->
     <script src="{{asset('vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="{{asset('vendors/chart.js/Chart.min.js')}}"></script>
-    <script src="{{asset('vendors/jquery-circle-progress/js/circle-progress.min.js')}}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="{{asset('js/off-canvas.js')}}"></script>
     <script src="{{asset('js/hoverable-collapse.js')}}"></script>
     <script src="{{asset('js/misc.js')}}"></script>
     <!-- endinject -->
-    <!-- Custom js for this page -->
-    <script src="{{asset('js/chart.js')}}"></script>
-    <script src="{{asset('js/dashboard.js')}}"></script>
-    <!-- End custom js for this page -->
-  </body>
+    </body>
 </html>
