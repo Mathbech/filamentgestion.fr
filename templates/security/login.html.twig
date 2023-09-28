@@ -1,6 +1,6 @@
 {% extends 'empty.html.twig' %}
 {# {% extends 'empty.html.twig' %} #}
-{% block title %}Log in!{% endblock %}
+{% block title %}Connexion{% endblock %}
 
 {% block body %}
 <div class="row flex-grow">
@@ -9,8 +9,8 @@
             <div class="brand-logo">
                 <img src="{{asset('assets/images/logo-dark.svg')}}">
             </div>
-            <h4>Hello! let's get started</h4>
-            <h6 class="font-weight-light">Sign in to continue.</h6>
+            <h4>Bienvenue</h4>
+            <h6 class="font-weight-light">Connectez-vous pour continuer.</h6>
             <form class="pt-3" method="post">
                 {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -40,13 +40,13 @@
                 <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
                         <label class="form-check-label text-muted">
-                            <input type="checkbox" class="form-check-input"> Keep me signed in </label>
+                            <input type="checkbox" class="form-check-input"> Se souvenir de moi </label>
                     </div>
-                    {# <a href="#" class="auth-link text-black">Forgot password?</a> #}
+                    {# <a href="#" class="auth-link text-black">Mot de passe oublié??</a> #}
                 </div>
 
-                <div class="text-center mt-4 font-weight-light"> Don't have an account? <a
-                        href="{{ path('app_register') }}" class="text-primary">Create</a>
+                <div class="text-center mt-4 font-weight-light"> Pas de compte? Ce n'est pas grave <a
+                        href="{{ path('app_register') }}" class="text-primary">Créez un compte</a>
                 </div>
             </form>
         </div>
