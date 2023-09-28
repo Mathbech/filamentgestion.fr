@@ -1,6 +1,7 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item nav-category">Main</li>
+    {% if app.user %}
     <li class="nav-item">
       <a class="nav-link" href="{{path('dash_public')}}">
         <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
@@ -72,6 +73,20 @@
         <span class="menu-title">Documentation</span>
       </a>
     </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('app_login') }}">
+        <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+        <span class="menu-title">Connexion</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('app_register') }}">
+        <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
+        <span class="menu-title">Inscription</span>
+      </a>
+    </li>
+    {% endif %}
     <li class="nav-item sidebar-user-actions">
       <div class="user-details">
         <div class="d-flex justify-content-between align-items-center">
@@ -96,6 +111,7 @@
         </div>
       </div>
     </li>
+    {% if app.user %}
     <li class="nav-item sidebar-user-actions">
       <div class="sidebar-user-menu">
         <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
@@ -109,7 +125,6 @@
           <span class="menu-title">Take Tour</span></a>
       </div>
     </li>
-    {% if app.user %}
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
                 <a href="{{path('app_logout')}}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
