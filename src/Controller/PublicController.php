@@ -32,4 +32,12 @@ class PublicController extends AbstractController
             
         ]);
     }
+
+    #[Route('/user/stock', name: 'stock_public')]
+    public function stock(): Response
+    {
+        return $this->render('users/stock.html.twig', [
+            
+        ]);
+    }
 }
