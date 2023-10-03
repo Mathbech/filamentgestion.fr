@@ -28,7 +28,14 @@ class PublicController extends AbstractController
     public function dash(): Response
     {
         return $this->render('public/dashboard.html.twig', [
-            
+            'imprimantes' => '5',
+            'actifs' => '2',
+            'depenses' => '500.20€',
+            'mois' => '100.56€',
+            'impressions' => '5',
+            'total' => '50',
+            'profit' => '900.50€',
+            'pmois' => '200€',
         ]);
     }
 
