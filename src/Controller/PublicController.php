@@ -8,12 +8,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PublicController extends AbstractController
 {
+    
     #[Route('/', name: 'app_public')]
     public function index(): Response
     {
         return $this->render('public/index.html.twig', [
-            'controller_name' => 'PublicController',
-            'site_name' => 'Filament gestion.fr',
+            'site_name' => 'FilamentGestion.fr',
+            'utilisateurs' => '500',
+            'imprimantes' => '300',
+            'impressions' => '2 Millions',
+            'contributeurs' => '10',
+            'entreprises' => '30',
+            'partenaires' => '1',
+            'pages' => '5',
         ]);
     }
 
@@ -37,7 +44,7 @@ class PublicController extends AbstractController
     public function stock(): Response
     {
         return $this->render('users/stock.html.twig', [
-            
+
         ]);
     }
 }
