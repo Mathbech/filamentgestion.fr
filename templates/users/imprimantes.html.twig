@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Stocks{% endblock %}
+
+
+{% block body%}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Impressions Effectués</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Utilisateur </th>
+                        <th> Imprimante </th>
+                        <th> Marque </th>
+                        <th> Nom </th>
+                        <th> Active? </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-1">
+                            Bébech
+                        </td>
+                        <td> Cr10S pro </td>
+                        <td>
+                            Créality
+                        </td>
+                        <td> Imprimante Atelier </td>
+                        <td> Oui </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -55,10 +55,18 @@ class PublicController extends AbstractController
         ]);
     }
 
-    #[Route('/user/impressions', name: 'impressions_public')]
+    #[Route('/user/impressions', name: 'impression_public')]
     public function impressions(): Response
     {
         return $this->render('users/impressions.html.twig', [
+
+        ]);
+    }
+
+    #[Route('/user/imprimantes', name: 'imprimante_public')]
+    public function imprimantes(): Response
+    {
+        return $this->render('users/imprimantes.html.twig', [
 
         ]);
     }
