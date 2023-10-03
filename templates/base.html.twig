@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,33 +16,33 @@
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" />
-        {% block stylesheets %}
-        {% endblock %}
- 
-        {% block javascripts %}
-        {% endblock %}
-  </head>
-  <body>
+    {% block stylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}
+    {% endblock %}
+</head>
+
+<body>
     <div class="container-scroller">
-      <!-- navbar -->
-      
-      {% include 'nav/navbar.html.twig' %}
-      <div class="container-fluid page-body-wrapper">
+        <!-- navbar -->
+        {% include 'nav/navbar.html.twig' %}
         <!-- /navbar -->
-        <!-- Sidebar -->
-        {% include 'nav/sidebar.html.twig' %}
-        <!-- /sidebar -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-          {% block body %}{% endblock %}
-          </div>
-          <!-- footer -->
-          {% include 'nav/footer.html.twig' %}
-          <!-- /footer -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- Sidebar -->
+            {% include 'nav/sidebar.html.twig' %}
+            <!-- /sidebar -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    {% block body %}{% endblock %}
+                </div>
+                <!-- footer -->
+                {% include 'nav/footer.html.twig' %}
+                <!-- /footer -->
+            </div>
+            <!-- main-panel ends -->
         </div>
-        <!-- main-panel ends -->
-      </div>
-      <!-- page-body-wrapper ends -->
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -60,5 +61,6 @@
     <script src="{{asset('assets/js/chart.js')}}"></script>
     <script src="{{asset('assets/js/dashboard.js')}}"></script>
     <!-- End custom js for this page -->
-  </body>
+</body>
+
 </html>
