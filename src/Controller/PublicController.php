@@ -54,4 +54,12 @@ class PublicController extends AbstractController
 
         ]);
     }
+
+    #[Route('/user/impressions', name: 'impressions_public')]
+    public function impressions(): Response
+    {
+        return $this->render('users/impressions.html.twig', [
+
+        ]);
+    }
 }
