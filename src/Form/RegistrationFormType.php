@@ -27,7 +27,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'Vous devez accepter les termes d\'utilisation avant de continuer.',
+                        'message' => 'Vous devez accepter les conditions d\'utilisation avant de continuer.',
                     ]),
                 ],
             ])
@@ -39,7 +39,7 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passes doivent correspondres.',
+                'invalid_message' => 'Les mots de passe doivent correspondre.',
                 'options' => ['attr' => ['class' => 'form-control form-control-lg']],
                 'required' => true,
                 'first_options'  => ['label' => 'Password'],
@@ -47,11 +47,11 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a password',
+                        'message' => 'Merci d\'entrer un mot de passe.',
                     ]),
                     new Length([
                         'min' => 8,
-                        'minMessage' => 'Le mot de passe doit contenir au moins {{ limit }} caractères',
+                        'minMessage' => 'Le mot de passe doit contenir un minimum de {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
