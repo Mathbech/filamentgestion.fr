@@ -21,28 +21,29 @@ class BobinesRepository extends ServiceEntityRepository
         parent::__construct($registry, Bobines::class);
     }
 
-//    /**
-//     * @return Bobines[] Returns an array of Bobines objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Bobines[] Returns an array of Bobines objects
+    //     */
 
-//    public function findOneBySomeField($value): ?Bobines
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function getBobines($username): array
+    {
+        return $this->createQueryBuilder('b')
+            ->select('b.poids, b.prix, b.date_ajout')
+            ->andWhere('b.utilisateur = :user_id')
+            ->setParameter('user_id', $username)
+            ->orderBy('b.date_ajout', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+    //    public function findOneBySomeField($value): ?Bobines
+    //    {
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

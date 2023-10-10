@@ -11,23 +11,28 @@
                 <thead>
                     <tr>
                         <th> Utilisateur </th>
+                        <th> poids </th>
                         <th> Couleur </th>
-                        <th> Poids </th>
                         <th> Catégorie </th>
                         <th> Prix </th>
+                        <th>Date d'ajout</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for printers in printer %}
+                    {% for stocks in stock %}
                     <tr>
                         <td class="py-1">
                             {{app.user.username }}
                         </td>
-                        <td> {{ stocks.nom_imprimante }} </td>
+                        <td> {{ stocks.poids }} </td>
                         <td>
-                            {{ stocks.type_imprimante }}
+                            {# {{ stocks.couleur }} #}
                         </td>
-                        <td> {{stocks.category }} </td>
+                        <td> 
+                            {# {{stocks.categorie }} #}
+                        </td>
+                        <td> {{stocks.prix }} </td>
+                        <td> {{stocks.date_ajout|date('d/m/Y-H:m') }} </td>
                     </tr>
                     {% endfor %}
                 </tbody>

@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
 use App\Repository\UsersRepository;
@@ -60,10 +61,12 @@ class PublicController extends AbstractController
     }
 
     #[Route('/user/stock', name: 'stock_public')]
-    public function stock(): Response
+    public function stock(BobinesRepository $bobinesRepository): Response
     {
+        $user = $this->getUser();
+        $stockList = $bobinesRepository->getBobines($user);
         return $this->render('users/stock.html.twig', [
-
+            'stock' => $stockList,
         ]);
     }
 
