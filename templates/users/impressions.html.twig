@@ -36,10 +36,10 @@
                         <td>
                         </td>
                         <td>
-                            {# {{ impression.consommation.couleur }} #}.
+                            {# {{ impression.consommation.couleur }} #}
                             {% for consommation in impression.consommation %}
                             {# {{ dump ( consommation ) }} #}
-                            {{ consommation.couleur }}
+                            {{ consommation.couleur|join(', ') }}
                             {% endfor %}
                         </td>
                         <td> {{impression.Temps|date('H:m')}} </td>
