@@ -18,83 +18,18 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for printers in printer %}
                     <tr>
                         <td class="py-1">
-                            Bébech
+                            {{app.user.username }}
                         </td>
-                        <td> Jaune </td>
+                        <td> {{ stocks.nom_imprimante }} </td>
                         <td>
-                            1 Kg
+                            {{ stocks.type_imprimante }}
                         </td>
-                        <td> PLA </td>
-                        <td> 25.00€ </td>
+                        <td> {{stocks.category }} </td>
                     </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Bleu </td>
-                        <td>
-                            1 Kg
-                        </td>
-                        <td> PLA </td>
-                        <td> 25.00€ </td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Vert </td>
-                        <td>
-                            1 Kg
-                        </td>
-                        <td> PLA </td>
-                        <td> 25.00€ </td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Noir </td>
-                        <td>
-                            1 Kg
-                        </td>
-                        <td> PLA </td>
-                        <td> 25.00€ </td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Orange </td>
-                        <td>
-                            1 Kg
-                        </td>
-                        <td> PLA </td>
-                        <td> 25.00€ </td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Vert </td>
-                        <td>
-                            1 Kg
-                        </td>
-                        <td> PLA </td>
-                        <td> 25.00€ </td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Rouge </td>
-                        <td>
-                            1 Kg
-                        </td>
-                        <td> PLA </td>
-                        <td> 25.00€ </td>
-                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class PublicController extends AbstractController
 {
     
@@ -23,19 +24,24 @@ class PublicController extends AbstractController
             'utilisateurs' => $totalUsers,
             'imprimantes' => $totalPrinters,
             'impressions' => $totalPieces,
-            'contributeurs' => '10',
-            'entreprises' => '30',
+            'contributeurs' => '2',
+            'entreprises' => '1',
             'partenaires' => '1',
-            'pages' => '5',
+            'pages' => '9',
         ]);
     }
 
     #[Route('/user/dashboard', name: 'dash_public')]
-    public function dash(): Response
+    public function dash(ImprimantesRepository $printersRepository): Response
     {
+        $user = $this->getUser();
+        $totalPrinter = $printersRepository->getPrintersUsers($user);
+        $printersActive = $printersRepository->getPrintersaUsers($user);
         return $this->render('public/dashboard.html.twig', [
-            'imprimantes' => '5',
-            'actifs' => '2',
+            'imprimantes' => $totalPrinter,
+            // 'imprimantes' => '0',
+            // 'actifs' => '2',
+            'actifs' => $printersActive,
             'depenses' => '500.20€',
             'mois' => '100.56€',
             'impressions' => '5',
@@ -70,10 +76,12 @@ class PublicController extends AbstractController
     }
 
     #[Route('/user/imprimantes', name: 'imprimante_public')]
-    public function imprimantes(): Response
+    public function imprimantes(ImprimantesRepository $printersRepository): Response
     {
+        $user = $this->getUser();
+        $printersList = $printersRepository->getPrinters($user);
         return $this->render('users/imprimantes.html.twig', [
-
+            'printer' => $printersList,
         ]);
     }
 }

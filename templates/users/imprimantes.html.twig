@@ -12,23 +12,24 @@
                     <tr>
                         <th> Utilisateur </th>
                         <th> Imprimante </th>
-                        <th> Marque </th>
+                        {# <th> Marque </th> #}
                         <th> Nom </th>
-                        <th> Active? </th>
+                        <th> Désactivée le </th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for printers in printer %}
                     <tr>
                         <td class="py-1">
-                            Bébech
+                            {{app.user.username }}
                         </td>
-                        <td> Cr10S pro </td>
+                        <td> {{ printers.nom_imprimante }} </td>
                         <td>
-                            Créality
+                            {{ printers.type_imprimante }}
                         </td>
-                        <td> Imprimante Atelier </td>
-                        <td> Oui </td>
+                        <td> {{printers.deleted ? printers.deleted|date('d/m/Y-H:m') : '' }} </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

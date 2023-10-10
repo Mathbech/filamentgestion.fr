@@ -24,17 +24,18 @@ class ImprimantesRepository extends ServiceEntityRepository
     //    /**
     //     * @return Imprimantes[] Returns an array of Imprimantes objects
     //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('i')
-    //            ->andWhere('i.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('i.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+       public function getPrinters($username): array
+       {
+           return $this->createQueryBuilder('i')
+               ->select('i.nom_imprimante, i.type_imprimante, i.deleted')
+               ->andWhere('i.username = :user_id')
+               ->setParameter('user_id', $username)
+               ->orderBy('i.id', 'DESC')
+               ->setMaxResults(10)
+               ->getQuery()
+               ->getResult()
+           ;
+       }
 
     public function getTotalprinters()
     {
@@ -44,6 +45,26 @@ class ImprimantesRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
+    public function getPrintersUsers($username)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->andWhere('i.username = :user_id')
+            ->setParameter('user_id', $username)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getPrintersaUsers($username)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->andWhere('i.username = :user_id')
+            ->andWhere('i.deleted IS NULL')
+            ->setParameter('user_id', $username)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
     //    public function findOneBySomeField($value): ?Imprimantes
     //    {
     //        return $this->createQueryBuilder('i')
