@@ -10,6 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource]
 class Consommation
 {
+
+    public function __toString(): String{
+        return $this->getPoids(). ''. $this->getCouleur();
+    }
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

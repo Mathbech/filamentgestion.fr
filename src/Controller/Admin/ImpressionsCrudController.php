@@ -6,6 +6,8 @@ use App\Entity\Impressions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
 
 class ImpressionsCrudController extends AbstractCrudController
@@ -21,6 +23,14 @@ class ImpressionsCrudController extends AbstractCrudController
         return [
             TimeField::new('temps'),
             DateTimeField::new('date'),
+            AssociationField::new('imprimantes')
+            ->setFormTypeOptions([
+                'by_reference' => false,
+            ]),
+            AssociationField::new('consommation')
+            ->setFormTypeOptions([
+                'by_reference' => false,
+            ]),
             AssociationField::new('utilisateur')->autocomplete(),
         ];
     }

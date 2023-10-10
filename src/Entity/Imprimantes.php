@@ -13,6 +13,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource]
 class Imprimantes
 {
+
+    public function __toString(): String{
+        return $this->getNomImprimante();
+    }
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

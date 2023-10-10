@@ -14,47 +14,40 @@
                         <th> Imprimante </th>
                         <th> Poids </th>
                         <th> Catégorie </th>
-                        <th>Couleur</th>
-                        <th> temps </th>
+                        <th> Couleur </th>
+                        <th> Temps </th>
+                        <th> Date impression </th>
                     </tr>
                 </thead>
                 <tbody>
+                    {% for impression in impressions %}
                     <tr>
                         <td class="py-1">
-                            Bébech
+                            {{impression.utilisateur.username }}
                         </td>
-                        <td> Cr10S pro </td>
+                        <td> {{ impression.Imprimantes }} </td>
                         <td>
-                            50g
+                            {# {{ impression.consommation.poids }} #}
+                            {% for consommation in impression.consommation %}
+                            {# {{ dump ( consommation ) }} #}
+                            {{ consommation.poids }}
+                            {% endfor %}
                         </td>
-                        <td> PLA </td>
-                        <td> Vert </td>
-                        <td> 10:50 </td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Cr10S pro </td>
                         <td>
-                            200g
                         </td>
-                        <td> PLA </td>
-                        <td> Rouge </td>
-                        <td> 38:00 </td>
-                    </tr>
-                    <tr>
-                        <td class="py-1">
-                            Bébech
-                        </td>
-                        <td> Cr10S pro </td>
                         <td>
-                            800g
+                            {# {{ impression.consommation.couleur }} #}.
+                            {% for consommation in impression.consommation %}
+                            {# {{ dump ( consommation ) }} #}
+                            {{ consommation.couleur }}
+                            {% endfor %}
                         </td>
-                        <td> PETG </td>
-                        <td> Noir </td>
-                        <td> 95:50 </td>
+                        <td> {{impression.Temps|date('H:m')}} </td>
+                        <td>
+                            {{ impression.Date|date('d/m/Y') }}
+                        </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

@@ -73,18 +73,20 @@ class PublicController extends AbstractController
     }
 
     #[Route('/user/impressions', name: 'impression_public')]
-    public function impressions(): Response
+    public function impressions(ImpressionsRepository $impressionsRepository): Response
     {
         return $this->render('users/impressions.html.twig', [
-
+            'impressions' => $impressionsRepository->findBy(
+                ['utilisateur' => $this->getUser()->getId()],
+                ['id' => 'DESC'], 
+                10
+            ),
         ]);
     }
 
     #[Route('/user/imprimantes', name: 'imprimante_public')]
     public function imprimantes(ImprimantesRepository $printersRepository): Response
     {
-        $user = $this->getUser();
-        $printersList = $printersRepository->getPrinters($user);
         return $this->render('users/imprimantes.html.twig', [
             'printers' => $printersRepository->findBy(
                 ['username' => $this->getUser()->getId()],

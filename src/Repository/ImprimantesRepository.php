@@ -24,18 +24,6 @@ class ImprimantesRepository extends ServiceEntityRepository
     //    /**
     //     * @return Imprimantes[] Returns an array of Imprimantes objects
     //     */
-       public function getPrinters($username): array
-       {
-           return $this->createQueryBuilder('i')
-               ->select('i.nom_imprimante, i.type_imprimante, i.deleted')
-               ->andWhere('i.username = :user_id')
-               ->setParameter('user_id', $username)
-               ->orderBy('i.id', 'DESC')
-               ->setMaxResults(10)
-               ->getQuery()
-               ->getResult()
-           ;
-       }
 
     public function getTotalprinters()
     {
