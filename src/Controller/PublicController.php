@@ -63,10 +63,12 @@ class PublicController extends AbstractController
     #[Route('/user/stock', name: 'stock_public')]
     public function stock(BobinesRepository $bobinesRepository): Response
     {
-        $user = $this->getUser();
-        $stockList = $bobinesRepository->getBobines($user);
         return $this->render('users/stock.html.twig', [
-            'stock' => $stockList,
+            'stocks' => $bobinesRepository->findBy(
+                ['utilisateur' => $this->getUser()->getId()],
+                ['id' => 'DESC'], 
+                10
+            ),
         ]);
     }
 
@@ -84,7 +86,11 @@ class PublicController extends AbstractController
         $user = $this->getUser();
         $printersList = $printersRepository->getPrinters($user);
         return $this->render('users/imprimantes.html.twig', [
-            'printer' => $printersList,
+            'printers' => $printersRepository->findBy(
+                ['username' => $this->getUser()->getId()],
+                ['id' => 'DESC'], 
+                10
+            ),
         ]);
     }
 }

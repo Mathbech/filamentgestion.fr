@@ -25,17 +25,7 @@ class BobinesRepository extends ServiceEntityRepository
     //     * @return Bobines[] Returns an array of Bobines objects
     //     */
 
-    public function getBobines($username): array
-    {
-        return $this->createQueryBuilder('b')
-            ->select('b.poids, b.prix, b.date_ajout')
-            ->andWhere('b.utilisateur = :user_id')
-            ->setParameter('user_id', $username)
-            ->orderBy('b.date_ajout', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult();
-    }
+  
 
     //    public function findOneBySomeField($value): ?Bobines
     //    {

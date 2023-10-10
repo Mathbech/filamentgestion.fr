@@ -18,16 +18,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for printers in printer %}
+                    {% for printer in printers %}
                     <tr>
                         <td class="py-1">
-                            {{app.user.username }}
+                            {{printer.username }}
                         </td>
-                        <td> {{ printers.nom_imprimante }} </td>
+                        <td> {{ printer.nomImprimante }} </td>
                         <td>
-                            {{ printers.type_imprimante }}
+                            {{ printer.typeImprimante }}
                         </td>
-                        <td> {{printers.deleted ? printers.deleted|date('d/m/Y-H:m') : '' }} </td>
+                        <td> {{printer.deleted ? printer.deleted|date('d/m/Y-H:m') : '' }} </td>
                     </tr>
                     {% endfor %}
                 </tbody>

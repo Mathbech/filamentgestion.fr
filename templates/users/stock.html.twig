@@ -19,20 +19,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for stocks in stock %}
+                    {% for stock in stocks %}
                     <tr>
                         <td class="py-1">
-                            {{app.user.username }}
+                            {{stock.utilisateur }}
                         </td>
-                        <td> {{ stocks.poids }} </td>
+                        <td> {{ stock.poids }} </td>
                         <td>
-                            {# {{ stocks.couleur }} #}
+                            {{ stock.couleur.nom }}
                         </td>
                         <td> 
-                            {# {{stocks.categorie }} #}
+                            {{stock.categorie.nomType }}
                         </td>
-                        <td> {{stocks.prix }} </td>
-                        <td> {{stocks.date_ajout|date('d/m/Y-H:m') }} </td>
+                        <td> {{stock.prix }} </td>
+                        <td> {{stock.dateAjout|date('d/m/Y-H:m') }} </td>
                     </tr>
                     {% endfor %}
                 </tbody>
