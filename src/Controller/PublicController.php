@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Repository\ImpressionsRepository;
+use App\Repository\ImprimantesRepository;
+use App\Repository\UsersRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -10,13 +13,16 @@ class PublicController extends AbstractController
 {
     
     #[Route('/', name: 'app_public')]
-    public function index(): Response
+    public function index(UsersRepository $usersRepository, ImprimantesRepository $printersRepository, ImpressionsRepository $piecesRepository): Response
     {
+        $totalUsers = $usersRepository->getTotalusers();
+        $totalPrinters = $printersRepository->getTotalprinters();
+        $totalPieces = $piecesRepository->getTotalpieces();
         return $this->render('public/index.html.twig', [
             'site_name' => 'FilamentGestion.fr',
-            'utilisateurs' => '500',
-            'imprimantes' => '300',
-            'impressions' => '2 Millions',
+            'utilisateurs' => $totalUsers,
+            'imprimantes' => $totalPrinters,
+            'impressions' => $totalPieces,
             'contributeurs' => '10',
             'entreprises' => '30',
             'partenaires' => '1',

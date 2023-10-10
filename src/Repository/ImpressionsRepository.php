@@ -36,6 +36,14 @@ class ImpressionsRepository extends ServiceEntityRepository
 //        ;
 //    }
 
+public function getTotalpieces()
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
 //    public function findOneBySomeField($value): ?Impressions
 //    {
 //        return $this->createQueryBuilder('i')

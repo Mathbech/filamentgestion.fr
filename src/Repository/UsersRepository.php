@@ -40,28 +40,38 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
         $this->getEntityManager()->flush();
     }
 
-//    /**
-//     * @return Users[] Returns an array of Users objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Users
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    // @return Users[] Returns an array of Users objects
+
+    //    public function findByExampleField($Users): array
+    //    {
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.id = :id')
+    //            ->setParameter('id', $Users)
+    //            ->orderBy('u.id', 'ASC')
+    //            ->setMaxResults(1)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    public function getTotalusers()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    //    public function findOneBySomeField($value): ?Users
+    //    {
+    //        return $this->createQueryBuilder('u')
+    //            ->andWhere('u.id = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
+
+
 }
