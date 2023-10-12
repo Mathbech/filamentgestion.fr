@@ -27,10 +27,7 @@ class ImpressionsCrudController extends AbstractCrudController
             ->setFormTypeOptions([
                 'by_reference' => false,
             ]),
-            AssociationField::new('consommation')
-            ->setFormTypeOptions([
-                'by_reference' => false,
-            ]),
+            
             AssociationField::new('utilisateur')->autocomplete(),
         ];
     }

@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ImpressionsRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,9 +22,6 @@ class Impressions
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date = null;
 
-    #[ORM\OneToMany(mappedBy: 'impressions', targetEntity: Consommation::class)]
-    private Collection $consommation;
-
     #[ORM\ManyToOne(inversedBy: 'impression')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Imprimantes $imprimantes = null;
@@ -34,11 +29,6 @@ class Impressions
     #[ORM\ManyToOne(inversedBy: 'impressions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $utilisateur = null;
-
-    public function __construct()
-    {
-        $this->consommation = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -65,36 +55,6 @@ class Impressions
     public function setDate(\DateTimeInterface $date): static
     {
         $this->date = $date;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Consommation>
-     */
-    public function getConsommation(): Collection
-    {
-        return $this->consommation;
-    }
-
-    public function addConsommation(Consommation $consommation): static
-    {
-        if (!$this->consommation->contains($consommation)) {
-            $this->consommation->add($consommation);
-            $consommation->setImpressions($this);
-        }
-
-        return $this;
-    }
-
-    public function removeConsommation(Consommation $consommation): static
-    {
-        if ($this->consommation->removeElement($consommation)) {
-            // set the owning side to null (unless already changed)
-            if ($consommation->getImpressions() === $this) {
-                $consommation->setImpressions(null);
-            }
-        }
 
         return $this;
     }

@@ -62,7 +62,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Couleur', 'fa-solid fa-palette', Couleur::class);
         yield MenuItem::linkToCrud('Imprimantes', 'fa-solid fa-print', Imprimantes::class);
         yield MenuItem::linkToCrud('Impressions', 'fa-solid fa-print fa-beat-fade', Impressions::class);
-        yield MenuItem::linkToCrud('Consommation', 'fa-solid fa-dolly', Consommation::class);
     }
 
 }
