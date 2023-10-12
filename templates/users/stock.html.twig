@@ -24,14 +24,14 @@
                         <td class="py-1">
                             {{stock.utilisateur.username }}
                         </td>
-                        <td> {{ stock.poids }} </td>
+                        <td> {{ stock.poids }} Kg </td>
                         <td>
                             {{ stock.couleur.nom }}
                         </td>
                         <td> 
                             {{stock.categorie.nomType }}
                         </td>
-                        <td> {{stock.prix }} </td>
+                        <td> {{stock.prix }} € </td>
                         <td> {{stock.dateAjout|date('d/m/Y-H:m') }} </td>
                     </tr>
                     {% endfor %}

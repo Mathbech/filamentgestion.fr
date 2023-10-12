@@ -25,15 +25,14 @@ class BobinesRepository extends ServiceEntityRepository
     //     * @return Bobines[] Returns an array of Bobines objects
     //     */
 
-  
 
-    //    public function findOneBySomeField($value): ?Bobines
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function getComptesUsers($username)
+    {
+        return $this->createQueryBuilder('b')
+            ->select('sum(b.prix)')
+            ->andWhere('b.utilisateur = :user_id')
+            ->setParameter('user_id', $username)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 }

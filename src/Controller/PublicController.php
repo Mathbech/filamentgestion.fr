@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Bobines;
 use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
@@ -33,17 +34,19 @@ class PublicController extends AbstractController
     }
 
     #[Route('/user/dashboard', name: 'dash_public')]
-    public function dash(ImprimantesRepository $printersRepository): Response
+    public function dash(ImprimantesRepository $printersRepository, BobinesRepository $bobinesRepository): Response
     {
         $user = $this->getUser();
         $totalPrinter = $printersRepository->getPrintersUsers($user);
         $printersActive = $printersRepository->getPrintersaUsers($user);
+        $Counts = $bobinesRepository->getComptesUsers($user);
         return $this->render('public/dashboard.html.twig', [
             'imprimantes' => $totalPrinter,
             // 'imprimantes' => '0',
             // 'actifs' => '2',
             'actifs' => $printersActive,
-            'depenses' => '500.20€',
+            // 'depenses' => '1000',
+            'depenses' => $Counts,
             'mois' => '100.56€',
             'impressions' => '5',
             'total' => '50',
