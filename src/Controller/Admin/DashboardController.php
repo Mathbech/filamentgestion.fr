@@ -4,11 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Bobines;
 use App\Entity\Categorie;
-use App\Entity\Consommation;
+use App\Entity\Clients;
 use App\Entity\Couleur;
 use App\Entity\Impressions;
 use App\Entity\Imprimantes;
 use App\Entity\Users;
+use App\Entity\Ventes;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -62,6 +63,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Couleur', 'fa-solid fa-palette', Couleur::class);
         yield MenuItem::linkToCrud('Imprimantes', 'fa-solid fa-print', Imprimantes::class);
         yield MenuItem::linkToCrud('Impressions', 'fa-solid fa-print fa-beat-fade', Impressions::class);
+        yield MenuItem::linkToCrud('Cients', 'fa-solid fa-print fa-beat-fade', Clients::class);
+        yield MenuItem::linkToCrud('Ventes', 'fa-solid fa-print fa-beat-fade', Ventes::class);
     }
 
 }
