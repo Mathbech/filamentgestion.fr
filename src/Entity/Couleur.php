@@ -28,9 +28,13 @@ class Couleur
     #[ORM\OneToMany(mappedBy: 'couleur', targetEntity: Bobines::class)]
     private Collection $bobines;
 
+    #[ORM\OneToMany(mappedBy: 'couleur', targetEntity: Impressions::class)]
+    private Collection $impressions;
+
     public function __construct()
     {
         $this->bobines = new ArrayCollection();
+        $this->impressions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -74,6 +78,36 @@ class Couleur
             // set the owning side to null (unless already changed)
             if ($bobine->getCouleur() === $this) {
                 $bobine->setCouleur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Impressions>
+     */
+    public function getImpressions(): Collection
+    {
+        return $this->impressions;
+    }
+
+    public function addImpression(Impressions $impression): static
+    {
+        if (!$this->impressions->contains($impression)) {
+            $this->impressions->add($impression);
+            $impression->setCouleur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImpression(Impressions $impression): static
+    {
+        if ($this->impressions->removeElement($impression)) {
+            // set the owning side to null (unless already changed)
+            if ($impression->getCouleur() === $this) {
+                $impression->setCouleur(null);
             }
         }
 

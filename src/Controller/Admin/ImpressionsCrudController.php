@@ -21,12 +21,23 @@ class ImpressionsCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TimeField::new('temps'),
-            DateTimeField::new('date'),
+            AssociationField::new('couleur')
+            ->setFormTypeOptions([
+                'by_reference' => false,
+            ]),
+            AssociationField::new('categorie')
+            ->setFormTypeOptions([
+                'by_reference' => false,
+            ]),
+            IdField::new('Poids'),
             AssociationField::new('imprimantes')
             ->setFormTypeOptions([
                 'by_reference' => false,
             ]),
+            TimeField::new('temps'),
+            DateTimeField::new('date'),
+
+            
             
             AssociationField::new('utilisateur')->autocomplete(),
         ];

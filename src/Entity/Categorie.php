@@ -31,9 +31,13 @@ class Categorie
     #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Bobines::class)]
     private Collection $bobines;
 
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Impressions::class)]
+    private Collection $impressions;
+
     public function __construct()
     {
         $this->bobines = new ArrayCollection();
+        $this->impressions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,6 +93,36 @@ class Categorie
             // set the owning side to null (unless already changed)
             if ($bobine->getCategorie() === $this) {
                 $bobine->setCategorie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Impressions>
+     */
+    public function getImpressions(): Collection
+    {
+        return $this->impressions;
+    }
+
+    public function addImpression(Impressions $impression): static
+    {
+        if (!$this->impressions->contains($impression)) {
+            $this->impressions->add($impression);
+            $impression->setCategorie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImpression(Impressions $impression): static
+    {
+        if ($this->impressions->removeElement($impression)) {
+            // set the owning side to null (unless already changed)
+            if ($impression->getCategorie() === $this) {
+                $impression->setCategorie(null);
             }
         }
 

@@ -27,20 +27,14 @@
                         </td>
                         <td> {{ impression.Imprimantes }} </td>
                         <td>
-                            {# {{ impression.consommation.poids }} #}
-                            {% for consommation in impression.consommation %}
-                            {# {{ dump ( consommation ) }} #}
-                            {{ consommation.poids }}
-                            {% endfor %}
+                            {{ impression.poids }}
                         </td>
                         <td>
+                        
+                            {{ impression.categorie.nomType }}
                         </td>
                         <td>
-                            {# {{ impression.consommation.couleur }} #}
-                            {% for consommation in impression.consommation %}
-                            {# {{ dump ( consommation ) }} #}
-                            {{ consommation.couleur|join(', ') }}
-                            {% endfor %}
+                            {{ impression.Couleur.nom }}
                         </td>
                         <td> {{impression.Temps|date('H:m')}} </td>
                         <td>

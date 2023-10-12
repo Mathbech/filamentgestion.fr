@@ -30,6 +30,17 @@ class Impressions
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $utilisateur = null;
 
+    #[ORM\ManyToOne(inversedBy: 'impressions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Couleur $couleur = null;
+
+    #[ORM\ManyToOne(inversedBy: 'impressions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
+    #[ORM\Column]
+    private ?float $poids = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -79,6 +90,42 @@ class Impressions
     public function setUtilisateur(?Users $utilisateur): static
     {
         $this->utilisateur = $utilisateur;
+
+        return $this;
+    }
+
+    public function getCouleur(): ?Couleur
+    {
+        return $this->couleur;
+    }
+
+    public function setCouleur(?Couleur $couleur): static
+    {
+        $this->couleur = $couleur;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): static
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getPoids(): ?float
+    {
+        return $this->poids;
+    }
+
+    public function setPoids(float $poids): static
+    {
+        $this->poids = $poids;
 
         return $this;
     }
