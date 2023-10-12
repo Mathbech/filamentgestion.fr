@@ -33,23 +33,23 @@ class ImprimantesRepository extends ServiceEntityRepository
             ->getSingleScalarResult();
     }
 
-    public function getPrintersUsers($username)
+    public function getPrintersUsers($user)
     {
         return $this->createQueryBuilder('i')
             ->select('count(i.id)')
             ->andWhere('i.username = :user_id')
-            ->setParameter('user_id', $username)
+            ->setParameter('user_id', $user->getId())
             ->getQuery()
             ->getSingleScalarResult();
     }
 
-    public function getPrintersaUsers($username)
+    public function getPrintersaUsers($user)
     {
         return $this->createQueryBuilder('i')
             ->select('count(i.id)')
             ->andWhere('i.username = :user_id')
             ->andWhere('i.deleted IS NULL')
-            ->setParameter('user_id', $username)
+            ->setParameter('user_id', $user->getId())
             ->getQuery()
             ->getSingleScalarResult();
     }

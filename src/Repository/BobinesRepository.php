@@ -26,12 +26,24 @@ class BobinesRepository extends ServiceEntityRepository
     //     */
 
 
-    public function getComptesUsers($username)
+    public function getExpensetUsers($user)
     {
         return $this->createQueryBuilder('b')
             ->select('sum(b.prix)')
             ->andWhere('b.utilisateur = :user_id')
-            ->setParameter('user_id', $username)
+            ->setParameter('user_id', $user->getId())
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getExpensemUsers($user)
+    {
+        return $this->createQueryBuilder('b')
+            ->select('sum(b.prix)')
+            ->andWhere('b.utilisateur = :user_id')
+            ->andWhere('b.date_ajout >= :date')
+            ->setParameter('user_id', $user->getId())
+            ->setParameter('date', Date('m,j,Y, H:i:s', strtotime('-30 day')))
             ->getQuery()
             ->getSingleScalarResult();
     }

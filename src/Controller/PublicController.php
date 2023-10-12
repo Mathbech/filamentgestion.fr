@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Bobines;
+use App\Entity\Impressions;
 use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
@@ -34,22 +35,26 @@ class PublicController extends AbstractController
     }
 
     #[Route('/user/dashboard', name: 'dash_public')]
-    public function dash(ImprimantesRepository $printersRepository, BobinesRepository $bobinesRepository): Response
+    public function dash(ImprimantesRepository $printersRepository, BobinesRepository $bobinesRepository, ImpressionsRepository $impressionsRepository): Response
     {
         $user = $this->getUser();
         $totalPrinter = $printersRepository->getPrintersUsers($user);
         $printersActive = $printersRepository->getPrintersaUsers($user);
-        $Counts = $bobinesRepository->getComptesUsers($user);
+        $expensest = $bobinesRepository->getExpensetUsers($user);
+        $expensesm = $bobinesRepository->getExpensemUsers($user);
+        $piecest = $impressionsRepository->getUserstpieces($user);
+        $piecesm = $impressionsRepository->getUsersmpieces($user);
         return $this->render('public/dashboard.html.twig', [
             'imprimantes' => $totalPrinter,
             // 'imprimantes' => '0',
             // 'actifs' => '2',
             'actifs' => $printersActive,
             // 'depenses' => '1000',
-            'depenses' => $Counts,
-            'mois' => '100.56€',
-            'impressions' => '5',
-            'total' => '50',
+            'depenses' => $expensest,
+            // 'mois' => '100.56€',
+            'mois' => $expensesm,
+            'impressions' => $piecest,
+            'total' => $piecesm,
             'profit' => '900.50€',
             'pmois' => '200€',
         ]);

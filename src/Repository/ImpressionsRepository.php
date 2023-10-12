@@ -44,6 +44,28 @@ public function getTotalpieces()
             ->getSingleScalarResult();
     }
 
+    public function getUserstpieces($user)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->andWhere('i.utilisateur = :user_id')
+            ->setParameter('user_id', $user->getId())
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    public function getUsersmpieces($user)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->andWhere('i.utilisateur = :user_id')
+            ->andWhere('i.date >= :date')
+            ->setParameter('user_id', $user->getId())
+            ->setParameter('date', Date('m,j,Y, H:i:s', strtotime('-30 day')))
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
 //    public function findOneBySomeField($value): ?Impressions
 //    {
 //        return $this->createQueryBuilder('i')
