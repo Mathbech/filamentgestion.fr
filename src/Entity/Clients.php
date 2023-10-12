@@ -13,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource]
 class Clients
 {
+
+    public function __toString(): String{
+        return $this->getNom();
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
