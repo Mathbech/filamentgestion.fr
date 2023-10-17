@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block title %}Centre de contrôle{% endblock %}
+
+
+{% block body%}
+{# <h1> Ajout de Bobines</h1>
+<div class="col-lg-4 mx-auto">
+    <div class="auth-form-light text-left p-5">
+    <div class="pt-3">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        {{ form_row(form.poids) }}
+        {{ form_row(form.prix)}}
+        {{ form_row(form.couleur)}}
+        {{ form_row(form.categorie)}}
+        <input type="submit" value="Envoyer" />
+        {{ form_end(form) }}
+        </div>
+    </div>
+</div> #}
+
+
+
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Basic form elements</h4>
+                    <p class="card-description"> Basic form elements </p>
+                    <div class="forms-sample">
+					{{ form_start(form) }}
+					{{ form_errors(form) }}
+                      <div class="form-group">
+                        {{ form_row(form.poids) }}
+                      </div>
+                      <div class="form-group">
+                        {{ form_row(form.prix)}}
+                      </div>
+                      <div class="form-group">
+                        {{ form_row(form.couleur)}}
+                      </div>
+                      <div class="form-group">
+                        {{ form_row(form.categorie)}}
+                      </div>
+                      <input type="submit" class="btn btn-primary mr-2" value="Envoyer" />
+					  {{ form_end(form) }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+{% endblock %}

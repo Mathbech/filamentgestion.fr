@@ -90,7 +90,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/ajout', name: 'ajout_user')]
+    #[Route('/user/ajoutBobines', name: 'ajoutb_user')]
     public function ajout(Request $request, EntityManagerInterface $entityManager): Response
     {
         $bobines = new Bobines();
@@ -112,7 +112,7 @@ class UserController extends AbstractController
 
 
 
-        return $this->render('user/ajout.html.twig', [
+        return $this->render('user/ajoutbobine.html.twig', [
             'form' => $form->createView(),
         ]);
     }
