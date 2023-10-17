@@ -102,7 +102,7 @@ class UserController extends AbstractController
                 $this->getUser()
             );
             $bobines->setDateAjout(
-                new \DateTime()
+                new \DateTime('now')
             );
             $entityManager->persist($bobines);
             $entityManager->flush();
