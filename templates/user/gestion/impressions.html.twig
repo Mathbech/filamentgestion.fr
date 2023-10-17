@@ -2,7 +2,7 @@
 {% block title %}Impressions{% endblock %}
 
 
-{% block body%}
+{% block body %}
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
@@ -25,19 +25,19 @@
                         <td class="py-1">
                             {{impression.utilisateur.username }}
                         </td>
-                        <td> {{ impression.Imprimantes }} </td>
+                        <td class="py-1"> {{ impression.Imprimantes }} </td>
                         <td>
                             {{ impression.poids }}
                         </td>
-                        <td>
+                        <td class="py-1">
                         
                             {{ impression.categorie.nomType }}
                         </td>
-                        <td>
+                        <td class="py-1">
                             {{ impression.Couleur.nom }}
                         </td>
-                        <td> {{impression.Temps|date('H:m')}} </td>
-                        <td>
+                        <td class="py-1"> {{impression.Temps|date('H:m')}} </td>
+                        <td class="py-1">
                             {{ impression.Date|date('d/m/Y') }}
                         </td>
                     </tr>

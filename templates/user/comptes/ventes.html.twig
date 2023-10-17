@@ -2,6 +2,68 @@
 {% block title %}Imprimantes{% endblock %}
 
 
-{% block body%}
-
+{% block body %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Impressions Effectués</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Nom </th>
+                        <th> Description </th>
+                        <th> Prix  </th>
+                        <th> Client </th>
+                        <th> Vendeur </th>
+                        <th> Date vente </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vente in ventes %}
+                    <tr>
+                        <td class="py-1">
+                            {{vente.nomproduit }}
+                        </td>
+                        <td class="py-1"> 
+                            {{ vente.descriptionproduit }}
+                        </td>
+                        <td class="py-1">
+                            {{ vente.prixproduit }} €
+                        </td>
+                        <td class="py-1">
+                            {{ vente.clients }}
+                        </td>
+                        <td class="py-1">
+                            {{ vente.vendeur }}
+                        </td>
+                        <td class="py-1"> 
+                            {{vente.datevente|date('d/m/Y')}} 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td class="py-1">
+                           <input>
+                        </td>
+                        <td class="py-1"> 
+                            <input>
+                        </td>
+                        <td class="py-1">
+                            <input>
+                        </td>
+                        <td class="py-1">
+                            <input>
+                        </td>
+                        <td class="py-1">
+                            <input>
+                        </td>
+                        <td class="py-1"> 
+                            <input>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -183,10 +183,14 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/ventes', name: 'ventes_user')]
-    public function ventes(): Response
+    public function ventes( VentesRepository $ventesRepository ): Response
     {
         return $this->render('user/comptes/ventes.html.twig', [
-            
+            'ventes' => $ventesRepository->findBy(
+                ['vendeur' => $this->getUser()->getId()],
+                ['id' => 'DESC'], 
+                10
+            ),
         ]);
     }
 }

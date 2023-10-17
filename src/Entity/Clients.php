@@ -15,7 +15,7 @@ class Clients
 {
 
     public function __toString(): String{
-        return $this->getNom();
+        return $this->getNom().' '.$this->getPrenom();
     }
 
     #[ORM\Id]
