@@ -2,11 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Bobines;
+use App\Form\AjoutFormType;
 use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
 use App\Repository\VentesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -87,10 +90,16 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/ajout', name: 'ajout_user')]
-    public function ajout(ImprimantesRepository $printersRepository): Response
+    public function ajout(Request $request): Response
     {
+        $ajout = new Bobines();
+        $form = $this->createForm(AjoutFormType::class, $ajout);
+        $form->handleRequest($request);
+
+
+
         return $this->render('user/ajout.html.twig', [
-            
+            'form' => $form->createView(),
         ]);
     }
 }
