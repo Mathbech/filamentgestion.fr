@@ -8,6 +8,7 @@ use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
 use App\Repository\UsersRepository;
+use App\Repository\VentesRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -35,7 +36,7 @@ class PublicController extends AbstractController
     }
 
     #[Route('/user/dashboard', name: 'dash_public')]
-    public function dash(ImprimantesRepository $printersRepository, BobinesRepository $bobinesRepository, ImpressionsRepository $impressionsRepository): Response
+    public function dash(ImprimantesRepository $printersRepository, BobinesRepository $bobinesRepository, ImpressionsRepository $impressionsRepository, VentesRepository $ventesRepository): Response
     {
         $user = $this->getUser();
         $totalPrinter = $printersRepository->getPrintersUsers($user);
@@ -44,6 +45,8 @@ class PublicController extends AbstractController
         $expensesm = $bobinesRepository->getExpensemUsers($user);
         $piecest = $impressionsRepository->getUserstpieces($user);
         $piecesm = $impressionsRepository->getUsersmpieces($user);
+        $revenust = $ventesRepository->getProfitt($user);
+        $revenusm = $ventesRepository->getProfittm($user);
         return $this->render('public/dashboard.html.twig', [
             'imprimantes' => $totalPrinter,
             // 'imprimantes' => '0',
@@ -55,8 +58,10 @@ class PublicController extends AbstractController
             'mois' => $expensesm,
             'impressions' => $piecest,
             'total' => $piecesm,
-            'profit' => '900.50€',
-            'pmois' => '200€',
+            // 'profit' => '900.50€',
+            'revenust' => $revenust,
+            // 'pmois' => '200€',
+            'revenusm' => $revenusm,
         ]);
     }
 

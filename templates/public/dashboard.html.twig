@@ -34,10 +34,10 @@
                         'variable4': total ? total : '0'
                     } %}
                     {% include 'includes/card.html.twig' with {
-                        'variable1': 'Profit total',
-                        'variable2': profit,
+                        'variable1': 'Revenus total',
+                        'variable2': revenust ? revenust : '0 €',
                         'variable3': 'Ces 30 derniers jours',
-                        'variable4': pmois
+                        'variable4': revenusm ? revenusm : '0'
                     } %}
                     
                 </div>

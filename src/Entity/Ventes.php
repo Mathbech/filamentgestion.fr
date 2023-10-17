@@ -32,6 +32,10 @@ class Ventes
     #[ORM\JoinColumn(nullable: false)]
     private ?Clients $clients = null;
 
+    #[ORM\ManyToOne(inversedBy: 'ventes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $vendeur = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,6 +97,18 @@ class Ventes
     public function setClients(?Clients $clients): static
     {
         $this->clients = $clients;
+
+        return $this;
+    }
+
+    public function getVendeur(): ?Users
+    {
+        return $this->vendeur;
+    }
+
+    public function setVendeur(?Users $vendeur): static
+    {
+        $this->vendeur = $vendeur;
 
         return $this;
     }

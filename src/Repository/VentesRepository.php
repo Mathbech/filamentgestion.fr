@@ -45,4 +45,28 @@ class VentesRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+    public function getProfitt($user)
+    {
+        return $this->createQueryBuilder('v')
+            ->select('SUM(v.prix_produit)')
+            ->andWhere('v.clients = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
+
+    public function getProfittm($user)
+    {
+        return $this->createQueryBuilder('v')
+            ->select('SUM(v.prix_produit)')
+            ->andWhere('v.clients = :user')
+            ->andWhere('v.date_vente >= :date')
+            ->setParameter('user', $user)
+            ->setParameter('date', new \DateTime('-30 days'))
+            ->getQuery()
+            ->getSingleScalarResult()
+        ;
+    }
 }
