@@ -50,8 +50,8 @@ class VentesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('v')
             ->select('SUM(v.prix_produit)')
-            ->andWhere('v.clients = :user')
-            ->setParameter('user', $user)
+            ->andWhere('v.vendeur = :user')
+            ->setParameter('user', $user->getId())
             ->getQuery()
             ->getSingleScalarResult()
         ;
@@ -61,9 +61,9 @@ class VentesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('v')
             ->select('SUM(v.prix_produit)')
-            ->andWhere('v.clients = :user')
+            ->andWhere('v.vendeur = :user')
             ->andWhere('v.date_vente >= :date')
-            ->setParameter('user', $user)
+            ->setParameter('user', $user->getId())
             ->setParameter('date', new \DateTime('-30 days'))
             ->getQuery()
             ->getSingleScalarResult()

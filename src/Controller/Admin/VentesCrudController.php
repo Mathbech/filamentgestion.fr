@@ -29,6 +29,10 @@ class VentesCrudController extends AbstractCrudController
             ->setFormTypeOptions([
                 'by_reference' => false,
             ]),
+            AssociationField::new('vendeur')
+            ->setFormTypeOptions([
+                'by_reference' => false,
+            ]),
         ];
     }
     

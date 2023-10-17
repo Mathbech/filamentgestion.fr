@@ -3,7 +3,7 @@
         <li class="nav-item nav-category">Main</li>
         {% if app.user %}
         <li class="nav-item">
-            <a class="nav-link" href="{{path('dash_public')}}">
+            <a class="nav-link" href="{{path('dash_user')}}">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                 <span class="menu-title">Dashboard</span>
             </a>
@@ -30,7 +30,7 @@
             </a>
         </li> #}
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('courbes_public') }}">
+            <a class="nav-link" href="{{ path('courbes_user') }}">
                 <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
                 <span class="menu-title">Courbes</span>
             </a>
@@ -49,11 +49,11 @@
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#"> Ajout </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajout_user') }}"> Ajout </a></li>
                     <li class="nav-item"> <a class="nav-link" href="#"> Retrait </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('imprimante_public') }}"> Imprimantes </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('stock_public') }}"> Stock </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('impression_public') }}"> Impressions </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('imprimante_user') }}"> Imprimantes </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('stock_user') }}"> Stock </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('impression_user') }}"> Impressions </a></li>
                 </ul>
             </div>
         </li>
