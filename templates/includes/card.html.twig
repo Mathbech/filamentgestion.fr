@@ -2,10 +2,9 @@
     <div class="card">
         <div class="card-body text-center">
             <h2 class="mb-2 text-dark font-weight-normal">{{ variable1 }}</h2>
-            <h5 class="mb-4 text-dark font-weight-bold"> {{ variable2 }} </h5>
-            <div
-                class=" {{ random(['dashboard-progress dashboard-progress-1 d-flex align-items-center justify-content-center item-parent', 'dashboard-progress dashboard-progress-2 d-flex align-items-center justify-content-center item-parent', 'dashboard-progress dashboard-progress-3 d-flex align-items-center justify-content-center item-parent', 'dashboard-progress dashboard-progress-4 d-flex align-items-center justify-content-center item-parent']) }}">
-                <i class="{{ random(['mdi mdi-eye icon-md absolute-center text-dark', 'mdi mdi-account-circle icon-md absolute-center text-dark', 'mdi mdi-cube icon-md absolute-center text-dark', 'mdi mdi-lightbulb icon-md absolute-center text-dark']) }}"></i>
+            <div class="dashboard-progress d-flex align-items-center justify-content-center item-parent">
+            <h2 class="mb-2 text-dark font-weight-normal"> {{ variable2 }} </h2>
+                {# <i class="mdi mdi-account-circle icon-md absolute-center text-dark"></i> #}
             </div>
             <h3 class="mt-4 mb-0"> {{ variable3 }} </h3>
             <p class="mb-0 font-weight-bold mt-2 text-dark"> {{ variable4 }} </p>

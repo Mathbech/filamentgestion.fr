@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AjoutFormType extends AbstractType
+class AjoutbobinesFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

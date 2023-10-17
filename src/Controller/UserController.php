@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Bobines;
-use App\Form\AjoutFormType;
+use App\Entity\Imprimantes;
+use App\Form\AjoutbobinesFormType;
+use App\Form\AjoutimprimantesFormType;
 use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
@@ -91,10 +93,10 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/ajoutBobines', name: 'ajoutb_user')]
-    public function ajout(Request $request, EntityManagerInterface $entityManager): Response
+    public function ajoutbobi(Request $request, EntityManagerInterface $entityManager): Response
     {
         $bobines = new Bobines();
-        $form = $this->createForm(AjoutFormType::class, $bobines);
+        $form = $this->createForm(AjoutbobinesFormType::class, $bobines);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -113,6 +115,31 @@ class UserController extends AbstractController
 
 
         return $this->render('user/ajoutbobine.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/user/ajoutImprimantes', name: 'ajoutimpri_user')]
+    public function ajoutimpri(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $imprimante = new Imprimantes();
+        $form = $this->createForm(AjoutimprimantesFormType::class, $imprimante);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $imprimante->setUsername(
+                $this->getUser()
+            );
+            
+            $entityManager->persist($imprimante);
+            $entityManager->flush();
+            
+            return $this->redirectToRoute('imprimante_user');
+        }
+
+
+
+        return $this->render('user/ajoutimprimante.html.twig', [
             'form' => $form->createView(),
         ]);
     }
