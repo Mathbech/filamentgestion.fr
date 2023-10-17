@@ -9,6 +9,7 @@ use App\Form\AjoutbobinesFormType;
 use App\Form\AjoutimpressionsFormType;
 use App\Form\AjoutimprimantesFormType;
 use App\Repository\BobinesRepository;
+use App\Repository\UsersRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
 use App\Repository\VentesRepository;
@@ -175,10 +176,15 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/account', name: 'account_user')]
-    public function account(): Response
+    public function account(UsersRepository $userRepository): Response
     {
         return $this->render('user/account.html.twig', [
-            
+            'users' => $userRepository->findBy(
+                ['id' => $this->getUser()->getId()],
+                ['id' => 'DESC'], 
+                10
+            ),
+
         ]);
     }
 

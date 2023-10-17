@@ -53,7 +53,7 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($this->urlGenerator->generate('admin'));
         }
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('dash_public'));
+        return new RedirectResponse($this->urlGenerator->generate('dash_user'));
     }
 
     protected function getLoginUrl(Request $request): string

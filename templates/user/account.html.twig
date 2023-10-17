@@ -1,7 +1,38 @@
 {% extends 'base.html.twig' %}
-{% block title %}Imprimantes{% endblock %}
+{% block title %}Account{% endblock %}
 
 
 {% block body %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">information sur l'utilisateur</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Email </th>
+                        <th> Nom d'utilisateur </th>
+                        <th> Rôle </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td> {{ user.email }} </td>
+                        <td class="py-1">
+                            {{user.username }}
+                        </td>
+                        <td class="py-1">
+                        {% for role in user.roles %}
+                            <li> {{ role }} </li>
+                        {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
