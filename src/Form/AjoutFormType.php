@@ -14,10 +14,10 @@ class AjoutFormType extends AbstractType
         $builder
             ->add('poids')
             ->add('prix')
-            ->add('date_ajout')
+            // ->add('date_ajout')
             ->add('couleur')
             ->add('categorie')
-            ->add('utilisateur')
+            // ->add('utilisateur')
         ;
     }
 

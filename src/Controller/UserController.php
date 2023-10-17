@@ -8,6 +8,7 @@ use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
 use App\Repository\VentesRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -90,11 +91,19 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/ajout', name: 'ajout_user')]
-    public function ajout(Request $request): Response
+    public function ajout(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $ajout = new Bobines();
-        $form = $this->createForm(AjoutFormType::class, $ajout);
+        $bobines = new Bobines();
+        $form = $this->createForm(AjoutFormType::class, $bobines);
         $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $bobines->setUtilisateur(
+                $this->getUser()
+            );
+            
+            return $this->redirectToRoute('stock_user');
+        }
 
 
 

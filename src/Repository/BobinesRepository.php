@@ -25,7 +25,7 @@ class BobinesRepository extends ServiceEntityRepository
     //     * @return Bobines[] Returns an array of Bobines objects
     //     */
 
-
+    
     public function getExpensetUsers($user)
     {
         return $this->createQueryBuilder('b')

@@ -3,8 +3,13 @@
 
 
 {% block body%}
-{{ form_start(form) }}
-{{ form_widget(form) }}
-<input type="submit" value="Envoyer" />
+<h1> Ajout de Bobines</h1>
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_row(form.poids) }}
+    {{ form_row(form.prix)}}
+    {{ form_row(form.couleur)}}
+    {{ form_row(form.categorie)}}
+    <input type="submit" value="Envoyer" />
 {{ form_end(form) }}
 {% endblock %}
