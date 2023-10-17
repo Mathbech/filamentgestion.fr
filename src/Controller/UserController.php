@@ -101,6 +101,11 @@ class UserController extends AbstractController
             $bobines->setUtilisateur(
                 $this->getUser()
             );
+            $bobines->setDateAjout(
+                new \DateTime()
+            );
+            $entityManager->persist($bobines);
+            $entityManager->flush();
             
             return $this->redirectToRoute('stock_user');
         }
