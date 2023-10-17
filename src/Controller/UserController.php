@@ -61,7 +61,7 @@ class UserController extends AbstractController
     #[Route('/user/stock', name: 'stock_user')]
     public function stock(BobinesRepository $bobinesRepository): Response
     {
-        return $this->render('user/stock.html.twig', [
+        return $this->render('user/gestion/stock.html.twig', [
             'stocks' => $bobinesRepository->findBy(
                 ['utilisateur' => $this->getUser()->getId()],
                 ['id' => 'DESC'], 
@@ -73,7 +73,7 @@ class UserController extends AbstractController
     #[Route('/user/impressions', name: 'impression_user')]
     public function impressions(ImpressionsRepository $impressionsRepository): Response
     {
-        return $this->render('user/impressions.html.twig', [
+        return $this->render('user/gestion/impressions.html.twig', [
             'impressions' => $impressionsRepository->findBy(
                 ['utilisateur' => $this->getUser()->getId()],
                 ['id' => 'DESC'], 
@@ -85,7 +85,7 @@ class UserController extends AbstractController
     #[Route('/user/imprimantes', name: 'imprimante_user')]
     public function imprimantes(ImprimantesRepository $printersRepository): Response
     {
-        return $this->render('user/imprimantes.html.twig', [
+        return $this->render('user/gestion/imprimantes.html.twig', [
             'printers' => $printersRepository->findBy(
                 ['username' => $this->getUser()->getId()],
                 ['id' => 'DESC'], 
@@ -116,7 +116,7 @@ class UserController extends AbstractController
 
 
 
-        return $this->render('user/ajoutbobine.html.twig', [
+        return $this->render('user/gestion/ajoutbobine.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -141,7 +141,7 @@ class UserController extends AbstractController
 
 
 
-        return $this->render('user/ajoutimprimante.html.twig', [
+        return $this->render('user/gestion/ajoutimprimante.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -169,7 +169,7 @@ class UserController extends AbstractController
 
 
 
-        return $this->render('user/ajoutimpression.html.twig', [
+        return $this->render('user/gestion/ajoutimpression.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -178,6 +178,14 @@ class UserController extends AbstractController
     public function account(): Response
     {
         return $this->render('user/account.html.twig', [
+            
+        ]);
+    }
+
+    #[Route('/user/ventes', name: 'ventes_user')]
+    public function ventes(): Response
+    {
+        return $this->render('user/comptes/ventes.html.twig', [
             
         ]);
     }

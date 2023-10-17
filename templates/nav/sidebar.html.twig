@@ -18,7 +18,7 @@
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="#">Comptes</a></li>
                     <li class="nav-item"> <a class="nav-link" href="#">Achats</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Ventes</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('ventes_user') }}">Ventes</a></li>
                 </ul>
             </div>
         </li>
@@ -109,7 +109,7 @@
         {% if app.user %}
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
-                <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
+                <a href="{{ path('account_user') }}" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
                     <span class="menu-title">Paramètres</span>
                 </a>
             </div>
