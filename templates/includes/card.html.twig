@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body text-center">
             <h2 class="mb-2 text-dark font-weight-normal">{{ variable1 }}</h2>
-            <div class="dashboard-progress d-flex align-items-center justify-content-center item-parent">
+            <div class="d-flex align-items-center justify-content-center item-parent">
             <h2 class="mb-2 text-dark font-weight-normal"> {{ variable2 }} </h2>
                 {# <i class="mdi mdi-account-circle icon-md absolute-center text-dark"></i> #}
             </div>
@@ -19,19 +19,20 @@
                     <h5 class="card-title">{{variable1}}</h5>
                 </div>
 
-                <div class="col-auto">
+                <div class="col mb-1">
                     <div class="stat text-primary">
-                        <i class="align-middle" data-feather={{variable2}}></i>
+                    <h2 class="mb-2 text-dark font-weight-normal"> {{ variable2 }} </h2>
                     </div>
                 </div>
             </div>
             <h1 class="mt-1 mb-3">{{variable3}}</h1>
             <div class="mb-0">
-                <span class="text-danger">
+                {# <span class="text-danger">
                     <i class="mdi mdi-arrow-bottom-right"></i>
                     {{variable4}}
-                </span>
-                <span class="text-muted">gvkfvkfv</span>
+                </span> #}
+                <h4 class="mb-0 font-weight-bold mt-2 text-dark"> {{ variable4 }} </h4>
+                {# <span class="text-muted">gvkfvkfv</span> #}
             </div>
         </div>
     </div>
