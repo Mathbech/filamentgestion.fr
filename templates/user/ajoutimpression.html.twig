@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block title %}Centre de contrôle{% endblock %}
+
+
+{% block body%}
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+                <h4 class="card-title">Ajout d'impression</h4>
+                <p class="card-description"> Ajoutez vos impressions éffectués </p>
+            <div class="forms-sample">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <div class="form-group">
+                    {{ form_row(form.couleur) }}
+                    </div>
+                <div class="form-group">
+                    {{ form_row(form.categorie)}}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.poids)}}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.imprimantes)}}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.temps)}}
+                </div>
+                <input type="submit" class="btn btn-primary mr-2" value="Envoyer" />
+                {{ form_end(form) }}
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

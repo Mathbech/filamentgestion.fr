@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Bobines;
+use App\Entity\Impressions;
 use App\Entity\Imprimantes;
 use App\Form\AjoutbobinesFormType;
+use App\Form\AjoutimpressionsFormType;
 use App\Form\AjoutimprimantesFormType;
 use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
@@ -31,7 +33,7 @@ class UserController extends AbstractController
         $piecesm = $impressionsRepository->getUsersmpieces($user);
         $revenust = $ventesRepository->getProfitt($user);
         $revenusm = $ventesRepository->getProfittm($user);
-        return $this->render('public/dashboard.html.twig', [
+        return $this->render('user/dashboard.html.twig', [
             'imprimantes' => $totalPrinter,
             // 'imprimantes' => '0',
             // 'actifs' => '2',
@@ -52,7 +54,7 @@ class UserController extends AbstractController
     #[Route('/user/courbes', name: 'courbes_user')]
     public function courbes(): Response
     {
-        return $this->render('public/courbes.html.twig', [
+        return $this->render('user/courbes.html.twig', [
             
         ]);
     }
@@ -141,6 +143,42 @@ class UserController extends AbstractController
 
         return $this->render('user/ajoutimprimante.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/user/ajoutImpressions', name: 'ajoutimpress_user')]
+    public function ajoutimpress(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $impression = new Impressions();
+        $form = $this->createForm(AjoutimpressionsFormType::class, $impression);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $impression->setUtilisateur(
+                $this->getUser()
+            );
+            $impression->setDate(
+                new \DateTime('now')
+            );
+            
+            $entityManager->persist($impression);
+            $entityManager->flush();
+            
+            return $this->redirectToRoute('impression_user');
+        }
+
+
+
+        return $this->render('user/ajoutimpression.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/user/account', name: 'account_user')]
+    public function account(): Response
+    {
+        return $this->render('user/account.html.twig', [
+            
         ]);
     }
 }
