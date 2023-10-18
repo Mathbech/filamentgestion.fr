@@ -32,7 +32,7 @@ class Clients
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_inscription = null;
 
-    #[ORM\ManyToMany(targetEntity: Ventes::class, mappedBy: 'clients')]
+    #[ORM\OneToMany(mappedBy: 'clients', targetEntity: Ventes::class)]
     private Collection $ventes;
 
     public function __construct()
@@ -93,7 +93,7 @@ class Clients
     {
         if (!$this->ventes->contains($vente)) {
             $this->ventes->add($vente);
-            $vente->addClient($this);
+            $vente->setClients($this);
         }
 
         return $this;
@@ -102,7 +102,10 @@ class Clients
     public function removeVente(Ventes $vente): static
     {
         if ($this->ventes->removeElement($vente)) {
-            $vente->removeClient($this);
+            // set the owning side to null (unless already changed)
+            if ($vente->getClients() === $this) {
+                $vente->setClients(null);
+            }
         }
 
         return $this;

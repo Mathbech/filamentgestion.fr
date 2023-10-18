@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\VentesRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -30,19 +28,14 @@ class Ventes
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_vente = null;
 
-    #[ORM\ManyToMany(targetEntity: Clients::class, inversedBy: 'ventes')]
-    private Collection $clients;
+    #[ORM\ManyToOne(inversedBy: 'ventes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Clients $clients = null;
 
-    #[ORM\ManyToMany(targetEntity: Users::class, inversedBy: 'vente')]
-    private Collection $vendeur;
+    #[ORM\ManyToOne(inversedBy: 'ventes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $vendeur = null;
 
-    public function __construct()
-    {
-        $this->clients = new ArrayCollection();
-        $this->vendeur = new ArrayCollection();
-    }
-
-   
     public function getId(): ?int
     {
         return $this->id;
@@ -96,50 +89,26 @@ class Ventes
         return $this;
     }
 
-    /**
-     * @return Collection<int, Clients>
-     */
-    public function getClients(): Collection
+    public function getClients(): ?Clients
     {
         return $this->clients;
     }
 
-    public function addClient(Clients $client): static
+    public function setClients(?Clients $clients): static
     {
-        if (!$this->clients->contains($client)) {
-            $this->clients->add($client);
-        }
+        $this->clients = $clients;
 
         return $this;
     }
 
-    public function removeClient(Clients $client): static
-    {
-        $this->clients->removeElement($client);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Users>
-     */
-    public function getVendeur(): Collection
+    public function getVendeur(): ?Users
     {
         return $this->vendeur;
     }
 
-    public function addVendeur(Users $vendeur): static
+    public function setVendeur(?Users $vendeur): static
     {
-        if (!$this->vendeur->contains($vendeur)) {
-            $this->vendeur->add($vendeur);
-        }
-
-        return $this;
-    }
-
-    public function removeVendeur(Users $vendeur): static
-    {
-        $this->vendeur->removeElement($vendeur);
+        $this->vendeur = $vendeur;
 
         return $this;
     }
