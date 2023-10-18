@@ -13,31 +13,35 @@
     <div class="row">
         
         {% include 'includes/card.html.twig' with {
-            'variable1': utilisateurs,
-            'variable2': 'Utilisateurs',
-            'variable3': '1',
-            'variable4': 'Pays'
+            'variabletitle': 'Utilisateurs inscrits',
+            'variable1': 'Utilisateurs',
+            'variable2': utilisateurs,
+            'variable3': 'Pays',
+            'variable4': '1',
         } %}
 
         {% include 'includes/card.html.twig' with {
-            'variable1': imprimantes,
-            'variable2': 'Imprimante enregistré',
-            'variable3': impressions,
-            'variable4': 'Impression effectué'
+            'variabletitle': 'Statistiques consommables',
+            'variable1': 'Imprimante enregistré',
+            'variable2': imprimantes,
+            'variable3': 'Impression effectué',
+            'variable4': impressions,
         } %}
         
         {% include 'includes/card.html.twig' with {
-            'variable1': contributeurs,
-            'variable2': 'Contributeurs',
-            'variable3': pages,
-            'variable4': 'Pages crées'
+            'variabletitle': 'pages et contributeurs',
+            'variable1': 'Contributeurs',
+            'variable2': contributeurs,
+            'variable3': 'Pages crées',
+            'variable4': pages,
         } %}
 
         {% include 'includes/card.html.twig' with {
-            'variable1': entreprises,
-            'variable2': 'Entreprise',
-            'variable3': partenaires,
-            'variable4': 'Partenaire'
+            'variabletitle': 'Entreprise et partenaires',
+            'variable1': 'Entreprise',
+            'variable2': entreprises,
+            'variable3': 'Partenaire',
+            'variable4': partenaires,
         } %}
 
     </div>

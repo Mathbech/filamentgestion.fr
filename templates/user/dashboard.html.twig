@@ -17,27 +17,31 @@
                         'variable1': 'Imprimantes Actives',
                         'variable2': actifs,
                         'variable3': 'Imprimantes possédées',
-                        'variable4': imprimantes
+                        'variable4': imprimantes,
+                        'variabletitle': 'Imprimantes'
                     } %}
 
                     {% include 'includes/card.html.twig' with {
                         'variable1': 'Dépenses totales',
                         'variable2': depenses ? depenses : '0 €',
                         'variable3': '30 derniers jours',
-                        'variable4': mois
+                        'variable4': mois,
+                        'variabletitle': 'Imprimantes'
                     } %}
 
                     {% include 'includes/card.html.twig' with {
                         'variable1': 'Impressions totales',
                         'variable2': impressions ? impressions : '0',
                         'variable3': '30 derniers jours',
-                        'variable4': total ? total : '0'
+                        'variable4': total ? total : '0',
+                        'variabletitle': 'Imprimantes'
                     } %}
                     {% include 'includes/card.html.twig' with {
                         'variable1': 'Revenus totaux',
                         'variable2': revenust ? revenust : '0 €',
                         'variable3': '30 derniers jours',
-                        'variable4': revenusm ? revenusm : '0'
+                        'variable4': revenusm ? revenusm : '0',
+                        'variabletitle': 'Imprimantes'
                     } %}
                     
                 </div>
