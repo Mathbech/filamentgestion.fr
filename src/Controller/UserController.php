@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\Bobines;
 use App\Entity\Impressions;
 use App\Entity\Imprimantes;
+use App\Entity\Ventes;
 use App\Form\AjoutbobinesFormType;
 use App\Form\AjoutimpressionsFormType;
 use App\Form\AjoutimprimantesFormType;
+use App\Form\VentesFormType;
 use App\Repository\BobinesRepository;
 use App\Repository\UsersRepository;
 use App\Repository\ImpressionsRepository;
@@ -17,7 +19,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
@@ -152,7 +153,6 @@ class UserController extends AbstractController
     public function ajoutimpress(Request $request, EntityManagerInterface $entityManager): Response
     {
         $impression = new Impressions();
-        $options = ['user' => $this->getUser()];
         $form = $this->createForm(AjoutimpressionsFormType::class, $impression);
         $form->handleRequest($request);
 
@@ -169,8 +169,6 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('impression_user');
         }
-
-
 
         return $this->render('user/gestion/ajoutimpression.html.twig', [
             'form' => $form->createView(),
@@ -191,14 +189,33 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/ventes', name: 'ventes_user')]
-    public function ventes(VentesRepository $ventesRepository): Response
+    public function ventes(VentesRepository $ventesRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
+        $ventes = new Ventes();
+        $form = $this->createForm(VentesFormType::class, $ventes);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ventes->setVendeur(
+                $this->getUser()
+            );
+            $ventes->setDateVente(
+                new \DateTime('now')
+            );
+
+            $entityManager->persist($ventes);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('impression_user');
+        }
+
         return $this->render('user/comptes/ventes.html.twig', [
             'ventes' => $ventesRepository->findBy(
                 ['vendeur' => $this->getUser()->getId()],
                 ['id' => 'DESC'],
                 10
             ),
+            'form' => $form->createView(),
         ]);
     }
 }

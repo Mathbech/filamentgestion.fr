@@ -16,6 +16,7 @@
                         <th> Client </th>
                         <th> Vendeur </th>
                         <th> Date vente </th>
+                        th> Action </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,23 +43,28 @@
                     </tr>
                     {% endfor %}
                     <tr>
+                        {{ form_start(form) }}
+                        {{ form_errors(form) }}
                         <td class="py-1">
-                           <input>
+                           {{ form_row(form.nomproduit) }}
                         </td>
                         <td class="py-1"> 
-                            <input>
+                            {{ form_row(form.descriptionproduit) }}
                         </td>
                         <td class="py-1">
-                            <input>
+                            {{ form_row(form.prixproduit) }}
                         </td>
                         <td class="py-1">
-                            <input>
+                            {{ form_row(form.clients) }}
                         </td>
                         <td class="py-1">
-                            <input>
+                            
                         </td>
                         <td class="py-1"> 
-                            <input>
+                            
+                        </td>
+                        <td class="py-1">
+                            <input type="submit" value="Ajouter" class="btn btn-primary">
                         </td>
                     </tr>
                 </tbody>
