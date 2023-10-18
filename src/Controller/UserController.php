@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
@@ -56,7 +57,7 @@ class UserController extends AbstractController
     public function courbes(): Response
     {
         return $this->render('user/courbes.html.twig', [
-            
+
         ]);
     }
     #[Route('/user/stock', name: 'stock_user')]
@@ -65,7 +66,7 @@ class UserController extends AbstractController
         return $this->render('user/gestion/stock.html.twig', [
             'stocks' => $bobinesRepository->findBy(
                 ['utilisateur' => $this->getUser()->getId()],
-                ['id' => 'DESC'], 
+                ['id' => 'DESC'],
                 10
             ),
         ]);
@@ -77,7 +78,7 @@ class UserController extends AbstractController
         return $this->render('user/gestion/impressions.html.twig', [
             'impressions' => $impressionsRepository->findBy(
                 ['utilisateur' => $this->getUser()->getId()],
-                ['id' => 'DESC'], 
+                ['id' => 'DESC'],
                 10
             ),
         ]);
@@ -89,7 +90,7 @@ class UserController extends AbstractController
         return $this->render('user/gestion/imprimantes.html.twig', [
             'printers' => $printersRepository->findBy(
                 ['username' => $this->getUser()->getId()],
-                ['id' => 'DESC'], 
+                ['id' => 'DESC'],
                 10
             ),
         ]);
@@ -111,7 +112,7 @@ class UserController extends AbstractController
             );
             $entityManager->persist($bobines);
             $entityManager->flush();
-            
+
             return $this->redirectToRoute('stock_user');
         }
 
@@ -133,10 +134,10 @@ class UserController extends AbstractController
             $imprimante->setUsername(
                 $this->getUser()
             );
-            
+
             $entityManager->persist($imprimante);
             $entityManager->flush();
-            
+
             return $this->redirectToRoute('imprimante_user');
         }
 
@@ -151,6 +152,7 @@ class UserController extends AbstractController
     public function ajoutimpress(Request $request, EntityManagerInterface $entityManager): Response
     {
         $impression = new Impressions();
+        $options = ['user' => $this->getUser()];
         $form = $this->createForm(AjoutimpressionsFormType::class, $impression);
         $form->handleRequest($request);
 
@@ -161,10 +163,10 @@ class UserController extends AbstractController
             $impression->setDate(
                 new \DateTime('now')
             );
-            
+
             $entityManager->persist($impression);
             $entityManager->flush();
-            
+
             return $this->redirectToRoute('impression_user');
         }
 
@@ -181,7 +183,7 @@ class UserController extends AbstractController
         return $this->render('user/account.html.twig', [
             'users' => $userRepository->findBy(
                 ['id' => $this->getUser()->getId()],
-                ['id' => 'DESC'], 
+                ['id' => 'DESC'],
                 10
             ),
 
@@ -189,12 +191,12 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/ventes', name: 'ventes_user')]
-    public function ventes( VentesRepository $ventesRepository ): Response
+    public function ventes(VentesRepository $ventesRepository): Response
     {
         return $this->render('user/comptes/ventes.html.twig', [
             'ventes' => $ventesRepository->findBy(
                 ['vendeur' => $this->getUser()->getId()],
-                ['id' => 'DESC'], 
+                ['id' => 'DESC'],
                 10
             ),
         ]);

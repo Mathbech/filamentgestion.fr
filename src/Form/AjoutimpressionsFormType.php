@@ -6,6 +6,8 @@ use App\Entity\Categorie;
 use App\Entity\Impressions;
 use App\Entity\Imprimantes;
 use App\Entity\Couleur;
+use App\Repository\ImprimantesRepository;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -15,6 +17,12 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class AjoutimpressionsFormType extends AbstractType
 {
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -23,6 +31,13 @@ class AjoutimpressionsFormType extends AbstractType
             ->add('poids', NumberType::class, array('attr' => ['class' => 'form-control']))
             ->add('imprimantes', EntityType::class, array(
                 'class' => Imprimantes::class,
+                // requête pour récupérer les imprimantes de l'utilisateur
+                'query_builder' => function (ImprimantesRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->where('u.username = :user')
+                        ->setParameter('user', $this->security->getUser()->getId());
+                },
+                'choice_label' => 'nom_imprimante',
                 'attr' => ['class' => 'form-control']
                 ))
             // ->add('utilisateur')
