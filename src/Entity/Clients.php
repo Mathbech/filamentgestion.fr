@@ -32,6 +32,14 @@ class Clients
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_inscription = null;
 
+    #[ORM\ManyToMany(targetEntity: Ventes::class, mappedBy: 'clients')]
+    private Collection $ventes;
+
+    public function __construct()
+    {
+        $this->ventes = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +77,33 @@ class Clients
     public function setDateInscription(\DateTimeInterface $date_inscription): static
     {
         $this->date_inscription = $date_inscription;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Ventes>
+     */
+    public function getVentes(): Collection
+    {
+        return $this->ventes;
+    }
+
+    public function addVente(Ventes $vente): static
+    {
+        if (!$this->ventes->contains($vente)) {
+            $this->ventes->add($vente);
+            $vente->addClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVente(Ventes $vente): static
+    {
+        if ($this->ventes->removeElement($vente)) {
+            $vente->removeClient($this);
+        }
 
         return $this;
     }

@@ -206,7 +206,7 @@ class UserController extends AbstractController
             $entityManager->persist($ventes);
             $entityManager->flush();
 
-            return $this->redirectToRoute('impression_user');
+            return $this->redirectToRoute('vente_user');
         }
 
         return $this->render('user/comptes/ventes.html.twig', [

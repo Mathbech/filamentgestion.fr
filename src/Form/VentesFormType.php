@@ -19,12 +19,6 @@ class VentesFormType extends AbstractType
             // ->add('date_vente')
             ->add('clients', EntityType::class, array(
                 'class' => Clients::class,
-                // requête pour récupérer les imprimantes de l'utilisateur
-                // 'query_builder' => function (ImprimantesRepository $er) {
-                //     return $er->createQueryBuilder('u')
-                //         ->where('u.username = :user')
-                //         ->setParameter('user', $this->security->getUser()->getId());
-                // },
                 'attr' => ['class' => 'form-control']
                 ))
             // ->add('vendeur')
