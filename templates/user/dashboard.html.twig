@@ -22,26 +22,26 @@
                     } %}
 
                     {% include 'includes/card.html.twig' with {
-                        'variable1': 'Dépenses totales',
+                        'variable1': 'Totales',
                         'variable2': depenses ? depenses : '0 €',
                         'variable3': '30 derniers jours',
                         'variable4': mois,
-                        'variabletitle': 'Imprimantes'
+                        'variabletitle': 'Dépenses'
                     } %}
 
                     {% include 'includes/card.html.twig' with {
-                        'variable1': 'Impressions totales',
+                        'variable1': 'Totales',
                         'variable2': impressions ? impressions : '0',
                         'variable3': '30 derniers jours',
                         'variable4': total ? total : '0',
-                        'variabletitle': 'Imprimantes'
+                        'variabletitle': 'Impressions'
                     } %}
                     {% include 'includes/card.html.twig' with {
-                        'variable1': 'Revenus totaux',
+                        'variable1': 'Total',
                         'variable2': revenust ? revenust : '0 €',
                         'variable3': '30 derniers jours',
                         'variable4': revenusm ? revenusm : '0',
-                        'variabletitle': 'Imprimantes'
+                        'variabletitle': 'Revenus'
                     } %}
                     
                 </div>
