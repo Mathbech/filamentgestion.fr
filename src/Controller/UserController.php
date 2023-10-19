@@ -42,15 +42,15 @@ class UserController extends AbstractController
             // 'actifs' => '2',
             'actifs' => $printersActive,
             // 'depenses' => '1000',
-            'depenses' => $expensest,
+            'depenses' => $expensest.'€',
             // 'mois' => '100.56€',
-            'mois' => $expensesm,
+            'mois' => $expensesm.'€',
             'impressions' => $piecest,
             'total' => $piecesm,
             // 'profit' => '900.50€',
-            'revenust' => $revenust,
+            'revenust' => $revenust.'€',
             // 'pmois' => '200€',
-            'revenusm' => $revenusm,
+            'revenusm' => $revenusm.'€',
         ]);
     }
 
