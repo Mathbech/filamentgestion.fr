@@ -38,19 +38,13 @@ class UserController extends AbstractController
         $revenusm = $ventesRepository->getProfittm($user);
         return $this->render('user/dashboard.html.twig', [
             'imprimantes' => $totalPrinter,
-            // 'imprimantes' => '0',
-            // 'actifs' => '2',
             'actifs' => $printersActive,
-            // 'depenses' => '1000',
-            'depenses' => $expensest.'€',
-            // 'mois' => '100.56€',
-            'mois' => $expensesm.'€',
+            'depenses' => $expensest,
+            'mois' => $expensesm,
             'impressions' => $piecest,
             'total' => $piecesm,
-            // 'profit' => '900.50€',
-            'revenust' => $revenust.'€',
-            // 'pmois' => '200€',
-            'revenusm' => $revenusm.'€',
+            'revenust' => $revenust,
+            'revenusm' => $revenusm,
         ]);
     }
 
