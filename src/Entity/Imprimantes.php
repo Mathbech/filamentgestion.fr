@@ -38,6 +38,9 @@ class Imprimantes
     #[ORM\JoinColumn(nullable: false)]
     private ?Users $username = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $marque = null;
+
     public function __construct()
     {
         $this->impression = new ArrayCollection();
@@ -122,6 +125,18 @@ class Imprimantes
     public function setUsername(?Users $username): static
     {
         $this->username = $username;
+
+        return $this;
+    }
+
+    public function getMarque(): ?string
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(string $marque): static
+    {
+        $this->marque = $marque;
 
         return $this;
     }

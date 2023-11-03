@@ -21,6 +21,7 @@ class ImprimantesCrudController extends AbstractCrudController
         return [
             TextField::new('type_imprimante'),
             TextField::new('nom_imprimante'),
+            TextField::new('marque'),
             DateTimeField::new('deleted'),
             AssociationField::new('username')->autocomplete(),
         ];
