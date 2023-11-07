@@ -57,7 +57,7 @@ class VentesRepository extends ServiceEntityRepository
         ;
     }
 
-    public function getProfittm($user)
+    public function getProfitm($user)
     {
         return $this->createQueryBuilder('v')
             ->select('SUM(v.prix_produit)')

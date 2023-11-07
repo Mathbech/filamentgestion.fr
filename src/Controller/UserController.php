@@ -35,7 +35,7 @@ class UserController extends AbstractController
         $piecest = $impressionsRepository->getUserstpieces($user);
         $piecesm = $impressionsRepository->getUsersmpieces($user);
         $revenust = $ventesRepository->getProfitt($user);
-        $revenusm = $ventesRepository->getProfittm($user);
+        $revenusm = $ventesRepository->getProfitm($user);
         return $this->render('user/dashboard.html.twig', [
             'imprimantes' => $totalPrinter,
             'actifs' => $printersActive,
@@ -249,9 +249,13 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $expensest = $bobinesRepository->getExpensetUsers($user);
         $revenust = $ventesRepository->getProfitt($user);
+        $expensesm = $bobinesRepository->getExpensemUsers($user);
+        $revenusm = $ventesRepository->getProfitm($user);
         return $this->render('user/comptes/budget.html.twig', [
-            'recette' => $revenust,
-            'depense' => $expensest,
+            'recettet' => $revenust,
+            'depenset' => $expensest,
+            'recettem' => $revenusm,
+            'depensem' => $expensesm,
         ]);
     }
 }

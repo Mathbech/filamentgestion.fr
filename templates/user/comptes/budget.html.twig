@@ -8,8 +8,16 @@
     <div class="col-lg-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Balance budget</h4>
-                <canvas id="comptes" style="height:250px"></canvas>
+                <h4 class="card-title">Balance budget total</h4>
+                <canvas id="budgett" style="height:250px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Balance budget ce mois-ci</h4>
+                <canvas id="budgetm" style="height:250px"></canvas>
             </div>
         </div>
     </div>
@@ -19,23 +27,38 @@
 
 <script>
 $(function () {
-    let budget = {
+    let budgett = {
         labels: ["Dépenses", "Recettes"],
         datasets: [{
-            data: [{{ recette ? recette : '0' }}, {{ depense ? depense : '0' }} ],
+            data: [{{ depenset ? depenset : '0' }}, {{ recettet ? recettet : '0' }} ],
             backgroundColor: [
                 'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 0, 1)'
+                'rgba(0, 255, 0, 1)',
             ],
             borderColor: [
+                'rgba(0, 255, 0, 1)',
                 'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 0, 1)'
             ],
             borderWidth: 1,
             hoverOffset: 4
         }]
     }
-
+    let budgetm = {
+        labels: ["Dépenses", "Recettes"],
+        datasets: [{
+            data: [{{ depensem ? depensem : '0' }}, {{ recettem ? recettem : '0' }}  ],
+            backgroundColor: [
+                'rgba(255, 0, 0, 1)',
+                'rgba(0, 255, 0, 1)',
+            ],
+            borderColor: [
+                'rgba(255, 0, 0, 1)',
+                'rgba(0, 255, 0, 1)',
+            ],
+            borderWidth: 1,
+            hoverOffset: 4
+        }]
+    }
     var doughnutPieOptions = {
         responsive: true,
         animation: {
@@ -45,12 +68,25 @@ $(function () {
     };
 
 
-    if ($("#comptes").length) {
-        var comptes = $("#comptes").get(0).getContext("2d");
+    if ($("#budgett").length) {
+        var budgettt = $("#budgett").get(0).getContext("2d");
 
-        var config = new Chart(comptes, {
+        var config = new Chart(budgettt, {
             type: 'doughnut',
-            data: budget,
+            data: budgett,
+            options: doughnutPieOptions
+        });
+    }
+
+    
+
+
+    if ($("#budgetm").length) {
+        var budgetmm = $("#budgetm").get(0).getContext("2d");
+
+        var config = new Chart(budgetmm, {
+            type: 'doughnut',
+            data: budgetm,
             options: doughnutPieOptions
         });
     }
