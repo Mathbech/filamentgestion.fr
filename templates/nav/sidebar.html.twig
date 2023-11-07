@@ -16,8 +16,7 @@
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="#">Comptes</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="#">Achats</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('compte_user') }}">Comptes</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ path('ventes_user') }}">Ventes</a></li>
                 </ul>
             </div>
@@ -30,11 +29,25 @@
             </a>
         </li> #}
         <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
+                <span class="icon-bg"><i class="mdi mdi-currency-usd menu-icon"></i></span>
+                <span class="menu-title">Achats</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="achat">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutb_user') }}"> Ajout Bobine </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutimpri_user') }}"> Ajout Imprimantes </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutimpress_user') }}"> Ajout Impressions </a></li>
+                </ul>
+            </div>
+        </li>
+        {# <li class="nav-item">
             <a class="nav-link" href="{{ path('courbes_user') }}">
                 <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
                 <span class="menu-title">Courbes</span>
             </a>
-        </li>
+        </li> #}
         {# <li class="nav-item">
             <a class="nav-link" href="pages/tables/basic-table.html">
                 <span class="icon-bg"><i class="mdi mdi-table-large menu-icon"></i></span>
@@ -49,9 +62,9 @@
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutb_user') }}"> Ajout Bobine </a></li>
+                    {# <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutb_user') }}"> Ajout Bobine </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutimpri_user') }}"> Ajout Imprimantes </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutimpress_user') }}"> Ajout Impressions </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutimpress_user') }}"> Ajout Impressions </a></li> #}
                     <li class="nav-item"> <a class="nav-link" href="{{ path('imprimante_user') }}"> Imprimantes </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ path('stock_user') }}"> Stock </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ path('impression_user') }}"> Impressions </a></li>
@@ -72,7 +85,7 @@
         </li>
         {% if is_granted('ROLE_ADMIN') %}
         <li class="nav-item">
-            <a class="nav-link" href="{{ path('admin') }}">
+            <a class="nav-link" href="{{ path('admin') }}" target="_blank">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
                 <span class="menu-title">Administration</span>
             </a>

@@ -242,4 +242,11 @@ class UserController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    #[Route('/user/comptes', name: 'compte_user')]
+    public function comptes(): Response
+    {
+        return $this->render('user/comptes/compte.html.twig', [
+        ]);
+    }
 }
