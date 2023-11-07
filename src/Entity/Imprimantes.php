@@ -41,6 +41,9 @@ class Imprimantes
     #[ORM\Column(length: 255)]
     private ?string $marque = null;
 
+    #[ORM\Column]
+    private ?float $prix = null;
+
     public function __construct()
     {
         $this->impression = new ArrayCollection();
@@ -137,6 +140,18 @@ class Imprimantes
     public function setMarque(string $marque): static
     {
         $this->marque = $marque;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): static
+    {
+        $this->prix = $prix;
 
         return $this;
     }
