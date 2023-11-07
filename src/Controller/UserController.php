@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Bobines;
+use App\Entity\Clients;
 use App\Entity\Impressions;
 use App\Entity\Imprimantes;
 use App\Entity\Ventes;
 use App\Form\AjoutbobinesFormType;
+use App\Form\AjoutclientFormType;
 use App\Form\AjoutimpressionsFormType;
 use App\Form\AjoutimprimantesFormType;
 use App\Form\VentesFormType;
@@ -239,7 +241,7 @@ class UserController extends AbstractController
 
             return $this->redirectToRoute('ventes_user');
         }
-        return $this->render('user/comptes/caisse.html.twig', [
+        return $this->render('user/caisse/caisse.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -257,6 +259,28 @@ class UserController extends AbstractController
             'depenset' => $expensest,
             'recettem' => $revenusm,
             'depensem' => $expensesm,
+        ]);
+    }
+
+    #[Route('/user/nouvclient', name: 'addclient_user')]
+    public function client(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $client = new Clients();
+        $form = $this->createForm(AjoutclientFormType::class, $client);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $client->setDateInscription(
+                new \DateTime('now')
+            );
+
+            $entityManager->persist($client);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('caisse_user');
+        }
+        return $this->render('user/caisse/addclients.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 }
