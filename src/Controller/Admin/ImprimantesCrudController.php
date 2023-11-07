@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 
 class ImprimantesCrudController extends AbstractCrudController
 {
@@ -22,6 +23,7 @@ class ImprimantesCrudController extends AbstractCrudController
             TextField::new('type_imprimante'),
             TextField::new('nom_imprimante'),
             TextField::new('marque'),
+            IdField::new('prix'),
             DateTimeField::new('deleted'),
             AssociationField::new('username')->autocomplete(),
         ];
