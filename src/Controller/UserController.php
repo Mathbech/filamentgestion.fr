@@ -243,10 +243,10 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/comptes', name: 'compte_user')]
+    #[Route('/user/budget', name: 'compte_user')]
     public function comptes(): Response
     {
-        return $this->render('user/comptes/compte.html.twig', [
+        return $this->render('user/comptes/budget.html.twig', [
         ]);
     }
 }
