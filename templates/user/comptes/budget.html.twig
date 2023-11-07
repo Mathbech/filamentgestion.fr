@@ -4,23 +4,25 @@
 
 
 {% block body%}
-<div class="row">
-    <div class="col-lg-6 grid-margin stretch-card">
+<h1 class="text-center">Balance budget</h1>
+<div class="row h-100  justify-content-center align-items-center">
+    <div class="grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Balance budget total</h4>
-                <canvas id="budgett" style="height:250px"></canvas>
+                <h4 class="card-title">Ce mois-ci</h4>
+                <canvas id="budgetm" style="height:500px"></canvas>
             </div>
         </div>
     </div>
-    <div class="col-lg-6 grid-margin stretch-card">
+    <div class="grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Balance budget ce mois-ci</h4>
-                <canvas id="budgetm" style="height:250px"></canvas>
+                <h4 class="card-title">Depuis toujours</h4>
+                <canvas id="budgett" style="height:500px"></canvas>
             </div>
         </div>
     </div>
+    
 </div>
 
 
@@ -36,8 +38,8 @@ $(function () {
                 'rgba(0, 255, 0, 1)',
             ],
             borderColor: [
-                'rgba(0, 255, 0, 1)',
                 'rgba(255, 0, 0, 1)',
+                'rgba(0, 255, 0, 1)',
             ],
             borderWidth: 1,
             hoverOffset: 4
