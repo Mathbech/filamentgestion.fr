@@ -14,6 +14,7 @@ use App\Form\AjoutimprimantesFormType;
 use App\Form\VentesFormType;
 use App\Repository\BobinesRepository;
 use App\Repository\CategorieRepository;
+use App\Repository\ClientsRepository;
 use App\Repository\UsersRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
@@ -281,6 +282,15 @@ class UserController extends AbstractController
         }
         return $this->render('user/caisse/addclients.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/user/clients', name: 'listclient_user')]
+    public function lclient(ClientsRepository $clientsRepository): Response
+    {
+
+        return $this->render('user/caisse/listclient.html.twig', [
+            'clients'=>$clientsRepository->findAll(),
         ]);
     }
 }

@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 {% block title %}Imprimantes{% endblock %}
+{%block stylesheets %}
+<link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet">
+  
+
+{% endblock %}
 
 
 {% block body %}
@@ -7,7 +12,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Éllement Vendu</h4>
-            <table class="table table-striped">
+            <table id="ventes" class="table table-striped">
                 <thead>
                     <tr>
                         <th> Nom </th>
@@ -21,22 +26,22 @@
                 <tbody>
                     {% for vente in ventes %}
                     <tr>
-                        <td class="py-1">
+                        <td >
                             {{vente.nomproduit }}
                         </td>
-                        <td class="py-1"> 
+                        <td> 
                             {{ vente.descriptionproduit|raw }}
                         </td>
-                        <td class="py-1">
+                        <td>
                             {{ vente.prixproduit }} €
                         </td>
-                        <td class="py-1">
+                        <td>
                             {{ vente.clients }}
                         </td>
-                        <td class="py-1">
+                        <td>
                             {{ vente.vendeur }}
                         </td>
-                        <td class="py-1"> 
+                        <td> 
                             {{vente.datevente|date('d/m/Y')}} 
                         </td>
                     </tr>
@@ -46,4 +51,50 @@
         </div>
     </div>
 </div>
+
+<script src="{{ asset('DataTables/datatables.js') }}"></script>
+<script>
+// Disable search and ordering by default
+$.extend( $.fn.dataTable.defaults, {
+    searching: false,
+    ordering:  false,
+} );
+ 
+
+$(document).ready( function () {
+    $('#ventes').DataTable({
+        searching: true,
+        ordering:  true,
+        paging: true,
+        "info": true,
+        "autoWidth": false,
+        "scrollY": true,
+        "scrollX": true,
+        "pagingType": "full_numbers",
+        language: {
+            url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/French.json"
+        },
+        custRows: [
+            'Aucun résultat',
+            'Affichage de 0 à 0 sur 0 éléments'
+        ],
+        columns:[
+            {type: 'string'},
+            {type: 'string'},
+            {type: 'num'},
+            {type: 'string'},
+            {type: 'string'},
+            {type: 'date'}
+        ],
+        lengthMenu:[2,10,50,100,200],
+        pageLength: 10,
+        fixedHeader: {
+        header: false,
+        footer: true
+    }
+    
+    });
+} );
+    
+</script>
 {% endblock %}

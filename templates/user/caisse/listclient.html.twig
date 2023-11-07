@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+{% block title %}Imprimantes{% endblock %}
+{%block stylesheets %}
+<link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet">
+  
+
+{% endblock %}
+
+
+{% block body %}
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Clients enregistrés</h4>
+            <table id="ventes" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Nom </th>
+                        <th> Prénom </th>
+                        <th> Date d'inscription  </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for client in clients %}
+                    <tr>
+                        <td >
+                            {{client.nom }}
+                        </td>
+                        <td> 
+                            {{ client.prenom }}
+                        </td>
+                        <td> 
+                            {{client.dateinscription|date('d/m/Y')}} 
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="{{ asset('DataTables/datatables.js') }}"></script>
+<script>
+// Disable search and ordering by default
+$.extend( $.fn.dataTable.defaults, {
+    searching: true,
+    ordering:  true,
+} );
+ 
+
+$(document).ready( function () {
+    $('#ventes').DataTable({
+        paging: true,
+        "info": false,
+        "autoWidth": true,
+        "scrollY": true,
+        "pagingType": "full_numbers",
+        keys: true,
+        responsive: {
+            breakpoints: [
+            {name: 'bigdesktop', width: Infinity},
+            {name: 'meddesktop', width: 1480},
+            {name: 'smalldesktop', width: 1280},
+            {name: 'medium', width: 1188},
+            {name: 'tabletl', width: 1024},
+            {name: 'btwtabllandp', width: 848},
+            {name: 'tabletp', width: 768},
+            {name: 'mobilel', width: 480},
+            {name: 'mobilep', width: 320}
+            ]
+        },
+    });
+} );
+    
+</script>
+{% endblock %}
