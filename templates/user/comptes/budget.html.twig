@@ -42,7 +42,6 @@ $(function () {
                 'rgba(0, 255, 0, 1)',
             ],
             borderWidth: 1,
-            hoverOffset: 4
         }]
     }
     let budgetm = {
@@ -58,7 +57,6 @@ $(function () {
                 'rgba(0, 255, 0, 1)',
             ],
             borderWidth: 1,
-            hoverOffset: 4
         }]
     }
     var doughnutPieOptions = {
@@ -66,17 +64,40 @@ $(function () {
         animation: {
             animateScale: true,
             animateRotate: true
-        }
+        },
+        legend: {
+            display: true,
+            position: 'top',
+        },
     };
+
+    var barOptions = {
+        responsive: true,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    callback: function(value) {
+                        return value + '€';
+                    }
+                }
+            }]
+        },
+        legend: {
+            display: false,
+            position: 'top',
+        },
+    }
 
 
     if ($("#budgett").length) {
         var budgettt = $("#budgett").get(0).getContext("2d");
 
         var config = new Chart(budgettt, {
-            type: 'doughnut',
+            {# type: 'doughnut', #}
+            type: 'bar',
             data: budgett,
-            options: doughnutPieOptions
+            options: barOptions
         });
     }
 
@@ -87,9 +108,11 @@ $(function () {
         var budgetmm = $("#budgetm").get(0).getContext("2d");
 
         var config = new Chart(budgetmm, {
-            type: 'doughnut',
+            {# type: 'doughnut', #}
+            type: 'bar',
             data: budgetm,
-            options: doughnutPieOptions
+            {# options: doughnutPieOptions #}
+            options: barOptions
         });
     }
 

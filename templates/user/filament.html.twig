@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block title %}Stats{% endblock %}
+
+
+{% block body %}
+    <div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Impressions Effectués</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th> Type </th>
+                        <th> Propriété </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for type in types %}
+                    <tr>
+                        <td class="py-1">
+                            {{type.nomtype }}
+                        </td>
+                        <td class="py-1"> {{ type.propriete }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

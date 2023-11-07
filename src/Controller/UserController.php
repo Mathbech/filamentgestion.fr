@@ -11,6 +11,7 @@ use App\Form\AjoutimpressionsFormType;
 use App\Form\AjoutimprimantesFormType;
 use App\Form\VentesFormType;
 use App\Repository\BobinesRepository;
+use App\Repository\CategorieRepository;
 use App\Repository\UsersRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
@@ -48,11 +49,11 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/courbes', name: 'courbes_user')]
-    public function courbes(): Response
+    #[Route('/user/filament', name: 'filament_user')]
+    public function courbes(CategorieRepository $categorieRepository): Response
     {
-        return $this->render('user/courbes.html.twig', [
-
+        return $this->render('user/filament.html.twig', [
+            'types' => $categorieRepository->findAll(),
         ]);
     }
     #[Route('/user/stock', name: 'stock_user')]
