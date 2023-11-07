@@ -244,9 +244,14 @@ class UserController extends AbstractController
     }
 
     #[Route('/user/budget', name: 'compte_user')]
-    public function comptes(): Response
+    public function comptes(BobinesRepository $bobinesRepository, VentesRepository $ventesRepository): Response
     {
+        $user = $this->getUser();
+        $expensest = $bobinesRepository->getExpensetUsers($user);
+        $revenust = $ventesRepository->getProfitt($user);
         return $this->render('user/comptes/budget.html.twig', [
+            'recette' => $revenust,
+            'depense' => $expensest,
         ]);
     }
 }
