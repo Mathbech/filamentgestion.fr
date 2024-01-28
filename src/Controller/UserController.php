@@ -24,11 +24,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
+#[IsGranted('ROLE_USER')]
+#[Route(path: "/user")]
 
 class UserController extends AbstractController
 {
 
-    #[Route('/user/dashboard', name: 'dash_user')]
+    #[Route('/', name: 'dash_user')]
     public function dash(ImprimantesRepository $printersRepository, BobinesRepository $bobinesRepository, ImpressionsRepository $impressionsRepository, VentesRepository $ventesRepository): Response
     {
         $user = $this->getUser();
@@ -52,14 +56,14 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/filament', name: 'filament_user')]
+    #[Route('/filament', name: 'filament_user')]
     public function courbes(CategorieRepository $categorieRepository): Response
     {
         return $this->render('user/filament.html.twig', [
             'types' => $categorieRepository->findAll(),
         ]);
     }
-    #[Route('/user/stock', name: 'stock_user')]
+    #[Route('/stock', name: 'stock_user')]
     public function stock(BobinesRepository $bobinesRepository): Response
     {
         return $this->render('user/gestion/stock.html.twig', [
@@ -71,7 +75,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/impressions', name: 'impression_user')]
+    #[Route('/impressions', name: 'impression_user')]
     public function impressions(ImpressionsRepository $impressionsRepository): Response
     {
         return $this->render('user/gestion/impressions.html.twig', [
@@ -83,7 +87,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/imprimantes', name: 'imprimante_user')]
+    #[Route('/imprimantes', name: 'imprimante_user')]
     public function imprimantes(ImprimantesRepository $printersRepository): Response
     {
         return $this->render('user/gestion/imprimantes.html.twig', [
@@ -95,7 +99,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/ajoutBobines', name: 'ajoutb_user')]
+    #[Route('/ajoutBobines', name: 'ajoutb_user')]
     public function ajoutbobi(Request $request, EntityManagerInterface $entityManager): Response
     {
         $bobines = new Bobines();
@@ -122,7 +126,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/ajoutImprimantes', name: 'ajoutimpri_user')]
+    #[Route('/ajoutImprimantes', name: 'ajoutimpri_user')]
     public function ajoutimpri(Request $request, EntityManagerInterface $entityManager): Response
     {
         $imprimante = new Imprimantes();
@@ -147,7 +151,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/ajoutImpressions', name: 'ajoutimpress_user')]
+    #[Route('/ajoutImpressions', name: 'ajoutimpress_user')]
     public function ajoutimpress(Request $request, EntityManagerInterface $entityManager): Response
     {
         $impression = new Impressions();
@@ -175,7 +179,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/account', name: 'account_user')]
+    #[Route('/account', name: 'account_user')]
     public function account(UsersRepository $userRepository): Response
     {
         return $this->render('user/account.html.twig', [
@@ -188,7 +192,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/ventes', name: 'ventes_user')]
+    #[Route('/ventes', name: 'ventes_user')]
     public function ventes(VentesRepository $ventesRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
 
@@ -221,7 +225,7 @@ class UserController extends AbstractController
     }
 
 
-    #[Route('/user/caisse', name: 'caisse_user')]
+    #[Route('/caisse', name: 'caisse_user')]
     public function caisse(Request $request, EntityManagerInterface $entityManager): Response
     {
 
@@ -247,7 +251,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/budget', name: 'compte_user')]
+    #[Route('/budget', name: 'compte_user')]
     public function comptes(BobinesRepository $bobinesRepository, VentesRepository $ventesRepository): Response
     {
         $user = $this->getUser();
@@ -263,7 +267,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/nouvclient', name: 'addclient_user')]
+    #[Route('/nouvclient', name: 'addclient_user')]
     public function client(Request $request, EntityManagerInterface $entityManager): Response
     {
         $client = new Clients();
@@ -285,7 +289,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/user/clients', name: 'listclient_user')]
+    #[Route('/clients', name: 'listclient_user')]
     public function lclient(ClientsRepository $clientsRepository): Response
     {
 

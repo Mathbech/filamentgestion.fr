@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Impressions Effectués</h4>
+            <a href="{{ path('ajoutimpress_user') }}" class="btn btn-primary">Ajouter une impression</a>
             <table class="table table-striped">
                 <thead>
                     <tr>
