@@ -43,7 +43,7 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => 'Les mots de passe doivent correspondre.',
                 'options' => ['attr' => ['class' => 'form-control form-control-lg']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
+                'first_options' => ['label' => 'Password'],
                 'second_options' => ['label' => 'Repeat Password'],
                 'mapped' => false,
                 'constraints' => [
@@ -55,6 +55,8 @@ class RegistrationFormType extends AbstractType
                         'minMessage' => 'Le mot de passe doit contenir un minimum de {{ limit }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
+                        'maxMessage' => 'Le mot de passe doit contenir un maximum de {{ limit }} caractères',
+
                     ]),
                 ],
             ]);
