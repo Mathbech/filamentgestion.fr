@@ -1,0 +1,61 @@
+/**
+ * Fonction pour dessiner le graphique des prises de vues
+ */
+
+function venteCharts() {
+    var container = document.getElementById('ventes-charts');
+
+    if (!container) {
+        console.error("Le conteneur 'ventes-charts' n'a pas été trouvé.");
+        return;
+    }
+
+    // Récupération des données
+    var jsonData = {{ vente_chart|json_encode|raw }};
+    console.log(jsonData);
+
+    if (!jsonData || Object.keys(jsonData).length === 0) {
+        console.error("Aucune donnée disponible.");
+        return;
+    }
+
+    // Création des colonnes
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Numéro d\'année/semaine');
+    data.addColumn('number', 'Nombre de ventes');
+
+    // Préparation des données
+    var dataToSet = Object.entries(jsonData).map(([key, item]) => {
+        var label = item.week.toString();
+        var data = parseInt(item.product_count);
+        return [label, data];
+    });
+
+    data.addRows(dataToSet);
+
+    // options de graph
+    var options = {
+        title: 'Statistiques des ventes réalisées',
+        chartArea: {width: '70%'},
+        legend: { 
+            position: 'Bottom',
+            alignment: 'center',
+            width: '100%'
+            },
+        hAxis: {
+            title: 'Numéro d\'année/semaine',
+        },
+        vAxis: {
+            scaleType: 'log',
+            viewWindowMode: 'explicit',
+            title: 'Nombre de ventes',
+        },
+    };
+    
+    // Création du graphique
+    var view = new google.visualization.DataView(data);
+
+    // Dessiner le graphique
+    var chart = new google.visualization.ColumnChart(document.getElementById("ventes-charts"));
+    chart.draw(view, options);
+}

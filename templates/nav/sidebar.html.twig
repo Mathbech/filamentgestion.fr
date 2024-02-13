@@ -5,61 +5,41 @@
         <li class="nav-item">
             <a class="nav-link" href="{{path('dash_user')}}">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
-                <span class="menu-title">Dashboard</span>
+                <span class="menu-title">{{ 'dashboard'|trans }}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                 <span class="icon-bg"><i class="mdi mdi-barcode menu-icon"></i></span>
-                <span class="menu-title">Gestion</span>
+                <span class="menu-title"> {{ 'management'|trans }} </span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="auth">
                 <ul class="nav flex-column sub-menu">                    
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('imprimante_user') }}"> Imprimantes </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('stock_user') }}"> Stock </a></li>
-                    {# <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutimpress_user') }}"> Ajout Impressions </a></li> #}
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('impression_user') }}"> Impressions </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('imprimante_user') }}"> {{ 'printer'|trans }} </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('stock_user') }}"> {{ 'stock'|trans }} </a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('impression_user') }}"> {{ 'print'|trans }} </a></li>
                 </ul>
             </div>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                 <span class="icon-bg"><i class="mdi mdi-bank menu-icon"></i></span>
-                <span class="menu-title">Comptabilité</span>
+                <span class="menu-title"> {{ 'accounting'|trans }} </span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('compte_user') }}">Budget</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('ventes_user') }}">Recettes</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('compte_user') }}">{{ 'budget'|trans }}</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('ventes_user') }}">{{ 'recipe'|trans }}</a></li>
                 </ul>
             </div>
         </li>
 
-        {# <li class="nav-item">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
-                <span class="icon-bg"><i class="mdi mdi-format-list-bulleted menu-icon"></i></span>
-                <span class="menu-title">Forms</span>
-            </a>
-        </li> #}
-        {# <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#achat" aria-expanded="false" aria-controls="achat">
-                <span class="icon-bg"><i class="mdi mdi-currency-usd menu-icon"></i></span>
-                <span class="menu-title">Achats</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="achat">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutb_user') }}"> Ajout Bobine </a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('ajoutimpri_user') }}"> Ajout Imprimantes </a></li>
-                </ul>
-            </div>
-        </li> #}
         <li class="nav-item">
             <a class="nav-link" href="{{ path('filament_user') }}">
                 <span class="icon-bg"><i class="mdi mdi-chart-bar menu-icon"></i></span>
-                <span class="menu-title">Filaments</span>
+                <span class="menu-title">{{ 'filament'|trans }}</span>
             </a>
         </li>
         {# <li class="nav-item">
@@ -72,14 +52,14 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#cais" aria-expanded="false" aria-controls="auth">
                 <span class="icon-bg"><i class="mdi mdi-currency-eur menu-icon"></i></span>
-                <span class="menu-title">Vendeurs</span>
+                <span class="menu-title">{{ 'sold'|trans }}</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse" id="cais">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('caisse_user') }}">Caisse</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('addclient_user') }}">Nouveau client</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ path('listclient_user') }}">Liste client</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('caisse_user') }}">{{ 'casher'|trans }}</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('addclient_user') }}">{{ 'customer.new'|trans }}</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ path('listclient_user') }}">{{ 'customer.list'|trans }}</a></li>
                 </ul>
             </div>
         </li>
@@ -87,7 +67,7 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ path('admin') }}" target="_blank">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">Administration</span>
+                <span class="menu-title">{{ 'administration'|trans }}</span>
             </a>
         </li>
         {% endif %}
@@ -97,13 +77,13 @@
         <li class="nav-item">
             <a class="nav-link" href="{{ path('app_login') }}">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">Connexion</span>
+                <span class="menu-title">{{ 'log.in'|trans }}</span>
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ path('app_register') }}">
                 <span class="icon-bg"><i class="mdi mdi-lock menu-icon"></i></span>
-                <span class="menu-title">Inscription</span>
+                <span class="menu-title">{{ 'sing.in'|trans }}</span>
             </a>
         </li>
         {% endif %}
@@ -135,7 +115,7 @@
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
                 <a href="#" class="nav-link"><i class="mdi mdi-settings menu-icon"></i>
-                    <span class="menu-title">Paramètres</span>
+                    <span class="menu-title">{{ 'settings'|trans }}</span>
                 </a>
             </div>
         </li>
@@ -148,7 +128,7 @@
         <li class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
                 <a href="{{path('app_logout')}}" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
-                    <span class="menu-title">Log Out</span></a>
+                    <span class="menu-title">{{ 'log.out'|trans }}</span></a>
             </div>
         </li>
         {% endif %}

@@ -1,0 +1,36 @@
+# Traduction Fr 
+# Dashboard
+activity:
+  recent: Activitée récente
+sold: Ventes
+expenses: Dépenses
+no_data: Aucune donnée disponible
+
+# Sidebar
+dashboard: Tableau de bord
+management: Gestion
+printer: Imprimante
+stock: Stock
+print: Impression
+accounting: Comptabilité
+budget: Budget
+recipe: Recettes
+filament: Filament
+customer: 
+  new: Nouveau client
+  list: Liste des clients
+casher: Caisse
+settings: Paramètres
+log:
+  out: Déconnexion
+  in: Connexion
+administration: Administration
+sing:
+  in: Inscription
+
+# homepage
+welcome: 
+  on: Bienvenue sur
+register:
+  chart: Évolution des inscriptions
+

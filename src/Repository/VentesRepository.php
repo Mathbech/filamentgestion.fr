@@ -20,32 +20,12 @@ class VentesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Ventes::class);
     }
-
-//    /**
-//     * @return Ventes[] Returns an array of Ventes objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('v.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?Ventes
-//    {
-//        return $this->createQueryBuilder('v')
-//            ->andWhere('v.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
-
+    /**
+     * Summary of getProfitt
+     * @param mixed $user
+     * @return bool|float|int|string|null
+     * @author Mathieu Bechade
+     */
     public function getProfitt($user)
     {
         return $this->createQueryBuilder('v')
@@ -56,7 +36,12 @@ class VentesRepository extends ServiceEntityRepository
             ->getSingleScalarResult()
         ;
     }
-
+    /**
+     * Summary of getProfitm
+     * @param mixed $user
+     * @return bool|float|int|string|null
+     * @author Mathieu Bechade
+     */
     public function getProfitm($user)
     {
         return $this->createQueryBuilder('v')
@@ -67,6 +52,42 @@ class VentesRepository extends ServiceEntityRepository
             ->setParameter('date', new \DateTime('-30 days'))
             ->getQuery()
             ->getSingleScalarResult()
+        ;
+    }
+
+    /**
+     * Summary of getVentesChart
+     * @param mixed $user
+     * @return array
+     * @author Mathieu Bechade
+     */
+    public function getVentesChart($user): array
+    {
+        return $this->createQueryBuilder('v')
+            ->select('COUNT(v.id) as product_count, DATE(v.date_vente) as week')
+            ->andWhere('v.vendeur = :user')
+            ->setParameter('user', $user->getId())
+            ->andWhere('v.date_vente >= :date')
+            ->setParameter('date', new \DateTime('-30 days'))
+            ->groupBy('week')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getRevenusChart(
+        $user,
+    ): array
+    {
+        return $this->createQueryBuilder('v')
+            ->select('SUM(v.prix_produit) as prix, DATE(v.date_vente) as week')
+            ->andWhere('v.vendeur = :user')
+            ->setParameter('user', $user->getId())
+            ->andWhere('v.date_vente >= :date')
+            ->setParameter('date', new \DateTime('-30 days'))
+            ->groupBy('week')
+            ->getQuery()
+            ->getResult()
         ;
     }
 }

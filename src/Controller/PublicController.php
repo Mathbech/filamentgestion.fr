@@ -2,13 +2,10 @@
 
 namespace App\Controller;
 
-use App\Entity\Bobines;
-use App\Entity\Impressions;
-use App\Repository\BobinesRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
 use App\Repository\UsersRepository;
-use App\Repository\VentesRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +20,8 @@ class PublicController extends AbstractController
         $totalUsers = $usersRepository->getTotalusers();
         $totalPrinters = $printersRepository->getTotalprinters();
         $totalPieces = $piecesRepository->getTotalpieces();
+        $user_chart = $usersRepository->getRegisterChart();
+        dump($user_chart);
         return $this->render('public/index.html.twig', [
             'site_name' => 'FilamentGestion.fr',
             'utilisateurs' => $totalUsers,
@@ -30,8 +29,9 @@ class PublicController extends AbstractController
             'impressions' => $totalPieces,
             'contributeurs' => '2',
             'entreprises' => '1',
-            'partenaires' => '1',
+            'partenaires' => '0',
             'pages' => '9',
+            'register_chart' => $user_chart,
         ]);
     }
 

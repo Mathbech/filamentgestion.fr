@@ -63,15 +63,14 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
             ->getSingleScalarResult();
     }
 
-    //    public function findOneBySomeField($value): ?Users
-    //    {
-    //        return $this->createQueryBuilder('u')
-    //            ->andWhere('u.id = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    public function getRegisterChart()
+    {
+        return $this->createQueryBuilder('u')
+            ->select('count(u.id) as total')
+            
+            ->getQuery()
+            ->getResult();
+    }
 
 
 }

@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Créer un client{% endblock %}
 
 
 {% block body%}
@@ -6,22 +7,16 @@
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
         <div class="card-body">
-                <h4 class="card-title">Création d'une vente</h4>
-                <p class="card-description"> Ajoutez vos ventes en cours </p>
+                <h4 class="card-title">Création d'un client</h4>
+                <p class="card-description"> Ajoutez vos nouveaux clients </p>
             <div class="forms-sample">
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
                 <div class="form-group">
-                    {{ form_row(form.nom_produit) }}
+                    {{ form_row(form.nom) }}
                     </div>
                 <div class="form-group">
-                    {{ form_row(form.description_produit)}}
-                </div>
-                <div class="form-group">
-                    {{ form_row(form.prix_produit)}}
-                </div>
-                <div class="form-group">
-                    {{ form_row(form.clients)}}
+                    {{ form_row(form.prenom)}}
                 </div>
                 <input type="submit" class="btn btn-primary mr-2" value="Envoyer" />
                 {{ form_end(form) }}

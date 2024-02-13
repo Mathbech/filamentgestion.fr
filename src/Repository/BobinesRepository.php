@@ -47,4 +47,23 @@ class BobinesRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+    /**
+     * Summary of getExpensesCharts
+     * @param mixed $user
+     * @return bool|float|int|string|null
+     * @author Mathieu Bechade
+     */
+    public function getExpensesCharts(
+        $user
+    ) :array {
+        return $this->createQueryBuilder('b')
+            ->select('SUM(b.prix) as prix, DATE(b.date_ajout) as week')
+            ->groupBy('week')
+            ->andWhere('b.utilisateur = :user_id')
+            ->andWhere('b.date_ajout >= :date')
+            ->setParameter('user_id', $user->getId())
+            ->setParameter('date', Date('m,j,Y, H:i:s', strtotime('-30 day')))
+            ->getQuery()
+            ->getResult();
+    }
 }

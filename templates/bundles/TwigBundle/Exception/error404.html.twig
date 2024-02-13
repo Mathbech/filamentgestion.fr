@@ -1,0 +1,25 @@
+{% extends 'Security/base.html.twig' %}
+
+{% block title %}Erreur 404{% endblock %}
+
+{% block body %}
+
+    <div class="card">
+        <div class="card-header">
+            <img src="{{ asset('prod/Security/img/logo.png') }}">
+        </div>
+        <div class="card-block p-3">
+
+            <h4 class="card-title">Erreur 404</h4>
+
+            <hr>
+
+            <p>La page demandée n'existe pas.</p>
+        </div>
+    </div>
+
+    <div class="link">
+        <a href="{{ app.request.server.get('http-referer')|default('/') }}" class="pull-right">Retour vers le site</a>
+    </div>
+
+{% endblock %}

@@ -1,20 +1,17 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\user;
 
 use App\Entity\Bobines;
-use App\Entity\Clients;
+use App\Entity\Ventes;
 use App\Entity\Impressions;
 use App\Entity\Imprimantes;
-use App\Entity\Ventes;
 use App\Form\AjoutbobinesFormType;
-use App\Form\AjoutclientFormType;
 use App\Form\AjoutimpressionsFormType;
 use App\Form\AjoutimprimantesFormType;
 use App\Form\VentesFormType;
 use App\Repository\BobinesRepository;
 use App\Repository\CategorieRepository;
-use App\Repository\ClientsRepository;
 use App\Repository\UsersRepository;
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
@@ -28,7 +25,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 #[IsGranted('ROLE_USER')]
 #[Route(path: "/user")]
-
 class UserController extends AbstractController
 {
 
@@ -44,7 +40,10 @@ class UserController extends AbstractController
         $piecesm = $impressionsRepository->getUsersmpieces($user);
         $revenust = $ventesRepository->getProfitt($user);
         $revenusm = $ventesRepository->getProfitm($user);
-        return $this->render('user/dashboard.html.twig', [
+        $ventes_chart = $ventesRepository->getVentesChart($user);
+        $revenus_charts = $ventesRepository->getRevenusChart($user);
+        $depenses_chart = $bobinesRepository->getExpensesCharts($user);
+        return $this->render('user/Dashboard/index.html.twig', [
             'imprimantes' => $totalPrinter,
             'actifs' => $printersActive,
             'depenses' => $expensest,
@@ -53,6 +52,9 @@ class UserController extends AbstractController
             'total' => $piecesm,
             'revenust' => $revenust,
             'revenusm' => $revenusm,
+            'vente_chart' => $ventes_chart,
+            'revenus_chart' => $revenus_charts,
+            'depenses_chart' => $depenses_chart,
         ]);
     }
 
@@ -99,7 +101,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/ajoutBobines', name: 'ajoutb_user')]
+    #[Route('/stock/ajoutBobines', name: 'ajoutb_user')]
     public function ajoutbobi(Request $request, EntityManagerInterface $entityManager): Response
     {
         $bobines = new Bobines();
@@ -126,7 +128,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/ajoutImprimantes', name: 'ajoutimpri_user')]
+    #[Route('/imprimantes/ajout', name: 'ajoutimpri_user')]
     public function ajoutimpri(Request $request, EntityManagerInterface $entityManager): Response
     {
         $imprimante = new Imprimantes();
@@ -151,7 +153,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/ajoutImpressions', name: 'ajoutimpress_user')]
+    #[Route('/impressions/ajout', name: 'ajoutimpress_user')]
     public function ajoutimpress(Request $request, EntityManagerInterface $entityManager): Response
     {
         $impression = new Impressions();
@@ -182,13 +184,13 @@ class UserController extends AbstractController
     #[Route('/account', name: 'account_user')]
     public function account(UsersRepository $userRepository): Response
     {
-        return $this->render('user/account.html.twig', [
-            'users' => $userRepository->findBy(
-                ['id' => $this->getUser()->getId()],
-                ['id' => 'DESC'],
-                10
-            ),
-
+        $user_list = $userRepository->findBy(
+            ['id' => $this->getUser()->getId()],
+            ['id' => 'DESC'],
+            10
+        );
+        return $this->render('user/Settings/account.html.twig', [
+            'users' => $user_list,
         ]);
     }
 
@@ -224,33 +226,6 @@ class UserController extends AbstractController
         ]);
     }
 
-
-    #[Route('/caisse', name: 'caisse_user')]
-    public function caisse(Request $request, EntityManagerInterface $entityManager): Response
-    {
-
-        $ventes = new Ventes();
-        $form = $this->createForm(VentesFormType::class, $ventes);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $ventes->setVendeur(
-                $this->getUser()
-            );
-            $ventes->setDateVente(
-                new \DateTime('now')
-            );
-
-            $entityManager->persist($ventes);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('ventes_user');
-        }
-        return $this->render('user/caisse/caisse.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
     #[Route('/budget', name: 'compte_user')]
     public function comptes(BobinesRepository $bobinesRepository, VentesRepository $ventesRepository): Response
     {
@@ -264,37 +239,6 @@ class UserController extends AbstractController
             'depenset' => $expensest,
             'recettem' => $revenusm,
             'depensem' => $expensesm,
-        ]);
-    }
-
-    #[Route('/nouvclient', name: 'addclient_user')]
-    public function client(Request $request, EntityManagerInterface $entityManager): Response
-    {
-        $client = new Clients();
-        $form = $this->createForm(AjoutclientFormType::class, $client);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $client->setDateInscription(
-                new \DateTime('now')
-            );
-
-            $entityManager->persist($client);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('caisse_user');
-        }
-        return $this->render('user/caisse/addclients.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    #[Route('/clients', name: 'listclient_user')]
-    public function lclient(ClientsRepository $clientsRepository): Response
-    {
-
-        return $this->render('user/caisse/listclient.html.twig', [
-            'clients'=>$clientsRepository->findAll(),
         ]);
     }
 }

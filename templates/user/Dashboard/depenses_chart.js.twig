@@ -1,0 +1,62 @@
+/**
+ * Fonction pour dessiner le graphique des prises de vues
+ */
+
+function depensesCharts() {
+    var container = document.getElementById('depenses-charts');
+
+    if (!container) {
+        console.error("Le conteneur 'depenses-charts' n'a pas été trouvé.");
+        return;
+    }
+
+    // Récupération des données
+    var jsonData = {{ depenses_chart|json_encode|raw }};
+    console.log(jsonData);
+
+    if (!jsonData || Object.keys(jsonData).length === 0) {
+        console.error("Aucune donnée disponible.");
+        return;
+    }
+
+    // Création des colonnes
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Date');
+    data.addColumn('number', 'Dépenses en €');
+
+
+    // Préparation des données
+    var dataToSet = Object.entries(jsonData).map(([key, item]) => {
+        var label = item.week.toString();
+        var data = item.prix;
+        return [label, data];
+    });
+
+    data.addRows(dataToSet);
+
+    // options de graph
+    var options = {
+        title: 'Statistiques des dépenses réalisées',
+        chartArea: {width: '70%'},
+        legend: { 
+            position: 'Bottom',
+            alignment: 'center',
+            width: '100%'
+            },
+        hAxis: {
+            title: 'Date',
+        },
+        vAxis: {
+            scaleType: 'log',
+            viewWindowMode: 'explicit',
+            title: 'Dépenses en €',
+        },
+    };
+    
+    // Création du graphique
+    var view = new google.visualization.DataView(data);
+
+    // Dessiner le graphique
+    var chart = new google.visualization.AreaChart(document.getElementById("depenses-charts"));
+    chart.draw(view, options);
+}
