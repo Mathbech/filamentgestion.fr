@@ -28,7 +28,7 @@ function depensesCharts() {
     // Préparation des données
     var dataToSet = Object.entries(jsonData).map(([key, item]) => {
         var label = item.week.toString();
-        var data = item.prix;
+        var data = parseFloat(item.prix);
         return [label, data];
     });
 

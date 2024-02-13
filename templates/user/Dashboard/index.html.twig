@@ -85,13 +85,13 @@
 												</div>
 												<h3 class="mb-4 text-dark font-weight-bold">
 													{{ depenses ? depenses ~ '€' : '0€'}}</h3>
-                                                    {% if depenses_chart %}
-												<div id="depenses-charts"></div>
-                                                    {% else %}
-                                                        <p class="text-center text-dark font-weight-bold">
-                                                            {{ 'no_data'|trans }}
-                                                        </p>
-                                                    {% endif %}
+												{% if depenses_chart %}
+													<div id="depenses-charts"></div>
+												{% else %}
+													<p class="text-center text-dark font-weight-bold">
+														{{ 'no_data'|trans }}
+													</p>
+												{% endif %}
 											</div>
 										</div>
 										<div class="col-lg-7 col-sm-6 grid-margin  grid-margin-lg-0">
@@ -108,13 +108,13 @@
 														<p class="text-dark font-weight-bold mb-0">GMT+02 Paris/Dublin</p>
 													</div>
 												</div>
-                                                {% if vente_chart %}
-												<div id='ventes-charts'></div>
-                                                {% else %}
-                                                    <p class="text-center text-dark font-weight-bold">
-                                                        {{ 'no_data'|trans }}
-                                                    </p>
-                                                {% endif %}
+												{% if vente_chart %}
+													<div id='ventes-charts'></div>
+												{% else %}
+													<p class="text-center text-dark font-weight-bold">
+														{{ 'no_data'|trans }}
+													</p>
+												{% endif %}
 											</div>
 										</div>
 									</div>
