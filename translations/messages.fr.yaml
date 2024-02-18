@@ -31,6 +31,15 @@ sing:
 # homepage
 welcome: 
   on: Bienvenue sur
+  log: Binenvenue
 register:
   chart: Évolution des inscriptions
+
+#login
+remember: Se souvenir de moi
+create:
+  acount: Créer un compte
+not_account: Pas de compte? Ce n'est pas grave
+password: Mot de passe
+email: Email
 

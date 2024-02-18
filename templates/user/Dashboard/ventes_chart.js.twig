@@ -27,7 +27,7 @@ function venteCharts() {
     // Préparation des données
     var dataToSet = Object.entries(jsonData).map(([key, item]) => {
         var label = item.week.toString();
-        var data = parseInt(item.product_count);
+        var data = parseFloat(item.product_count);
         return [label, data];
     });
 

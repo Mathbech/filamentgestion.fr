@@ -1,6 +1,6 @@
 {% extends 'empty.html.twig' %}
 {# {% extends 'empty.html.twig' %} #}
-{% block title %}Connexion{% endblock %}
+{% block title %}{{'log.in'|trans}}{% endblock %}
 
 {% block body %}
 <div class="row flex-grow">
@@ -9,7 +9,7 @@
             <div class="brand-logo">
                 <img src="{{asset('assets/images/logo-dark.svg')}}">
             </div>
-            <h4>Bienvenue</h4>
+            <h4>{{'welcome.log'|trans}}</h4>
             <h6 class="font-weight-light">Connectez-vous pour continuer.</h6>
             <form class="pt-3" method="post">
                 {% if error %}
@@ -22,12 +22,12 @@
                 </div>
                 {% endif %}
                 <div class="form-group">
-                    <label for="inputEmail">Email</label>
+                    <label for="inputEmail">{{'email'|trans}}</label>
                     <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
                         autocomplete="email" required autofocus>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword">Password</label>
+                    <label for="inputPassword">{{'password'|trans}}</label>
                     <input type="password" name="password" id="inputPassword" class="form-control"
                         autocomplete="current-password" required>
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
@@ -40,13 +40,13 @@
                 <div class="my-2 d-flex justify-content-between align-items-center">
                     <div class="form-check">
                         <label class="form-check-label text-muted">
-                            <input type="checkbox" class="form-check-input"> Se souvenir de moi </label>
+                            <input type="checkbox" class="form-check-input"> {{ 'remember'|trans }} </label>
                     </div>
                     {# <a href="#" class="auth-link text-black">Mot de passe oublié??</a> #}
                 </div>
 
-                <div class="text-center mt-4 font-weight-light"> Pas de compte? Ce n'est pas grave <a
-                        href="{{ path('app_register') }}" class="text-primary">Créez un compte</a>
+                <div class="text-center mt-4 font-weight-light"> {{'not_account'|trans}} <a
+                        href="{{ path('app_register') }}" class="text-primary"> {{ 'create.acount'|trans }} </a>
                 </div>
             </form>
         </div>
