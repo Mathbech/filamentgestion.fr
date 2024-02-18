@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Public;
 
 use App\Repository\ImpressionsRepository;
 use App\Repository\ImprimantesRepository;
