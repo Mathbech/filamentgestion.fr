@@ -66,8 +66,8 @@ class UsersRepository extends ServiceEntityRepository implements PasswordUpgrade
     public function getRegisterChart()
     {
         return $this->createQueryBuilder('u')
-            ->select('count(u.id) as total, MONTH(u.createdAt) as month')
-            
+            ->select('count(u.id) as total, YEAR(u.createdAt) as year')
+            ->groupBy('u.createdAt')
             ->getQuery()
             ->getResult();
     }
