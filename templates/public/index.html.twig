@@ -53,7 +53,7 @@
                 <div class="card-body">
                     <h4 class="card-title">{{ 'register.chart'|trans }}</h4>
                     {# <canvas id="areaChart" style="height:250px"></canvas> #}
-                    <div id="register-chart"></div>
+                    <div id="register-charts" style="height:250px"></div>
                 </div>
             </div>
         </div>
@@ -69,15 +69,19 @@
 
 {% endblock %}
 
-{% block javascript %}
-	<script type="text/javascript">
+{% block javascripts %}
 
-		google.charts.load('current', {'packages': ['corechart']});
-        google.charts.setOnLoadCallback(initialize);
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="application/javascript">
+        $(document).ready(function() {
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(initialize);
+        });
 
         function initialize() {
-            registerCharts();
+            registercharts();
         }
+
         {% include 'public/register_chart.js.twig' %}
 	</script>
 {% endblock %}

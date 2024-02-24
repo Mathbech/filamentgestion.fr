@@ -21,7 +21,6 @@ class PublicController extends AbstractController
         $totalPrinters = $printersRepository->getTotalprinters();
         $totalPieces = $piecesRepository->getTotalpieces();
         $user_chart = $usersRepository->getRegisterChart();
-        dump($user_chart);
         return $this->render('public/index.html.twig', [
             'site_name' => 'FilamentGestion.fr',
             'utilisateurs' => $totalUsers,

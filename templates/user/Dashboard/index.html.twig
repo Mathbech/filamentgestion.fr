@@ -126,11 +126,12 @@
 			</div>
 		</div>
 	</div>
-
 {% endblock %}
 
 {% block javascripts %}
-	<script type="text/javascript">
+
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="application/javascript">
 
 		google.charts.load('current', {'packages': ['corechart']});
 google.charts.setOnLoadCallback(initialize);
