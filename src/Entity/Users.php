@@ -50,11 +50,12 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'vendeur', targetEntity: Ventes::class)]
     private Collection $ventes;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: false)]
     private ?\DateTimeInterface $createdAt = null;
 
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->imprimantes = new ArrayCollection();
         $this->impressions = new ArrayCollection();
         $this->bobines = new ArrayCollection();
