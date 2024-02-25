@@ -57,6 +57,6 @@ function revenusCharts() {
     var view = new google.visualization.DataView(data);
 
     // Dessiner le graphique
-    var chart = new google.visualization.LineChart(document.getElementById("revenus-charts"));
+    var chart = new google.visualization.AreaChart(document.getElementById("revenus-charts"));
     chart.draw(view, options);
 }
