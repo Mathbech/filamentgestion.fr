@@ -5,6 +5,7 @@ activity:
 sold: Ventes
 expenses: Dépenses
 no_data: Aucune donnée disponible
+30_days: 30 derniers jours
 
 # Sidebar
 dashboard: Tableau de bord

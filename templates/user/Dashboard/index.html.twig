@@ -53,20 +53,24 @@
 									<div class="row">
 										<div class="col-sm-12">
 											<div class="d-flex justify-content-between align-items-center mb-4">
-												<h4 class="card-title mb-0">
-													{{ 'activity.recent'|trans }}
-												</h4>
+												<div>
+													<h4 class="card-title mb-0">
+														{{ 'activity.recent'|trans }}
+													</h4>
+													<h5 class="font-weight-normal mb-0">
+														{{ '30_days'|trans }}
+													</h5>
+												</div>
 											</div>
 										</div>
 										<div class="col-lg-5 col-sm-7 grid-margin  grid-margin-lg-0">
 											<div class="wrapper pb-5 border-bottom">
 												<div class="text-wrapper d-flex align-items-center justify-content-between mb-2">
 													<p class="mb-0 text-dark">Revenus</p>
-													<span class="text-success">
-														<i class="mdi mdi-arrow-up"></i>0.00%</span>
+													{# <span class="text-success">
+																											<i class="mdi mdi-arrow-up"></i>0.00%</span> #}
 												</div>
 												<h3 class="mb-0 text-dark font-weight-bold">{{ revenust ? revenust ~ '€' : '0€' }}</h3>
-												{# <canvas id="total-profit"></canvas> #}
 												{% if revenus_chart %}
 													<div id="revenus-charts"></div>
 												{% else %}
@@ -80,8 +84,8 @@
 													<p class="mb-0 text-dark">
 														{{ 'expenses'|trans }}
 													</p>
-													<span class="text-success">
-														<i class="mdi mdi-arrow-up"></i>100%</span>
+													{#<span class="text-success">
+																											 <i class="mdi mdi-arrow-up"></i>100%</span> #}
 												</div>
 												<h3 class="mb-4 text-dark font-weight-bold">
 													{{ depenses ? depenses ~ '€' : '0€'}}</h3>
