@@ -44,9 +44,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Impressions::class)]
     private Collection $impressions;
 
-    #[ORM\OneToMany(mappedBy: 'utilisateur', targetEntity: Bobines::class)]
-    private Collection $bobines;
-
     #[ORM\OneToMany(mappedBy: 'vendeur', targetEntity: Ventes::class)]
     private Collection $ventes;
 
@@ -58,7 +55,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
         $this->createdAt = new \DateTime();
         $this->imprimantes = new ArrayCollection();
         $this->impressions = new ArrayCollection();
-        $this->bobines = new ArrayCollection();
         $this->ventes = new ArrayCollection();
     }
 
@@ -198,36 +194,6 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($impression->getUtilisateur() === $this) {
                 $impression->setUtilisateur(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Bobines>
-     */
-    public function getBobines(): Collection
-    {
-        return $this->bobines;
-    }
-
-    public function addBobine(Bobines $bobine): static
-    {
-        if (!$this->bobines->contains($bobine)) {
-            $this->bobines->add($bobine);
-            $bobine->setUtilisateur($this);
-        }
-
-        return $this;
-    }
-
-    public function removeBobine(Bobines $bobine): static
-    {
-        if ($this->bobines->removeElement($bobine)) {
-            // set the owning side to null (unless already changed)
-            if ($bobine->getUtilisateur() === $this) {
-                $bobine->setUtilisateur(null);
             }
         }
 
