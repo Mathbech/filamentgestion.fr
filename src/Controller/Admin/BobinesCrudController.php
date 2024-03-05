@@ -7,6 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 
 class BobinesCrudController extends AbstractCrudController
 {
@@ -20,7 +21,7 @@ class BobinesCrudController extends AbstractCrudController
     {
         return [
             IdField::new('Poids'),
-            IdField::new('Prix'),
+            NumberField::new('Prix'),
             DateTimeField::new('date_ajout'),
             AssociationField::new('couleur')
             ->setFormTypeOptions([
