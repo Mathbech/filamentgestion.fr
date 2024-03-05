@@ -50,12 +50,16 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: false)]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\OneToMany(mappedBy: 'gestionnaire', targetEntity: Bobines::class)]
+    private Collection $bobines;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
         $this->imprimantes = new ArrayCollection();
         $this->impressions = new ArrayCollection();
         $this->ventes = new ArrayCollection();
+        $this->bobines = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -238,6 +242,36 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCreatedAt(?\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Bobines>
+     */
+    public function getBobines(): Collection
+    {
+        return $this->bobines;
+    }
+
+    public function addBobine(Bobines $bobine): static
+    {
+        if (!$this->bobines->contains($bobine)) {
+            $this->bobines->add($bobine);
+            $bobine->setGestionnaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBobine(Bobines $bobine): static
+    {
+        if ($this->bobines->removeElement($bobine)) {
+            // set the owning side to null (unless already changed)
+            if ($bobine->getGestionnaire() === $this) {
+                $bobine->setGestionnaire(null);
+            }
+        }
 
         return $this;
     }
