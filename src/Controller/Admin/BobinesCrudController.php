@@ -30,7 +30,7 @@ class BobinesCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'by_reference' => false,
                 ]),
-            AssociationField::new('utilisateur')->autocomplete(),
+            AssociationField::new('gestionnaire')->autocomplete(),
         ];
     }
 }
