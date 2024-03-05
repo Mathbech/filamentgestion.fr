@@ -33,6 +33,10 @@ class Bobines
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $categorie = null;
 
+    #[ORM\ManyToOne(inversedBy: 'bobines')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Users $gestionnaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -94,6 +98,18 @@ class Bobines
     public function setCategorie(?Categorie $categorie): static
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getGestionnaire(): ?Users
+    {
+        return $this->gestionnaire;
+    }
+
+    public function setGestionnaire(?Users $gestionnaire): static
+    {
+        $this->gestionnaire = $gestionnaire;
 
         return $this;
     }
