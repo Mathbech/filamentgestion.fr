@@ -70,7 +70,7 @@ class UserController extends AbstractController
     {
         return $this->render('user/gestion/stock.html.twig', [
             'stocks' => $bobinesRepository->findBy(
-                ['utilisateur' => $this->getUser()->getId()],
+                ['gestionnaire' => $this->getUser()->getId()],
                 ['id' => 'DESC'],
                 10
             ),
@@ -109,7 +109,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $bobines->setUtilisateur(
+            $bobines->setGestionnaire(
                 $this->getUser()
             );
             $bobines->setDateAjout(

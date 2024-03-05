@@ -30,7 +30,7 @@ class BobinesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('b')
             ->select('sum(b.prix)')
-            ->andWhere('b.utilisateur = :user_id')
+            ->andWhere('b.gestionnaire = :user_id')
             ->setParameter('user_id', $user->getId())
             ->getQuery()
             ->getSingleScalarResult();
@@ -40,7 +40,7 @@ class BobinesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('b')
             ->select('sum(b.prix)')
-            ->andWhere('b.utilisateur = :user_id')
+            ->andWhere('b.gestionnaire = :user_id')
             ->andWhere('b.date_ajout >= :date')
             ->setParameter('user_id', $user->getId())
             ->setParameter('date', Date('m,j,Y, H:i:s', strtotime('-30 day')))
@@ -59,7 +59,7 @@ class BobinesRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('b')
             ->select('SUM(b.prix) as prix, DATE(b.date_ajout) as week')
             ->groupBy('week')
-            ->andWhere('b.utilisateur = :user_id')
+            ->andWhere('b.gestionnaire = :user_id')
             ->andWhere('b.date_ajout >= :date')
             ->setParameter('user_id', $user->getId())
             ->setParameter('date', Date('m,j,Y, H:i:s', strtotime('-30 day')))
