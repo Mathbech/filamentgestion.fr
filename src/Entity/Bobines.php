@@ -8,7 +8,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BobinesRepository::class)]
-#[ApiResource(security: "is_granted('ROLE_USER')")]
+#[ApiResource]
 class Bobines
 {
     #[ORM\Id]
