@@ -13,7 +13,7 @@ services:
       start_period: 30s
     environment:
       TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
-      TRUSTED_HOSTS: ^${SERVER_NAME:-example\.com|localhost}|caddy$$
+      TRUSTED_HOSTS: ^${SERVER_NAME:-filamentgestion\.local|localhost}|caddy$$
       # The two next lines can be removed after initial installation
       SYMFONY_VERSION: ${SYMFONY_VERSION:-}
       STABILITY: ${STABILITY:-stable}
@@ -29,7 +29,7 @@ services:
     depends_on:
       - php
     environment:
-      SERVER_NAME: ${SERVER_NAME:-localhost}, caddy:80
+      SERVER_NAME: ${SERVER_NAME:-localhost}, filamentgestion.local:443
       MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
       MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
     restart: unless-stopped
