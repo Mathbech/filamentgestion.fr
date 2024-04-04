@@ -24,15 +24,17 @@ class JWTCreatedListener
         $user = $this->security->getUser();
 
         if ($user) {
-            $payload['userId'] = $user->getId();
+            $payload['UserId'] = $user->getId();
         }
         
        
         $event->setData($payload);
 
         $header = $event->getHeader();
-        $header['id'] = 'JWT';
-
+        if ($user) {
+            $header['UserId'] = $user->getId();
+        }
+        
         $event->setHeader($header);
     }
 }
