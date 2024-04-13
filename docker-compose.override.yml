@@ -25,12 +25,10 @@ services:
       context: .
       target: caddy_base
     volumes:
-      - ./docker/caddy/certs:/etc/caddy/certs:ro
       - ./public:/srv/app/public:ro
       - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
     environment:
       MERCURE_EXTRA_DIRECTIVES: demo
-      CADDY_EXTRA_CONFIG: "tls /etc/caddy/certs/cert.crt /etc/caddy/certs/cert.key"
 
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
