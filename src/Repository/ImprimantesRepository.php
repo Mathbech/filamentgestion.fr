@@ -53,6 +53,19 @@ class ImprimantesRepository extends ServiceEntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    public function desactiverImprimante($id)
+    {
+        $query = $this->createQueryBuilder('i')
+            ->update()
+            ->set('i.deleted', ':now')
+            ->setParameter('now', new \DateTime())
+            ->where('i.id = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+        return $query->execute();
+    }
+
     //    public function findOneBySomeField($value): ?Imprimantes
     //    {
     //        return $this->createQueryBuilder('i')

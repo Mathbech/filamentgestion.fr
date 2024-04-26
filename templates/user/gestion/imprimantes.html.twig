@@ -1,42 +1,77 @@
 {% extends 'base.html.twig' %}
-{% block title %}Imprimantes{% endblock %}
+{% block title %}Imprimantes
+{% endblock %}
 
 
 {% block body%}
-<div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">Imprimante possédées</h4>
-            <a href="{{ path('ajoutimpri_user') }}" class="btn btn-primary">Ajouter une imprimante</a>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th> Utilisateur </th>
-                        <th> Imprimante </th>
-                        <th> Marque </th>
-                        <th> Prix </th>
-                        <th> Nom </th>
-                        <th> Désactivée le </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for printer in printers %}
-                    <tr>
-                        <td class="py-1">
-                            {{printer.username }}
-                        </td>
-                        <td> {{ printer.nomImprimante }} </td>
-                        <td> {{ printer.Marque }} </td>
-                        <td> {{ printer.Prix }}€ </td>
-                        <td>
-                            {{ printer.typeImprimante }}
-                        </td>
-                        <td> {{printer.deleted ? printer.deleted|date('d/m/Y-H:m') : 'Imprimante Active' }} </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
+	<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Imprimante possédées</h4>
+				<a href="{{ path('ajoutimpri_user') }}" class="btn btn-primary">Ajouter une imprimante</a>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>
+								Utilisateur
+							</th>
+							<th>
+								Imprimante
+							</th>
+							<th>
+								Marque
+							</th>
+							<th>
+								Prix
+							</th>
+							<th>
+								Nom
+							</th>
+							<th>
+								Désactivée le
+							</th>
+							<th>
+								Actions
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for printer in printers %}
+							<tr>
+								<td class="py-1">
+									{{printer.username }}
+								</td>
+								<td>
+									{{ printer.nomImprimante }}
+								</td>
+								<td>
+									{{ printer.Marque }}
+								</td>
+								<td>
+									{{ printer.Prix }}€
+								</td>
+								<td>
+									{{ printer.typeImprimante }}
+								</td>
+								<td>
+									{{printer.deleted ? printer.deleted|date('d/m/Y-H:m') : 'Imprimante Active' }}
+								</td>
+								<td>
+									{% if printer.deleted == null %}
+										<form method="get" action="{{ path('imprimante_desactiver_user', {'id': printer.id}) }}">
+											<button class="btn btn-primary" type="submit">Désactiver</button>
+										</form>
+									{% else %}
+										<p>Aucune actions disponibles</p>
+									{% endif %}
+
+
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 {% endblock %}

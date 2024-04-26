@@ -101,6 +101,15 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[route('/imprimantes/desactiver/{id}', name: 'imprimante_desactiver_user', methods: ['GET'])]
+    public function desactiver($id, ImprimantesRepository $imprimante, EntityManagerInterface $entityManager): Response
+    {
+        $imprimante->desactiverImprimante($id);
+        $entityManager->flush();
+        return $this->redirectToRoute('imprimante_user');
+    }
+    
+
     #[Route('/stock/ajoutBobines', name: 'ajoutb_user')]
     public function ajoutbobi(Request $request, EntityManagerInterface $entityManager): Response
     {
