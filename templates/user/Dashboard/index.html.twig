@@ -24,9 +24,11 @@
 
 						{% include 'includes/card.html.twig' with {
                         'variable1': 'Totales',
-                        'variable2': depenses ? depenses ~ '€' : '0€',
+                        'variable2': depensest ? depensest ~ '€' : '0€',
                         'variable3': '30 derniers jours',
-                        'variable4': mois ? mois ~ '€' : '0€',
+'variable4': depensesm ? depensesm ~ '€' : '0€',
+
+
                         'variabletitle': 'Dépenses'
                     } %}
 
@@ -67,10 +69,9 @@
 											<div class="wrapper pb-5 border-bottom">
 												<div class="text-wrapper d-flex align-items-center justify-content-between mb-2">
 													<p class="mb-0 text-dark">Revenus</p>
-													{# <span class="text-success">
-																											<i class="mdi mdi-arrow-up"></i>0.00%</span> #}
 												</div>
-												<h3 class="mb-0 text-dark font-weight-bold">{{ revenust ? revenust ~ '€' : '0€' }}</h3>
+												<h3 class="mb-0 text-dark font-weight-bold">{{ revenusm ? revenusm ~ '€' : '0€' }}</h3>
+
 												{% if revenus_chart %}
 													<div id="revenus-charts"></div>
 												{% else %}
@@ -84,11 +85,9 @@
 													<p class="mb-0 text-dark">
 														{{ 'expenses'|trans }}
 													</p>
-													{#<span class="text-success">
-																											 <i class="mdi mdi-arrow-up"></i>100%</span> #}
 												</div>
 												<h3 class="mb-4 text-dark font-weight-bold">
-													{{ depenses ? depenses ~ '€' : '0€'}}</h3>
+													{{ depensesm ? depensesm ~ '€' : '0€'}}</h3>
 												{% if depenses_chart %}
 													<div id="depenses-charts"></div>
 												{% else %}
@@ -105,7 +104,6 @@
 														<h3 class="text-dark font-weight-bold mr-2 mb-0">
 															{{ 'sold'|trans }}
 														</h3>
-														{# <h5 class="mb-0">( En hausse de 48% )</h5> #}
 													</div>
 													<div class="d-lg-flex">
 														<p class="mr-2 mb-0">Timezone:</p>

@@ -46,8 +46,8 @@ class UserController extends AbstractController
         return $this->render('user/Dashboard/index.html.twig', [
             'imprimantes' => $totalPrinter,
             'actifs' => $printersActive,
-            'depenses' => $expensest,
-            'mois' => $expensesm,
+            'depensest' => $expensest,
+            'depensesm' => $expensesm,
             'impressions' => $piecest,
             'total' => $piecesm,
             'revenust' => $revenust,
