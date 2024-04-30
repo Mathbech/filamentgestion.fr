@@ -95,7 +95,10 @@
         "symfony": {
             "allow-contrib": false,
             "require": "7.0.*",
-            "docker": true
+            "docker": true,
+            "runtime": {
+                "dotenv_overload": true
+            }
         }
     },
     "require-dev": {
