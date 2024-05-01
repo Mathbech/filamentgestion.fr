@@ -10,7 +10,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/core": "^3.1",
-        "beberlei/doctrineextensions": "dev-master",
+        "beberlei/doctrineextensions": "^1.3",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.10",
         "doctrine/doctrine-migrations-bundle": "^3.2",
