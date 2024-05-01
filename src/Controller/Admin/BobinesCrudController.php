@@ -24,9 +24,9 @@ class BobinesCrudController extends AbstractCrudController
             NumberField::new('Prix'),
             DateTimeField::new('date_ajout'),
             AssociationField::new('couleur')
-            ->setFormTypeOptions([
-                'by_reference' => false,
-            ]),
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+                ]),
             AssociationField::new('categorie')
                 ->setFormTypeOptions([
                     'by_reference' => false,
