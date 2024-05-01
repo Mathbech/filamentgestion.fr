@@ -1,0 +1,2 @@
+INSERT INTO users (id, email, roles, password, username, created_at) OVERRIDING SYSTEM VALUE VALUES (1, 'admin@filamentgestion.fr', '["ROLE_ADMIN"]', '$2y$13$PMmIKGniwzPNsDCOj.LsrO/3ePp2XsqPgDfHYJNAYEK91LOmo0rom', 'Admin', NOW());
+INSERT INTO users (id, email, roles, password, username, created_at) OVERRIDING SYSTEM VALUE VALUES (2, 'user@filamentgestion.fr', '[]', '$2y$13$PMmIKGniwzPNsDCOj.LsrO/3ePp2XsqPgDfHYJNAYEK91LOmo0rom', 'User', NOW());
