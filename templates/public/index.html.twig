@@ -2,17 +2,19 @@
 
 
 {% block body %}
-    <div class="container text-center">
-        <div class="row align-items-start">
-            <div class="col">
-                <p class="text-info display-2">{{ 'welcome.on'|trans }} {{ site_name }}</p>
-                <p class="display-5">Filamentgestion c'est plus de : </p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        
-        {% include 'includes/card.html.twig' with {
+	<div class="container text-center">
+		<div class="row align-items-start">
+			<div class="col">
+				<p class="text-info display-2">{{ 'welcome.on'|trans }}
+					{{ site_name }}</p>
+				<p class="display-5">Filamentgestion c'est plus de :
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+
+		{% include 'includes/card.html.twig' with {
             'variabletitle': 'Utilisateurs inscrits',
             'variable1': 'Utilisateurs',
             'variable2': utilisateurs,
@@ -20,15 +22,15 @@
             'variable4': '1',
         } %}
 
-        {% include 'includes/card.html.twig' with {
+		{% include 'includes/card.html.twig' with {
             'variabletitle': 'Statistiques consommables',
             'variable1': 'Imprimante enregistré',
             'variable2': imprimantes,
             'variable3': 'Impression effectué',
             'variable4': impressions,
         } %}
-        
-        {% include 'includes/card.html.twig' with {
+
+		{% include 'includes/card.html.twig' with {
             'variabletitle': 'pages et contributeurs',
             'variable1': 'Contributeurs',
             'variable2': contributeurs,
@@ -36,7 +38,7 @@
             'variable4': pages,
         } %}
 
-        {% include 'includes/card.html.twig' with {
+		{% include 'includes/card.html.twig' with {
             'variabletitle': 'Entreprise et partenaires',
             'variable1': 'Entreprise',
             'variable2': entreprises,
@@ -44,28 +46,47 @@
             'variable4': partenaires,
         } %}
 
-    </div>
+	</div>
+	<p class="text-center display-5">Filamentgestion c'est aussi :</p>
+	<div class="d-flex flex-column justify-content-center align-items-center">
+		<div>
+			<div>
+				<p class="text-primary text-center">une application mobile compatible</p>
+			</div>
+			<div>
+				<a href="#" class="btn btn-primary">Télécharger l'application Androïd</a>
+			</div>
+		</div>
+		<div>
+			<div>
+				<p class="text-primary text-center">une application Windows</p>
+			</div>
+			<div>
+				<a href="#" class="btn btn-primary">Télécharger l'application Windows</a>
+			</div>
+		</div>
+	</div>
 
-    <p class="mb-0 font-weight-bold mt-2 text-primary text-center text-uppercase">C'est aussi de bon et loyaux services depuis 2020</p>
-    <div class="row">
-        <div class="col-lg-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">{{ 'register.chart'|trans }}</h4>
-                    {# <canvas id="areaChart" style="height:250px"></canvas> #}
-                    <div id="register-charts" style="height:250px"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-6 grid-margin stretch-card">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Évolution du nombre d'entreprises</h4>
-                    <canvas id="lineChart" style="height:250px"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
+
+	<p class="mb-0 font-weight-bold mt-2 text-primary text-center text-uppercase">C'est aussi de bon et loyaux services depuis 2020</p>
+	<div class="row">
+		<div class="col-lg-6 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">{{ 'register.chart'|trans }}</h4>
+					<div id="register-charts" style="height:250px"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 grid-margin stretch-card">
+			<div class="card">
+				<div class="card-body">
+					<h4 class="card-title">Évolution du nombre d'entreprises</h4>
+					<canvas id="lineChart" style="height:250px"></canvas>
+				</div>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}
 
@@ -73,15 +94,15 @@
 
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<script type="application/javascript">
-        $(document).ready(function() {
-            google.charts.load('current', {'packages': ['corechart']});
-            google.charts.setOnLoadCallback(initialize);
-        });
+		$(document).ready(function () {
+google.charts.load('current', {'packages': ['corechart']});
+google.charts.setOnLoadCallback(initialize);
+});
 
-        function initialize() {
-            registercharts();
-        }
+function initialize() {
+registercharts();
+}
 
-        {% include 'public/register_chart.js.twig' %}
+{% include 'public/register_chart.js.twig' %}
 	</script>
 {% endblock %}
