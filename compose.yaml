@@ -58,8 +58,8 @@ services:
     ports:
       - "8080:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: app@filamentgestion.fr
-      PGADMIN_DEFAULT_PASSWORD: ChangeMe
+      PGADMIN_DEFAULT_EMAIL: admin@filamentgestion.fr
+      PGADMIN_DEFAULT_PASSWORD: Filamentgestion2024
     volumes:
       - pgadmin-data:/var/lib/pgadmin
 
