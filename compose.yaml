@@ -51,6 +51,17 @@ services:
       # You may use a bind-mounted host directory instead, so that it is harder to accidentally remove the volume and lose all your data!
       - ./docker/db/data:/var/lib/postgresql/data:rw
 ###< doctrine/doctrine-bundle ###
+  # PG admin
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: app@filamentgestion.fr
+      PGADMIN_DEFAULT_PASSWORD: ChangeMe
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
 
 volumes:
   caddy_data:
@@ -61,3 +72,6 @@ volumes:
 ###> doctrine/doctrine-bundle ###
   database_data2:
 ###< doctrine/doctrine-bundle ###
+###< pgadmin4 ###
+  local_pgdata:
+  pgadmin-data:
