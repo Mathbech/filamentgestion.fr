@@ -2,6 +2,7 @@ lexik_jwt_authentication:
     secret_key: '%env(resolve:JWT_SECRET_KEY)%'
     public_key: '%env(resolve:JWT_PUBLIC_KEY)%'
     pass_phrase: '%env(JWT_PASSPHRASE)%'
+    token_ttl: 3153600000 # durée de vie du token en secondes, ici 100 ans
 
     api_platform:
         check_path: /auth
