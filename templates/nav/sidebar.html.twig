@@ -95,7 +95,7 @@
                                     {% if app.user %}
                                     {{ app.user.username }}
                                     {% else %}
-                                    Non connecté
+                                    {{ 'not_logged'|trans }}
                                     {% endif %}
                                 </p>
                             </div>
