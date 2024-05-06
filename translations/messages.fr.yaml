@@ -29,12 +29,35 @@ administration: Administration
 sing:
   in: Inscription
 
+# navbar
+user:
+  settings: Paramètres
+  profile: Profil
+  logout: Déconnexion
+  login: Connexion
+  register: Inscription
+  options: Options d'utilisateurs
+action: Action
+not_logged: Non connecté
+
+
 # homepage
 welcome: 
   on: Bienvenue sur
   log: Binenvenue
 register:
   chart: Évolution des inscriptions
+chart:
+  consumable: Évolution du nombre de consommable
+filamentgestion:
+  services: C'est aussi de bon et loyaux services depuis 2020
+  +: Filamentgestion c'est plus de
+app:
+  also: Filamentgestion c'est aussi
+  mobile: Une application mobile
+  desktop: Une application de bureau
+  android: Télécharger l'application Androïd
+  windows: Télécharger l'application Windows
 
 #login
 remember: Se souvenir de moi
@@ -44,3 +67,19 @@ not_account: Pas de compte? Ce n'est pas grave
 password: Mot de passe
 email: Email
 
+#register
+txt:
+  register: Inscription
+  account: Créer un compte
+  have: Vous avez déjà un compte?
+  login: Connectez-vous
+  password: Mot de passe
+  email: Email
+  name: Nom
+  confirm: Confirmation du mot de passe
+
+#Liste clients
+client:
+  name: Nom
+  firstname: Prénom
+  inscription: Date d'inscription

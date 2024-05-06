@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% block title %}Imprimantes{% endblock %}
+{% block title %}{% endblock %}
 {%block stylesheets %}
 <link href="{{ asset('DataTables/datatables.min.css') }}" rel="stylesheet">
   
@@ -15,9 +15,9 @@
             <table id="ventes" class="table table-striped">
                 <thead>
                     <tr>
-                        <th> Nom </th>
-                        <th> Prénom </th>
-                        <th> Date d'inscription  </th>
+                        <th> {{ 'client.name'|trans }} </th>
+                        <th> {{ 'client.firstname'|trans }} </th>
+                        <th> {{ 'client.inscription'|trans }}  </th>
                     </tr>
                 </thead>
                 <tbody>
