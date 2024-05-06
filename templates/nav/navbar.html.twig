@@ -23,17 +23,17 @@
                             {{ app.user.username }}
                             {% endif %}
                             {% if app.user is empty %}
-                            Non connecté
+                            {{ 'not_logged'|trans }}
                             {% endif %}
                         </p>
                     </div>
                 </a>
                 <div class="dropdown-menu navbar-dropdown dropdown-menu-right p-0 border-0 font-size-sm" aria-labelledby="profileDropdown" data-x-placement="bottom-end">
                     <div class="p-2">
-                        <h5 class="dropdown-header text-uppercase pl-2 text-dark">Options d'Utilisateur </h5>
+                        <h5 class="dropdown-header text-uppercase pl-2 text-dark">{{ 'user.options'|trans }} </h5>
                         {% if app.user %}
                         <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ path('account_user') }}">
-                            <span>Profil</span>
+                            <span>{{ 'user.profile'|trans }}</span>
                             <span class="p-0">
                                 <span class="badge badge-success">1</span>
                                 <i class="mdi mdi-account-outline ml-1"></i>
@@ -44,19 +44,19 @@
                             <i class="mdi mdi-settings"></i>
                         </a> #}
                         <div role="separator" class="dropdown-divider"></div>
-                        <h5 class="dropdown-header text-uppercase  pl-2 text-dark mt-2">Actions</h5>
+                        <h5 class="dropdown-header text-uppercase  pl-2 text-dark mt-2">{{ 'action'|trans }}</h5>
 
                         <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ path("app_logout") }}">
-                            <span>Déconnexion</span>
+                            <span>{{ 'user.logout'|trans }}</span>
                             <i class="mdi mdi-logout ml-1"></i>
                         </a>
                         {% else %}
                         <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ path("app_login") }}">
-                            <span>Connexion</span>
+                            <span>{{ 'user.login'|trans }}</span>
                             <i class="mdi mdi-lock ml-1"></i>
                         </a>
                         <a class="dropdown-item py-1 d-flex align-items-center justify-content-between" href="{{ path("app_register") }}">
-                            <span>Inscription</span>
+                            <span>{{ 'user.register'|trans }}</span>
                             <i class="mdi mdi-lock ml-1"></i>
                         </a>
                         {% endif %}
