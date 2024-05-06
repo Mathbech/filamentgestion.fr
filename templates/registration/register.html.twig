@@ -10,8 +10,8 @@
             <div class="brand-logo">
                 <img src="{{asset('assets/images/logo.png')}}">
             </div>
-            <h4>Nouveau ici ?</h4>
-            <h6 class="font-weight-light">Inscrit toi, c'est super simple</h6>
+            <h4>{{ 'txt.register'|trans }}</h4>
+            <h6 class="font-weight-light">{{ 'txt.account'|trans }}</h6>
             <div class="pt-3">
                 {{ form_start(registrationForm) }}
                 {{ form_errors(registrationForm) }}
@@ -41,8 +41,8 @@
                 <div class="mt-3">
                     {{ form_row(registrationForm.Inscription) }}
                 </div>
-                <div class="text-center mt-4 font-weight-light"> Déjà inscrit ? <a href="{{ path('app_login') }}"
-                        class="text-primary">Connecte toi !</a></div>
+                <div class="text-center mt-4 font-weight-light"> {{ 'txt.have'|trans}} <a href="{{ path('app_login') }}"
+                        class="text-primary">{{ 'txt.login'|trans }}</a></div>
                 {{ form_end(registrationForm) }}
                 </div>
         </div>
