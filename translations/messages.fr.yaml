@@ -83,3 +83,6 @@ client:
   name: Nom
   firstname: Prénom
   inscription: Date d'inscription
+  add: Ajouter un client
+#caisse
+title: Caisse
