@@ -7,7 +7,7 @@
 			<div class="col">
 				<p class="text-info display-2">{{ 'welcome.on'|trans }}
 					{{ site_name }}</p>
-				<p class="display-5">Filamentgestion c'est plus de :
+				<p class="display-5">{{ 'filamentgestion.+'|trans}}
 				</p>
 			</div>
 		</div>
@@ -47,28 +47,28 @@
         } %}
 
 	</div>
-	<p class="text-center display-5">Filamentgestion c'est aussi :</p>
+	<p class="text-center display-5">{{ 'app.also'|trans }}:</p>
 	<div class="d-flex flex-column justify-content-center align-items-center">
 		<div>
 			<div>
-				<p class="text-primary text-center">une application mobile</p>
+				<p class="text-primary text-center">{{ 'app.mobile'|trans }}</p>
 			</div>
 			<div>
-				<a href="{{asset('assets/mobile/filamentgestion.apk')}}" class="btn btn-primary">Télécharger l'application Androïd</a>
+				<a href="{{asset('assets/mobile/filamentgestion.apk')}}" class="btn btn-primary">{{ 'app.android'|trans }}</a>
 			</div>
 		</div>
 		<div>
 			<div>
-				<p class="text-primary text-center">une application Windows</p>
+				<p class="text-primary text-center">{{ 'app.desktop'|trans }}</p>
 			</div>
 			<div>
-				<a href="#" class="btn btn-primary">Télécharger l'application Windows</a>
+				<a href="#" class="btn btn-primary">{{ 'app.windows'|trans }}</a>
 			</div>
 		</div>
 	</div>
 
 
-	<p class="mb-0 font-weight-bold mt-2 text-primary text-center text-uppercase">C'est aussi de bon et loyaux services depuis 2020</p>
+	<p class="mb-0 font-weight-bold mt-2 text-primary text-center text-uppercase">{{ 'filamentgestion.services'|trans }}</p>
 	<div class="row">
 		<div class="col-lg-6 grid-margin stretch-card">
 			<div class="card">
@@ -81,7 +81,7 @@
 		<div class="col-lg-6 grid-margin stretch-card">
 			<div class="card">
 				<div class="card-body">
-					<h4 class="card-title">Évolution du nombre d'entreprises</h4>
+					<h4 class="card-title">{{ 'chart.consumable'|trans }}</h4>
 					<canvas id="lineChart" style="height:250px"></canvas>
 				</div>
 			</div>
