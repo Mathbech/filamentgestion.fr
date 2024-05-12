@@ -10,7 +10,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Ce mois-ci</h4>
-                <canvas id="budgetm" style="height:500px"></canvas>
+                <div id="budgetm"></div>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Depuis toujours</h4>
-                <canvas id="budgett" style="height:500px"></canvas>
+                <div id="budgett"></div>
             </div>
         </div>
     </div>
@@ -26,97 +26,22 @@
 </div>
 
 
+{% endblock %}
+{% block javascripts %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="application/javascript">
+	$(document).ready(function () {
+        google.charts.load('current', {'packages': ['bar']});
+        google.charts.setOnLoadCallback(initialize);
+    });
 
-<script>
-$(function () {
-    let budgett = {
-        labels: ["Dépenses", "Recettes"],
-        datasets: [{
-            data: [{{ depenset ? depenset : '0' }}, {{ recettet ? recettet : '0' }} ],
-            backgroundColor: [
-                'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 0, 1)',
-            ],
-            borderColor: [
-                'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 0, 1)',
-            ],
-            borderWidth: 1,
-        }]
-    }
-    let budgetm = {
-        labels: ["Dépenses", "Recettes"],
-        datasets: [{
-            data: [{{ depensem ? depensem : '0' }}, {{ recettem ? recettem : '0' }}  ],
-            backgroundColor: [
-                'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 0, 1)',
-            ],
-            borderColor: [
-                'rgba(255, 0, 0, 1)',
-                'rgba(0, 255, 0, 1)',
-            ],
-            borderWidth: 1,
-        }]
-    }
-    var doughnutPieOptions = {
-        responsive: true,
-        animation: {
-            animateScale: true,
-            animateRotate: true
-        },
-        legend: {
-            display: true,
-            position: 'top',
-        },
-    };
-
-    var barOptions = {
-        responsive: true,
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    callback: function(value) {
-                        return value + '€';
-                    }
-                }
-            }]
-        },
-        legend: {
-            display: false,
-            position: 'top',
-        },
+    function initialize() {
+        balanceMCharts();
+        balanceTCharts();
     }
 
-
-    if ($("#budgett").length) {
-        var budgettt = $("#budgett").get(0).getContext("2d");
-
-        var config = new Chart(budgettt, {
-            {# type: 'doughnut', #}
-            type: 'bar',
-            data: budgett,
-            options: barOptions
-        });
-    }
-
-    
-
-
-    if ($("#budgetm").length) {
-        var budgetmm = $("#budgetm").get(0).getContext("2d");
-
-        var config = new Chart(budgetmm, {
-            {# type: 'doughnut', #}
-            type: 'bar',
-            data: budgetm,
-            {# options: doughnutPieOptions #}
-            options: barOptions
-        });
-    }
-
-});
-
+{% include 'user/comptes/balancemChart.js.twig' %}
+{% include 'user/comptes/balancetChart.js.twig' %}
 </script>
+
 {% endblock %}

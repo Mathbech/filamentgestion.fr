@@ -1,0 +1,48 @@
+/**
+ * Fonction pour dessiner le graphique des prises de vues
+ */
+
+function balanceMCharts() {
+
+var container = document.getElementById('budgetm');
+
+
+    if (!container) {
+        console.error("Le conteneur 'budgetm' n'a pas été trouvé.");
+        return;
+    }
+
+    // Récupération des données
+var jsonData = {{ budgetM|json_encode|raw }};
+
+    console.log(jsonData);
+
+    if (!jsonData || Object.keys(jsonData).length === 0) {
+        console.error("Aucune donnée disponible.");
+        return;
+    }
+
+    // Création des colonnes
+    var data = google.visualization.arrayToDataTable([
+        ['Type', 'Montant', { role: 'style' }],
+        ['Revenus', jsonData.revenus, 'color: #008000'], // Vert pour les revenus
+        ['Depenses', jsonData.depenses, 'color: #FF0000'] // Rouge pour les dépenses
+    ]);
+
+    // options de graph
+    var options = {
+        title: 'Revenus et dépenses des 30 derniers jours',
+        legend: { position: 'none'},
+        height: 600,
+        width: 1200,
+
+    }
+
+    // Création du graphique
+    var view = new google.visualization.DataView(data);
+
+    // Dessiner le graphique
+    var chart = new google.charts.Bar(document.getElementById("budgetm")); 
+    chart.draw(view, google.charts.Bar.convertOptions(options));
+
+}
