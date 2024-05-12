@@ -9,12 +9,12 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#stock" aria-expanded="false" aria-controls="auth">
                 <span class="icon-bg"><i class="mdi mdi-barcode menu-icon"></i></span>
                 <span class="menu-title"> {{ 'management'|trans }} </span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="auth">
+            <div class="collapse" id="stock">
                 <ul class="nav flex-column sub-menu">                    
                     <li class="nav-item"> <a class="nav-link" href="{{ path('imprimante_user') }}"> {{ 'printer'|trans }} </a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ path('stock_user') }}"> {{ 'stock'|trans }} </a></li>
@@ -23,12 +23,12 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" data-toggle="collapse" href="#count" aria-expanded="false" aria-controls="count">
                 <span class="icon-bg"><i class="mdi mdi-bank menu-icon"></i></span>
                 <span class="menu-title"> {{ 'accounting'|trans }} </span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="ui-basic">
+            <div class="collapse" id="count">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ path('compte_user') }}">{{ 'budget'|trans }}</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ path('ventes_user') }}">{{ 'recipe'|trans }}</a></li>
@@ -44,12 +44,12 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#cais" aria-expanded="false" aria-controls="auth">
+            <a class="nav-link" data-toggle="collapse" href="#caisse" aria-expanded="false" aria-controls="caisse">
                 <span class="icon-bg"><i class="mdi mdi-currency-eur menu-icon"></i></span>
                 <span class="menu-title">{{ 'sold'|trans }}</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="cais">
+            <div class="collapse" id="caisse">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item"> <a class="nav-link" href="{{ path('caisse_user') }}">{{ 'casher'|trans }}</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ path('addclient_user') }}">{{ 'customer.new'|trans }}</a></li>
