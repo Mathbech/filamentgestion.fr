@@ -24,8 +24,8 @@ INSERT INTO categorie (id, nom_type, propriete) OVERRIDING SYSTEM VALUE VALUES (
 INSERT INTO categorie (id, nom_type, propriete) OVERRIDING SYSTEM VALUE VALUES (6, 'ASA', 'Température extrudeur: Compris entre 230 et 260 degrés, température plateau: Entre 80 et 110 degrés, ventilateurs de refroidissement: Oui');
 
 -- imprimantes
-INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (1, 2, 'FDM', 'Ender 3 Pro', null, 'Creality', 200, '2024-04-15');
-INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (2, 2, 'SLA', 'Mars 2 Pro', null, 'Elegoo', 300, '2024-04-18');
-INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (3, 2, 'FDM', 'Prusa i3 MK3S', null, 'Prusa', 800, '2024-04-20');
-INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (4, 2, 'FDM', 'CR-10 V3', null, 'Creality', 500, '2024-04-30');
-INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (5, 2, 'FDM', 'Ender 3 V2', null, 'Creality', 200, '2024-05-21');
+INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (1, 2, 'imprimante1', 'Ender 3 Pro', null, 'Creality', 200, '2024-04-15');
+INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (2, 2, 'imprimante2', 'Mars 2 Pro', null, 'Elegoo', 300, '2024-04-18');
+INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (3, 2, 'imprimante3', 'Prusa i3 MK3S', null, 'Prusa', 800, '2024-04-20');
+INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (4, 2, 'imprimante4', 'CR-10 V3', null, 'Creality', 500, '2024-04-30');
+INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (5, 2, 'imprimante5', 'Ender 3 V2', null, 'Creality', 200, '2024-05-21');
