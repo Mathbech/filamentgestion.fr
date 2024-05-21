@@ -21,10 +21,6 @@ class BobinesRepository extends ServiceEntityRepository
         parent::__construct($registry, Bobines::class);
     }
 
-    //    /**
-    //     * @return Bobines[] Returns an array of Bobines objects
-    //     */
-
     /**
      * Affichage des bobines avec une pagination
      * @param int $user
@@ -51,7 +47,7 @@ class BobinesRepository extends ServiceEntityRepository
     /**
      * Summary of getBobinesByUserCount
      * @param mixed $user
-     * @return int|null
+     * @return int
      * @author Mathieu Bechade
      */
     public function getBobinesByUserCount($user)

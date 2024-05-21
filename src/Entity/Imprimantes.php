@@ -14,6 +14,10 @@ use Doctrine\ORM\Mapping as ORM;
 class Imprimantes
 {
 
+
+    public final const RESULT_PER_PAGE = 2;
+
+
     public function __toString(): String{
         return $this->getNomImprimante();
     }
@@ -44,9 +48,13 @@ class Imprimantes
     #[ORM\Column]
     private ?float $prix = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_ajout = null;
+
     public function __construct()
     {
         $this->impression = new ArrayCollection();
+        $this->date_ajout = new \DateTime();
     }
 
     public function getId(): ?int
@@ -152,6 +160,18 @@ class Imprimantes
     public function setPrix(float $prix): static
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getDateAjout(): ?\DateTimeInterface
+    {
+        return $this->date_ajout;
+    }
+
+    public function setDateAjout(\DateTimeInterface $date_ajout): static
+    {
+        $this->date_ajout = $date_ajout;
 
         return $this;
     }

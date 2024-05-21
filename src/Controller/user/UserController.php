@@ -78,11 +78,6 @@ class UserController extends AbstractController
     
 
         return $this->render('user/gestion/stock.html.twig', [
-            // 'stocks' => $bobinesRepository->findBy(
-            //     ['gestionnaire' => $this->getUser()->getId()],
-            //     ['id' => 'DESC'],
-            //     10
-            // ),
             'stocks' => $bobines,
             'Bobines_count' => $bobines_count,
         ]);
@@ -101,14 +96,19 @@ class UserController extends AbstractController
     }
 
     #[Route('/imprimantes', name: 'imprimante_user')]
-    public function imprimantes(ImprimantesRepository $printersRepository): Response
+    public function imprimantes(ImprimantesRepository $imprimantesRepository): Response
     {
+        $imprimantes = [];
+        $imprimantes_count = 0;
+
+
+        $user = $this->getUser()->getId();
+        $imprimantes_count = $imprimantesRepository->getCountPrintersByUser($user);
+        $imprimantes = $imprimantesRepository->getPrintersByUser($user);
+
         return $this->render('user/gestion/imprimantes.html.twig', [
-            'printers' => $printersRepository->findBy(
-                ['username' => $this->getUser()->getId()],
-                ['id' => 'DESC'],
-                10
-            ),
+            'imprimantes' => $imprimantes,
+            'imprimantes_count' => $imprimantes_count,
         ]);
     }
 

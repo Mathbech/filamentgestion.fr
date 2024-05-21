@@ -21,9 +21,45 @@ class ImprimantesRepository extends ServiceEntityRepository
         parent::__construct($registry, Imprimantes::class);
     }
 
-    //    /**
-    //     * @return Imprimantes[] Returns an array of Imprimantes objects
-    //     */
+
+    /**
+     * Summary of getCountPrintersByUser
+     * @param int $user
+     * @return int
+     * @author Mathieu Bechade
+     */
+    public function getCountPrintersByUser($user)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->andWhere('i.username = :user_id')
+            ->setParameter('user_id', $user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Summary of getPrintersByUser
+     * @param int $user
+     * @param int $page
+     * @return object
+     * @author Mathieu Bechade
+     */
+    public function getPrintersByUser($user, $page = 1)
+    {
+        $query = $this->createQueryBuilder('i')
+            ->andWhere('i.username = :user_id')
+            ->setParameter('user_id', $user)
+            ->orderBy('i.date_ajout', 'DESC');
+
+        if ($page > 0) {
+            return $query->getQuery()->setFirstResult(($page - 1) * Imprimantes::RESULT_PER_PAGE) // Define the offset
+                ->setMaxResults(Imprimantes::RESULT_PER_PAGE) // Define the limit
+                ->getResult();
+        }
+        return $query->getQuery()->getResult();
+
+    }
 
     public function getTotalprinters()
     {
