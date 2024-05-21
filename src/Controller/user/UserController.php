@@ -66,14 +66,25 @@ class UserController extends AbstractController
         ]);
     }
     #[Route('/stock', name: 'stock_user')]
-    public function stock(BobinesRepository $bobinesRepository): Response
+    public function stock(Request $request, BobinesRepository $bobinesRepository): Response
     {
+
+        $bobines = [];
+        $bobines_count = 0;
+
+        $user = $this->getUser()->getId();
+        $bobines_count = $bobinesRepository->getBobinesByUserCount($user);
+        $bobines = $bobinesRepository->getBobinesByUser($user, $request->query->getInt('page', 1));
+    
+
         return $this->render('user/gestion/stock.html.twig', [
-            'stocks' => $bobinesRepository->findBy(
-                ['gestionnaire' => $this->getUser()->getId()],
-                ['id' => 'DESC'],
-                10
-            ),
+            // 'stocks' => $bobinesRepository->findBy(
+            //     ['gestionnaire' => $this->getUser()->getId()],
+            //     ['id' => 'DESC'],
+            //     10
+            // ),
+            'stocks' => $bobines,
+            'Bobines_count' => $bobines_count,
         ]);
     }
 

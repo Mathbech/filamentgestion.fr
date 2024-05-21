@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource(security : "is_granted('ROLE_USER')")]
 class Bobines
 {
+    public final const RESULT_PER_PAGE = 2;
+    
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

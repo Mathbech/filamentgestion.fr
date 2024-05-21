@@ -25,7 +25,45 @@ class BobinesRepository extends ServiceEntityRepository
     //     * @return Bobines[] Returns an array of Bobines objects
     //     */
 
-    
+    /**
+     * Affichage des bobines avec une pagination
+     * @param int $user
+     * @param int $page
+     * @return object
+     * @author Mathieu Bechade
+     */
+    public function getBobinesByUser($user, $page = 1)
+    {
+        $query = $this->createQueryBuilder('b')
+            ->andWhere('b.gestionnaire = :user_id')
+            ->setParameter('user_id', $user)
+            ->orderBy('b.date_ajout', 'DESC');
+
+        if ($page > 0) {
+            return $query->getQuery()->setFirstResult(($page - 1) * Bobines::RESULT_PER_PAGE) // Define the offset
+                ->setMaxResults(Bobines::RESULT_PER_PAGE) // Define the limit
+                ->getResult();
+        }
+        return $query->getQuery()->getResult();
+
+    }
+
+    /**
+     * Summary of getBobinesByUserCount
+     * @param mixed $user
+     * @return int|null
+     * @author Mathieu Bechade
+     */
+    public function getBobinesByUserCount($user)
+    {
+        return $this->createQueryBuilder('b')
+            ->select('count(b.id)')
+            ->andWhere('b.gestionnaire = :user_id')
+            ->setParameter('user_id', $user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
     public function getExpensetUsers($user)
     {
         return $this->createQueryBuilder('b')
@@ -55,7 +93,7 @@ class BobinesRepository extends ServiceEntityRepository
      */
     public function getExpensesCharts(
         $user
-    ) :array {
+    ): array {
         return $this->createQueryBuilder('b')
             ->select('SUM(b.prix) as prix, DATE(b.date_ajout) as week')
             ->groupBy('week')
