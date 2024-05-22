@@ -50,7 +50,7 @@ register:
 chart:
   consumable: Évolution du nombre de consommable
 filamentgestion:
-  services: C'est aussi de bon et loyaux services depuis 2020
+  services: C'est aussi de bons et loyaux services depuis 2020
   +: Filamentgestion c'est plus de
 app:
   also: Filamentgestion c'est aussi
