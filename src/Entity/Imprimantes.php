@@ -15,7 +15,7 @@ class Imprimantes
 {
 
 
-    public final const RESULT_PER_PAGE = 2;
+    public final const RESULT_PER_PAGE = 30;
 
 
     public function __toString(): String{
