@@ -22,21 +22,7 @@ class ImprimantesRepository extends ServiceEntityRepository
     }
 
 
-    /**
-     * Summary of getCountPrintersByUser
-     * @param int $user
-     * @return int
-     * @author Mathieu Bechade
-     */
-    public function getCountPrintersByUser($user)
-    {
-        return $this->createQueryBuilder('i')
-            ->select('count(i.id)')
-            ->andWhere('i.username = :user_id')
-            ->setParameter('user_id', $user)
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
+   
 
     /**
      * Summary of getPrintersByUser
@@ -45,7 +31,7 @@ class ImprimantesRepository extends ServiceEntityRepository
      * @return object
      * @author Mathieu Bechade
      */
-    public function getPrintersByUser($user, $page = 1)
+    public function getPrintersByUser($user, int $page = 1)
     {
         $query = $this->createQueryBuilder('i')
             ->andWhere('i.username = :user_id')
@@ -60,7 +46,22 @@ class ImprimantesRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
 
     }
-
+    
+    /**
+         * Summary of getCountPrintersByUser
+         * @param int $user
+         * @return int
+         * @author Mathieu Bechade
+         */
+        public function getCountPrintersByUser($user)
+        {
+            return $this->createQueryBuilder('i')
+                ->select('count(i.id)')
+                ->andWhere('i.username = :user_id')
+                ->setParameter('user_id', $user)
+                ->getQuery()
+                ->getSingleScalarResult();
+        }
     public function getTotalprinters()
     {
         return $this->createQueryBuilder('i')

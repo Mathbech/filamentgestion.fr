@@ -95,8 +95,8 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/imprimantes', name: 'imprimante_user')]
-    public function imprimantes(ImprimantesRepository $imprimantesRepository): Response
+    #[Route('/imprimantes', name: 'imprimante_user', methods: ['GET'])]
+    public function imprimantes(Request $request, ImprimantesRepository $imprimantesRepository): Response
     {
         $imprimantes = [];
         $imprimantes_count = 0;
@@ -104,7 +104,7 @@ class UserController extends AbstractController
 
         $user = $this->getUser()->getId();
         $imprimantes_count = $imprimantesRepository->getCountPrintersByUser($user);
-        $imprimantes = $imprimantesRepository->getPrintersByUser($user);
+        $imprimantes = $imprimantesRepository->getPrintersByUser($user, $request->query->getInt('page', 1));
 
         return $this->render('user/gestion/imprimantes.html.twig', [
             'imprimantes' => $imprimantes,
