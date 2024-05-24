@@ -46,8 +46,8 @@ class ImprimantesRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
 
     }
-    
-    /**
+
+        /**
          * Summary of getCountPrintersByUser
          * @param int $user
          * @return int

@@ -84,14 +84,18 @@ class UserController extends AbstractController
     }
 
     #[Route('/impressions', name: 'impression_user')]
-    public function impressions(ImpressionsRepository $impressionsRepository): Response
+    public function impressions(Request $request, ImpressionsRepository $impressionsRepository): Response
     {
+        $impression_count = 0;
+        $impressions = [];
+
+        $user = $this->getUser()->getId();
+        $impression_count = $impressionsRepository->getCountImpressionsByUser($user);
+        $impressions = $impressionsRepository->getImpressionsByUser($user, $request->query->getInt('page', 1));
+
         return $this->render('user/gestion/impressions.html.twig', [
-            'impressions' => $impressionsRepository->findBy(
-                ['utilisateur' => $this->getUser()->getId()],
-                ['id' => 'DESC'],
-                10
-            ),
+            'impressions' => $impressions,
+            'impressions_count' => $impression_count,
         ]);
     }
 

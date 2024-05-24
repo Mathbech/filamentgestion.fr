@@ -21,22 +21,49 @@ class ImpressionsRepository extends ServiceEntityRepository
         parent::__construct($registry, Impressions::class);
     }
 
-//    /**
-//     * @return Impressions[] Returns an array of Impressions objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('i')
-//            ->andWhere('i.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('i.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-public function getTotalpieces()
+    /**
+     * Summary of getPrintersByUser
+     * @param int $user
+     * @param int $page
+     * @return object
+     * @author Mathieu Bechade
+     */
+    public function getImpressionsByUser($user, int $page = 1)
+    {
+        $query = $this->createQueryBuilder('i')
+            ->andWhere('i.utilisateur = :user_id')
+            ->setParameter('user_id', $user)
+            ->orderBy('i.date', 'DESC');
+
+        if ($page > 0) {
+            return $query->getQuery()->setFirstResult(($page - 1) * Impressions::RESULT_PER_PAGE) // Define the offset
+                ->setMaxResults(Impressions::RESULT_PER_PAGE) // Define the limit
+                ->getResult();
+        }
+        return $query->getQuery()->getResult();
+
+    }
+
+
+    /**
+     * Summary of getCountImpressionsByUser
+     * @param int $user
+     * @return int
+     * @author Mathieu Bechade
+     */
+    public function getCountImpressionsByUser($user)
+    {
+        return $this->createQueryBuilder('i')
+            ->select('count(i.id)')
+            ->andWhere('i.utilisateur = :user_id')
+            ->setParameter('user_id', $user)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+
+    public function getTotalpieces()
     {
         return $this->createQueryBuilder('i')
             ->select('count(i.id)')
@@ -66,7 +93,7 @@ public function getTotalpieces()
             ->getSingleScalarResult();
     }
 
-//    public function findOneBySomeField($value): ?Impressions
+    //    public function findOneBySomeField($value): ?Impressions
 //    {
 //        return $this->createQueryBuilder('i')
 //            ->andWhere('i.exampleField = :val')

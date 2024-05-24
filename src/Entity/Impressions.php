@@ -11,6 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource]
 class Impressions
 {
+
+    public final const RESULT_PER_PAGE = 30;
+
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
