@@ -29,3 +29,11 @@ INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, delet
 INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (3, 2, 'imprimante3', 'Prusa i3 MK3S', null, 'Prusa', 800, '2024-04-20');
 INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (4, 2, 'imprimante4', 'CR-10 V3', null, 'Creality', 500, '2024-04-30');
 INSERT INTO imprimantes (id, username_id, type_imprimante, nom_imprimante, deleted, marque, prix, date_ajout) OVERRIDING SYSTEM VALUE VALUES (5, 2, 'imprimante5', 'Ender 3 V2', null, 'Creality', 200, '2024-05-21');
+
+-- bobines
+INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (1, 1, 25.50, '2024-04-15', 1, 1, 2);
+INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (2, 1.5, 30.00, '2024-05-15', 2, 2, 2);
+INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (3, 2, 35.00, '2024-06-15', 3, 3, 2);
+INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (4, 2.5, 40.00, '2024-07-15', 4, 4, 2);
+INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (5, 3, 45.00, '2024-08-15', 5, 5, 2);
+INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (6, 3.5, 50.00, '2024-09-15', 6, 6, 2);
