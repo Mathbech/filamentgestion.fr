@@ -46,7 +46,7 @@ class BobinesRepository extends ServiceEntityRepository
 
     /**
      * Summary of getBobinesByUserCount
-     * @param mixed $user
+     * @param int $user
      * @return int
      * @author Mathieu Bechade
      */
