@@ -37,3 +37,20 @@ INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gest
 INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (4, 2.5, 40.00, '2024-07-15', 4, 4, 2);
 INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (5, 3, 45.00, '2024-08-15', 5, 5, 2);
 INSERT INTO bobines (id, poids, prix, date_ajout, couleur_id, categorie_id, gestionnaire_id) OVERRIDING SYSTEM VALUE VALUES (6, 3.5, 50.00, '2024-09-15', 6, 6, 2);
+
+-- impression
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (1, 1, 2, '00:10:00', '2024-04-15', 1, 1, 0.1);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (2, 2, 2, '01:10:00', '2024-05-15', 2, 2, 0.5);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (3, 3, 2, '00:50:00', '2024-06-15', 3, 3, 0.2);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (4, 4, 2, '00:40:00', '2024-07-15', 4, 4, 0.5);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (5, 5, 2, '02:10:00', '2024-08-15', 5, 5, 0.3);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (6, 1, 2, '12:10:00', '2024-09-15', 1, 1, 3.4);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (7, 2, 2, '00:35:00', '2024-10-15', 2, 2, 0.5);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (8, 3, 2, '01:25:00', '2024-11-15', 3, 3, 0.6);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (9, 4, 2, '01:30:00', '2024-12-15', 4, 4, 0.7);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (10, 5, 2, '01:10:00', '2025-01-15', 5, 5, 0.8);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (11, 1, 2, '02:10:00', '2025-02-15', 1, 1, 0.9);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (12, 2, 2, '03:20:00', '2025-03-15', 2, 2, 0.4);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (13, 3, 2, '01:00:00', '2025-04-15', 3, 3, 0.5);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (14, 4, 2, '02:00:00', '2025-05-15', 4, 4, 0.6);
+INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (15, 5, 2, '03:00:00', '2025-06-15', 5, 5, 0.7);
