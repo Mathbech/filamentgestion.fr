@@ -39,6 +39,9 @@
 					<thead>
 						<tr>
 							<th>
+								Date d'ajout
+							</th>
+							<th>
 								Utilisateur
 							</th>
 							<th>
@@ -64,6 +67,9 @@
 					<tbody>
 						{% for printer in imprimantes %}
 							<tr>
+								<td class="py-1">
+									{{printer.dateAjout|date('d/m/Y') }}
+								</td>
 								<td class="py-1">
 									{{printer.username }}
 								</td>
