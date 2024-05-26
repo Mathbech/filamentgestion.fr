@@ -54,3 +54,34 @@ INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleu
 INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (13, 3, 2, '01:00:00', '2025-04-15', 3, 3, 0.5);
 INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (14, 4, 2, '02:00:00', '2025-05-15', 4, 4, 0.6);
 INSERT INTO impressions (id, imprimantes_id, utilisateur_id, temps, date, couleur_id, categorie_id, poids) OVERRIDING SYSTEM VALUE VALUES (15, 5, 2, '03:00:00', '2025-06-15', 5, 5, 0.7);
+
+-- clients
+INSERT INTO clients (id, nom, prenom, date_inscription) OVERRIDING SYSTEM VALUE VALUES (1, 'Dupont', 'Jean', '2024-04-15');
+INSERT INTO clients (id, nom, prenom, date_inscription) OVERRIDING SYSTEM VALUE VALUES (2, 'Durand', 'Pierre', '2024-05-15');
+INSERT INTO clients (id, nom, prenom, date_inscription) OVERRIDING SYSTEM VALUE VALUES (3, 'Duchemin', 'Paul', '2024-05-20');
+INSERT INTO clients (id, nom, prenom, date_inscription) OVERRIDING SYSTEM VALUE VALUES (4, 'Dutronc', 'Jacques', '2024-05-25');
+INSERT INTO clients (id, nom, prenom, date_inscription) OVERRIDING SYSTEM VALUE VALUES (5, 'Dumas', 'Alexandre', '2024-05-28');
+
+-- ventes
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (1, 'Figurine Mario', 'Taille: 15 cm, Couleurs: Rouge, Noir et Blanc', 15, '2024-04-15', 1, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (2, 'Figurine Luigi', 'Taille: 15 cm, Couleurs: Vert, Noir et Blanc', 15, '2024-05-15', 2, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (3, 'Figurine Peach', 'Taille: 15 cm, Couleurs: Rose, Noir et Blanc', 15, '2024-06-15', 3, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (4, 'Figurine Bowser', 'Taille: 15 cm, Couleurs: Vert, Noir et Blanc', 15, '2024-07-15', 4, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (5, 'Figurine Toad', 'Taille: 15 cm, Couleurs: Rouge, Noir et Blanc', 15, '2024-08-15', 5, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (6, 'Figurine Yoshi', 'Taille: 15 cm, Couleurs: Vert, Noir et Blanc', 15, '2024-09-15', 1, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (7, 'Figurine Wario', 'Taille: 15 cm, Couleurs: Jaune, Noir et Blanc', 15, '2024-10-15', 2, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (8, 'Figurine Waluigi', 'Taille: 15 cm, Couleurs: Violet, Noir et Blanc', 15, '2024-11-15', 3, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (9, 'Figurine Donkey Kong', 'Taille: 15 cm, Couleurs: Marron, Noir et Blanc', 15, '2024-12-15', 4, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (10, 'Figurine Diddy Kong', 'Taille: 15 cm, Couleurs: Orange, Noir et Blanc', 15, '2025-01-15', 5, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (11, 'Figurine Koopa', 'Taille: 15 cm, Couleurs: Vert, Noir et Blanc', 15, '2025-02-15', 1, 2);
+INSERT INTO ventes (id, nom_produit, description_produit, prix_produit, date_vente, clients_id, vendeur_id) OVERRIDING SYSTEM VALUE VALUES (12, 'Figurine Boo', 'Taille: 15 cm, Couleurs: Blanc, Noir et Bleu', 15, '2025-03-15', 2, 2);
+
+-- mettre l'autoincrément a la dernière valeur de chaque table
+SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));
+SELECT setval('couleur_id_seq', (SELECT MAX(id) FROM couleur));
+SELECT setval('categorie_id_seq', (SELECT MAX(id) FROM categorie));
+SELECT setval('imprimantes_id_seq', (SELECT MAX(id) FROM imprimantes));
+SELECT setval('bobines_id_seq', (SELECT MAX(id) FROM bobines));
+SELECT setval('impressions_id_seq', (SELECT MAX(id) FROM impressions));
+SELECT setval('clients_id_seq', (SELECT MAX(id) FROM clients));
+SELECT setval('ventes_id_seq', (SELECT MAX(id) FROM ventes));
